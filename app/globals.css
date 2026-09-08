@@ -21,12 +21,7 @@
 .petals-3{right:1%;bottom:7%;width:90px;animation-delay:-5s}
 @keyframes petal-drift{0%{transform:translate3d(-5px,9px,0) rotate(-8deg)}50%{transform:translate3d(8px,-6px,0) rotate(3deg)}100%{transform:translate3d(-2px,-22px,0) rotate(13deg)}}
 @media(max-width:1000px){
- .invitation{--portrait-height:clamp(310px,82vw,510px);--portrait-top:125px}
- .hero-video-frame{top:var(--portrait-top);height:var(--portrait-height);bottom:auto}
- .hero-video-frame .hero-video{inset:auto;top:0;left:50%;height:100%;width:auto;max-width:none;aspect-ratio:1240/740;object-fit:contain;transform:translateX(-72%)}
- .hero{padding-top:calc(var(--portrait-height) + 80px);margin-inline:auto}
- .hero-video-frame{mask-image:linear-gradient(to bottom,transparent,#000 5%,#000 95%,transparent)}
+ .hero-video-frame .hero-video{object-fit:cover;object-position:76% center}
  .petals-0{top:36%}.petals-1{top:18%}
 }
-@media(max-width:760px){.invitation{--portrait-top:145px}.hero{padding-top:calc(var(--portrait-height) + 65px)}}
 @media(prefers-reduced-motion:reduce){.edge-petals{animation:none;will-change:auto}}
