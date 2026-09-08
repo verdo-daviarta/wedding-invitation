@@ -19,9 +19,14 @@ export default function HeroVideo() {
   }, []);
 
   return <>
+    <div className="hero-video-frame">
     <video ref={video} className="hero-video" muted loop playsInline preload="auto" aria-hidden="true" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)}>
       <source src="/hero-background.mp4" type="video/mp4" />
     </video>
+    </div>
+    <div className="petal-layer" aria-hidden="true" style={{ animationPlayState: playing ? 'running' : 'paused' }}>
+      {[0, 1, 2, 3].map(index => <img key={index} className={`edge-petals petals-${index}`} src="/edge-petals.png" alt="" />)}
+    </div>
     <div className="hero-overlay" aria-hidden="true" />
     <button className="video-toggle" type="button" aria-label={playing ? 'Pause background video' : 'Play background video'} onClick={() => {
       if (playing) video.current?.pause();
