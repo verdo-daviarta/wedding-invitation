@@ -1,21 +1,68 @@
 import { ArrowRight } from 'lucide-react';
-export default function Home() {
- return <main className="invitation" id="home">
-  <section className="cover" aria-labelledby="hero-title">
-   <div className="cover-heading">
-    <div className="date-row" aria-label="May 17, 2025"><span>17/05</span><span>2025</span></div>
-    <p className="event-time">Waktu akan diumumkan</p>
-    <p className="eyebrow">The wedding of</p>
-    <h1 id="hero-title" aria-label="Verdo & Intan"><span className="first-name">Verdo</span><span className="ampersand">&amp;</span><span className="second-name">Intan</span></h1>
-   </div>
-   <div className="guest-welcome">
+
+const wedding = {
+  date: '17/05',
+  year: '2025',
+  time: 'Waktu akan diumumkan',
+  groom: 'Verdo',
+  bride: 'Intan',
+};
+
+function CoupleNames() {
+  return (
+    <h1
+      className="couple-names"
+      id="hero-title"
+      aria-label={`${wedding.groom} & ${wedding.bride}`}
+    >
+      <span className="groom-name">{wedding.groom}</span>
+      <span className="ampersand" aria-hidden="true">
+        &amp;
+      </span>
+      <span className="bride-name">{wedding.bride}</span>
+    </h1>
+  );
+}
+
+function GuestGreeting() {
+  return (
     <div className="guest-greeting">
-     <h2 className="salutation">Yth. Bapak/Ibu/Saudara/i</h2>
-     <h2 className="guest-name"><span className="pinvite-guest-name">Tamu Undangan</span></h2>
-     <h2 className="invitation-message">Tanpa mengurangi rasa hormat,{ '\u2028' }kami mengundang anda untuk menghadiri acara pernikahan kami.</h2>
+      <p className="salutation">Yth. Bapak/Ibu/Saudara/i</p>
+      <p className="guest-name">Tamu Undangan</p>
+      <p className="invitation-message">
+        Tanpa mengurangi rasa hormat,
+        <br />
+        kami mengundang anda untuk menghadiri acara pernikahan kami.
+      </p>
     </div>
-    <button className="open-invitation" type="button"><span className="elementor-button-text">Buka Undangan</span><ArrowRight size={17} aria-hidden="true" /></button>
-   </div>
-  </section>
- </main>;
+  );
+}
+
+export default function Home() {
+  return (
+    <main className="invitation">
+      <section className="hero" aria-labelledby="hero-title">
+        <div className="hero-heading">
+          <div
+            className="date-row"
+            aria-label={`Tanggal ${wedding.date}/${wedding.year}`}
+          >
+            <time dateTime={`${wedding.year}-05-17`}>{wedding.date}</time>
+            <span>{wedding.year}</span>
+          </div>
+          <p className="event-time">{wedding.time}</p>
+          <p className="eyebrow">The Wedding of</p>
+          <CoupleNames />
+        </div>
+
+        <div className="hero-footer">
+          <GuestGreeting />
+          <span className="open-invitation" aria-disabled="true">
+            Buka Undangan
+            <ArrowRight size={17} aria-hidden="true" />
+          </span>
+        </div>
+      </section>
+    </main>
+  );
 }

@@ -1,50 +1,170 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
-:root,.dark{--background:#D8D6D4;--foreground:#0E0F12;--accent:#7DA9C4;--primary:#7DA9C4;--primary-foreground:#0E0F12;--accent-foreground:#0E0F12;--ring:#0E0F12}
-@theme inline{--color-background:var(--background);--color-foreground:var(--foreground);--color-accent:var(--accent);--font-sans:var(--font-body)}
-*{box-sizing:border-box}body{margin:0;background:var(--background);color:var(--foreground);font-family:var(--font-body),Arial,sans-serif}button{font:inherit}button:focus-visible{outline:2px solid var(--foreground);outline-offset:5px}
-.invitation{position:relative;isolation:isolate;min-height:100svh;overflow:clip;padding:50px 24px 65px}.cover{min-height:calc(100svh - 115px);display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:100px;text-align:center}.cover-heading{width:300px;max-width:100%}.date-row{display:flex;justify-content:space-between;font-size:16px;font-weight:500;margin-bottom:24px}.eyebrow{font-size:16px;text-transform:uppercase;margin:0;font-weight:500}
-h1{position:relative;width:290px;max-width:100%;height:245px;margin:36px auto 0;font-family:var(--font-script),cursive;font-size:76px;line-height:1;font-weight:400;letter-spacing:-.06em;transform:rotate(-17deg);-webkit-text-stroke:1px currentColor}.first-name{position:absolute;top:0;left:62px}.second-name{position:absolute;top:98px;left:102px}.ampersand{position:absolute;top:143px;left:20px;font-size:82px}
-.guest-welcome{width:min(100%,650px)}.salutation{font-size:16px;margin:0 0 12px}.guest-name{font-family:var(--font-script),cursive;font-size:29px;margin:0 0 18px;letter-spacing:-.03em}.invitation-message{font-size:14px;line-height:1.6;margin:0 auto 32px;max-width:620px}.open-invitation{display:inline-flex;align-items:center;justify-content:center;gap:7px;background:var(--accent);color:var(--foreground);border:0;border-radius:999px;padding:12px 25px;min-height:44px;cursor:pointer;font-size:15px;transition:transform .2s,background .2s}.open-invitation:hover{background:#93b8ce;transform:translateY(-2px)}.invitation-details{margin:22px auto 0;padding:16px;border-top:1px solid rgb(14 15 18 / 25%);max-width:330px}.invitation-details p{font-size:15px;margin:4px 0}
-.hero-video-frame{position:absolute;inset:0;z-index:-3;overflow:hidden;pointer-events:none}.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:76% center}.hero-overlay{position:absolute;inset:0;background:rgb(216 214 212 / 15%);z-index:-1;pointer-events:none}.video-toggle{position:absolute;right:20px;bottom:20px;display:grid;place-items:center;width:36px;height:36px;border:1px solid rgb(14 15 18 / 25%);border-radius:50%;background:rgb(216 214 212 / 65%);color:#0E0F12;cursor:pointer}.petal-layer{position:absolute;inset:0;z-index:-2;overflow:hidden;pointer-events:none}.edge-petals{position:absolute;width:clamp(55px,7vw,115px);height:auto;opacity:.68;animation:petal-drift 13s ease-in-out infinite alternate;animation-play-state:inherit}.petals-0{left:-20px;top:42%;animation-delay:-3s}.petals-1{right:-22px;top:23%;animation-duration:17s;animation-delay:-7s}.petals-2{left:1%;bottom:3%;width:80px;animation-duration:19s;animation-delay:-11s}.petals-3{right:1%;bottom:7%;width:90px;animation-delay:-5s}@keyframes petal-drift{0%{transform:translate3d(-5px,9px,0) rotate(-8deg)}50%{transform:translate3d(8px,-6px,0) rotate(3deg)}100%{transform:translate3d(-2px,-22px,0) rotate(13deg)}}
-@media(max-width:600px){.invitation{padding:35px 24px 62px}.cover{min-height:calc(100svh - 97px);gap:65px}.cover-heading{width:260px}h1{font-size:68px;height:225px;margin-top:32px}.first-name{left:45px}.second-name{left:86px;top:92px}.ampersand{left:8px;top:130px;font-size:74px}.date-row{margin-bottom:24px}.invitation-message{max-width:320px}.guest-name{font-size:27px}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important}.edge-petals{animation:none}}
-/* Exact guest-greeting typography and spacing from the supplied reference. */
-@font-face{font-family:'Pinky Vanilla';src:url('/fonts/pinky-vanilla.woff2') format('woff2');font-style:normal;font-weight:400 500;font-display:swap}
-.guest-welcome{width:min(100%,1134px)}
-.guest-greeting{display:flex;flex-direction:column;gap:16px;margin:0 0 40px;padding:0;text-align:center;color:#fff}
-.guest-greeting h2{margin:0;padding:0;width:100%;max-width:none;text-align:center;letter-spacing:normal;font-style:normal;text-transform:none}
-.guest-greeting .salutation{font-family:var(--font-greeting),sans-serif;font-size:16px;line-height:16px;font-weight:400}
-.guest-greeting .guest-name{font-family:'Pinky Vanilla',sans-serif;font-size:32px;line-height:32px;font-weight:500}
-.guest-greeting .invitation-message{font-family:var(--font-greeting),sans-serif;font-size:14px;line-height:18px;font-weight:400}
-/* Reference cover styling, keeping the couple's own content and video. */
-.invitation{padding:54px clamp(20px,13vw,200px) 80px;color:#fff}
-.cover{min-height:calc(100svh - 134px);gap:40px}
-.cover-heading{width:300px}
-.date-row{font-family:var(--font-greeting),sans-serif;font-size:16px;line-height:24px;font-weight:400;margin-bottom:24px}
-.eyebrow{font-family:var(--font-greeting),sans-serif;font-size:16px;line-height:16px;font-weight:400}
-h1{font-family:'Pinky Vanilla',sans-serif;font-size:80px;line-height:80px;font-weight:400;letter-spacing:normal;-webkit-text-stroke:0;transform:rotate(-25deg);height:260px;margin-top:36px}
-.first-name{left:58px;top:0}.second-name{left:90px;top:100px}.ampersand{font-size:80px;line-height:80px;left:5px;top:150px}
-.open-invitation{font-family:var(--font-button),sans-serif;font-size:14px;line-height:14px;font-weight:500;background:transparent;color:#fff;border:1px solid #fff;border-radius:80px;padding:12px 24px;min-height:40px;gap:5px}
-.open-invitation:hover,.open-invitation:focus-visible{background:#fff;color:#0E0F12;transform:none}
-.invitation button:focus-visible{outline-color:#fff}
-.invitation-details{border-color:rgb(255 255 255 / 40%)}
-@media(max-width:767px){.invitation{padding:40px 20px 160px}.cover{min-height:calc(100svh - 200px);gap:70px}.cover-heading{width:280px}h1{font-size:72px;line-height:72px;height:245px;margin-top:36px}.first-name{left:55px}.second-name{left:87px;top:94px}.ampersand{font-size:72px;line-height:72px;left:5px;top:140px}}
-/* Solid, high-contrast cover: all invitation elements remain visible. */
-body{background:#333537}
-.invitation{background:#333537;color:#fff;padding:32px 24px 36px}
-.cover{min-height:calc(100svh - 68px);gap:36px}
-.cover-heading{flex-shrink:0}
-.date-row{margin-bottom:8px}
-.event-time{font-family:var(--font-greeting),sans-serif;font-size:14px;line-height:20px;color:#fff;margin:0 0 24px}
-.guest-greeting{margin-bottom:28px}
-@media(max-width:767px){.invitation{padding:28px 20px 32px}.cover{min-height:calc(100svh - 60px);gap:32px}.cover-heading{width:260px}h1{height:220px;margin-top:28px;font-size:68px;line-height:68px}.first-name{left:45px}.second-name{left:80px;top:88px}.ampersand{left:0;top:127px;font-size:68px}.guest-greeting{gap:16px}.event-time{margin-bottom:20px}}
 
-/* Keep the complete names lockup centered at every viewport width. */
-.cover-heading{width:min(100%,30rem);display:flex;flex-direction:column;align-items:center}
-h1{left:50%;width:clamp(16rem,30vw,20rem);max-width:none;margin:28px 0 0;transform:translateX(-50%) rotate(-25deg);transform-origin:center center}
-.first-name{left:21%;top:0}.second-name{left:33%;top:38%}.ampersand{left:3%;top:58%}
-.open-invitation{cursor:default}
-.open-invitation:hover,.open-invitation:focus-visible{background:transparent;color:#fff}
-@media(max-width:767px){h1{left:50%;width:17rem;margin-top:28px;transform:translateX(-50%) rotate(-25deg)}.first-name{left:18%}.second-name{left:31%;top:40%}.ampersand{left:1%;top:58%}}
+@font-face {
+  font-family: 'Pinky Vanilla';
+  src: url('/fonts/pinky-vanilla.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+}
+
+:root {
+  --color-background: #333537;
+  --color-text: #fff; 
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  min-height: 100%;
+}
+body {
+  margin: 0;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-cabin), sans-serif;
+}
+
+.invitation {
+  min-height: 100svh;
+  overflow: hidden;
+  background: var(--color-background);
+  padding: 2rem 1.5rem 2.25rem;
+}
+.hero {
+  display: flex;
+  min-height: calc(100svh - 4.25rem);
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: clamp(7.5rem, 15vh, 9.25rem);
+  text-align: center;
+}
+.hero-heading {
+  display: flex;
+  width: min(100%, 30rem);
+  flex-shrink: 0;
+  flex-direction: column;
+  align-items: center;
+}
+.date-row {
+  display: flex;
+  width: min(100%, 18.75rem);
+  justify-content: space-between;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+.event-time {
+  margin: 0.5rem 0 1.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+.eyebrow {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1rem;
+  text-transform: uppercase;
+}
+
+.couple-names {
+  position: relative;
+  width: min(100%, 20rem);
+  height: 13.75rem;
+  margin: 1.85rem auto 0;
+  transform: rotate(-25deg);
+  transform-origin: center;
+  font-family: 'Pinky Vanilla', sans-serif;
+  font-size: 5rem;
+  font-weight: 400;
+  line-height: 1;
+}
+.couple-names span {
+  position: absolute;
+  white-space: nowrap;
+}
+.groom-name {
+  top: 0;
+  left: 18%;
+}
+.bride-name {
+  top: 40%;
+  left: 40%;
+}
+.ampersand {
+  top: 35%;
+  left: 23%;
+}
+
+.hero-footer {
+  width: min(100%, 70.875rem);
+}
+.guest-greeting {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+.guest-greeting p {
+  margin: 0;
+}
+.salutation {
+  font-size: 1rem;
+  line-height: 1rem;
+}
+.guest-name {
+  font-family: 'Pinky Vanilla', sans-serif;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 2rem;
+}
+.invitation-message {
+  width: min(100%, 20rem);
+  margin-inline: auto;
+  font-size: 0.875rem;
+  line-height: 1.125rem;
+}
+.open-invitation {
+  display: inline-flex;
+  min-height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 0.875rem;
+  user-select: none;
+}
+
+@media (max-width: 47.9375rem) {
+  .invitation {
+    padding: 1.75rem 1.25rem 2rem;
+  }
+  .hero {
+    min-height: calc(100svh - 3.75rem);
+    gap: clamp(6.5rem, 14vh, 8.25rem);
+  }
+  .hero-heading {
+    width: min(100%, 17rem);
+  }
+  .couple-names {
+    width: 17rem;
+    height: 13.75rem;
+    font-size: 4.25rem;
+  }
+  .ampersand {
+    top: 35%;
+    left: 23%;
+  }
+  .invitation-message {
+    width: min(100%, 20rem);
+  }
+}
