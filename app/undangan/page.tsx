@@ -146,7 +146,6 @@ export default function InvitationPage() {
           className={`${styles.section} ${styles.introduction}`}
           id="introduction"
         >
-          <Heart aria-hidden="true" size={28} />
           <p className={styles.quote}>
             “Falling in love is easy,<br />planning a wedding<br />not so much.”
           </p>
