@@ -123,7 +123,7 @@ body {
   line-height: 2rem;
 }
 .invitation-message {
-  width: min(100%, 20rem);
+  width: min(200%, 50rem);
   margin-inline: auto;
   font-size: 0.875rem;
   line-height: 1.125rem;
