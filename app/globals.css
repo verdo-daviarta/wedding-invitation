@@ -31,3 +31,12 @@ h1{font-family:'Pinky Vanilla',sans-serif;font-size:80px;line-height:80px;font-w
 .invitation button:focus-visible{outline-color:#fff}
 .invitation-details{border-color:rgb(255 255 255 / 40%)}
 @media(max-width:767px){.invitation{padding:40px 20px 160px}.cover{min-height:calc(100svh - 200px);gap:70px}.cover-heading{width:280px}h1{font-size:72px;line-height:72px;height:245px;margin-top:36px}.first-name{left:55px}.second-name{left:87px;top:94px}.ampersand{font-size:72px;line-height:72px;left:5px;top:140px}}
+/* Solid, high-contrast cover: all invitation elements remain visible. */
+body{background:#333537}
+.invitation{background:#333537;color:#fff;padding:32px 24px 36px}
+.cover{min-height:calc(100svh - 68px);gap:36px}
+.cover-heading{flex-shrink:0}
+.date-row{margin-bottom:8px}
+.event-time{font-family:var(--font-greeting),sans-serif;font-size:14px;line-height:20px;color:#fff;margin:0 0 24px}
+.guest-greeting{margin-bottom:28px}
+@media(max-width:767px){.invitation{padding:28px 20px 32px}.cover{min-height:calc(100svh - 60px);gap:32px}.cover-heading{width:260px}h1{height:220px;margin-top:28px;font-size:68px;line-height:68px}.first-name{left:45px}.second-name{left:80px;top:88px}.ampersand{left:0;top:127px;font-size:68px}.guest-greeting{gap:16px}.event-time{margin-bottom:20px}}
