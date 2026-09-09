@@ -13,9 +13,11 @@ export default function Home() {
     <h1 id="hero-title" aria-label="Verdo & Intan"><span className="first-name">Verdo</span><span className="ampersand">&amp;</span><span className="second-name">Intan</span></h1>
    </div>
    <div className="guest-welcome">
-    <p className="salutation">Yth. Bapak/Ibu/Saudara/i</p>
-    <p className="guest-name">Tamu Undangan</p>
-    <p className="invitation-message">Tanpa mengurangi rasa hormat, kami mengundang Anda untuk menghadiri acara pernikahan kami.</p>
+    <div className="guest-greeting">
+     <h2 className="salutation">Yth. Bapak/Ibu/Saudara/i</h2>
+     <h2 className="guest-name"><span className="pinvite-guest-name">Tamu Undangan</span></h2>
+     <h2 className="invitation-message">Tanpa mengurangi rasa hormat,{ '\u2028' }kami mengundang anda untuk menghadiri acara pernikahan kami.</h2>
+    </div>
     <button className="open-invitation" type="button" aria-expanded={opened} aria-controls="invitation-details" onClick={() => setOpened(!opened)}>{opened ? 'Tutup Detail' : 'Buka Undangan'}<ArrowRight size={17} aria-hidden="true" /></button>
     {opened && <div className="invitation-details" id="invitation-details"><p>Sabtu, 17 Mei 2025</p><p>The Lindegate · Bali, Indonesia</p></div>}
    </div>
