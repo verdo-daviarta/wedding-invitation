@@ -12,6 +12,7 @@ import {
   Send,
 } from 'lucide-react';
 import { ScrollCueButton } from './scroll-cue-button';
+import { FootstepTrail, JourneyIllustration } from './journey-art';
 import styles from './undangan.module.css';
 
 const invitation = {
@@ -182,20 +183,25 @@ export default function InvitationPage() {
           </article>
         </section>
 
-        <section className={`${styles.section} ${styles.storySection}`}>
-          <ScriptTitle>Journey of Love</ScriptTitle>
+        <section
+          className={`${styles.section} ${styles.storySection}`}
+          aria-label="Journey of Love"
+        >
           <div className={styles.storyList}>
-            {story.map((item, index) => (
+                        {story.map((item, index) => (
               <article className={styles.storyItem} key={item.title}>
-                <span>{String(index + 1).padStart(2, '0')}</span>
-                <div>
+                <JourneyIllustration
+                  stage={index === 0 ? 'meeting' : index === 1 ? 'relationship' : 'wedding'}
+                />
+                <div className={styles.storyCopy}>
                   <h3>{item.title}</h3>
                   <p>{item.text}</p>
                 </div>
               </article>
             ))}
+            <FootstepTrail />
+            <FootstepTrail reverse />
           </div>
-          <PhotoPlaceholder label="Foto perjalanan kami" className={styles.storyPhoto} />
         </section>
 
         <section className={`${styles.section} ${styles.scheduleSection}`}>

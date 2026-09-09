@@ -215,7 +215,7 @@
 
 .personCard .scriptTitle {
   margin-bottom: 0.75rem;
-  font-size: clamp(2.25rem, 7vw, 3.25rem);
+  font-size: clamp(2.0rem, 5vw, 3.00rem);
 }
 
 .photoPlaceholder {
@@ -291,33 +291,59 @@
 }
 
 .storySection {
-  align-items: stretch;
-  gap: 2rem;
+  min-height: clamp(72rem, 185svh, 94rem);
+  align-items: center;
+  justify-content: flex-start;
   text-align: left;
 }
 
-.storySection > .scriptTitle {
-  text-align: center;
-}
-
 .storyList {
-  display: grid;
-  gap: 1.75rem;
-  max-width: 38rem;
+  position: relative;
+  width: min(100%, 38rem);
+  height: clamp(62rem, 160svh, 82rem);
   margin-inline: auto;
 }
 
 .storyItem {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  width: min(86%, 28rem);
+  flex-direction: column;
+}
+
+.storyItem:nth-child(1) {
+  top: 4%;
+  left: 0;
+}
+
+.storyItem:nth-child(2) {
+  top: 40%;
+  right: 0;
+}
+
+.storyItem:nth-child(3) {
+  bottom: 2%;
+  left: 0;
   display: grid;
-  grid-template-columns: 2.25rem 1fr;
+  grid-template-columns: 7rem 1fr;
+  align-items: end;
   gap: 1rem;
 }
 
-.storyItem > span {
-  color: var(--accent);
-  font-family: var(--font-inter), sans-serif;
-  font-size: 0.75rem;
-  font-weight: 500;
+.storyItem:nth-child(1) .journeyIllustration {
+  order: 2;
+  margin-top: 1.25rem;
+}
+
+.storyItem:nth-child(2) .journeyIllustration {
+  margin: 0 0 1rem auto;
+}
+
+.journeyIllustration {
+  width: 7rem;
+  height: auto;
+  color: #fff;
 }
 
 .storyItem h3 {
@@ -325,6 +351,68 @@
   font-family: 'Pinky Vanilla', sans-serif;
   font-size: 2.1rem;
   font-weight: 400;
+}
+
+.storyItem:nth-child(3) h3 {
+  font-size: clamp(1.65rem, 6vw, 2rem);
+  white-space: nowrap;
+}
+
+.storyItem p {
+  margin: 0;
+}
+
+.footstepTrail {
+  position: absolute;
+  top: 25%;
+  left: 17%;
+  z-index: 1;
+  display: flex;
+  width: 65%;
+  justify-content: space-between;
+  transform: rotate(25deg);
+}
+
+.footstepTrail.reverseTrail {
+  top: 67%;
+  left: 14%;
+  transform: rotate(-31deg);
+}
+
+.footstepTrail span {
+  position: relative;
+  width: 0.72rem;
+  height: 1rem;
+}
+
+.footstepTrail span::before,
+.footstepTrail span::after {
+  position: absolute;
+  width: 0.25rem;
+  height: 0.62rem;
+  border-radius: 70% 45% 65% 40%;
+  background: #fff;
+  content: '';
+}
+
+.footstepTrail span::before {
+  top: 0;
+  left: 0;
+  transform: rotate(18deg);
+}
+
+.footstepTrail span::after {
+  right: 0;
+  bottom: 0;
+  transform: rotate(-18deg);
+}
+
+.footstepTrail span:nth-child(3n + 1) {
+  transform: translateY(-0.75rem);
+}
+
+.footstepTrail span:nth-child(3n + 2) {
+  transform: translateY(0.45rem);
 }
 
 .storyItem p,
@@ -338,12 +426,6 @@
   margin: 0;
   font-size: 0.9rem;
   line-height: 1.65;
-}
-
-.storyPhoto {
-  width: min(100%, 38rem);
-  min-height: 17rem;
-  margin-inline: auto;
 }
 
 .scheduleSection {
