@@ -97,7 +97,13 @@
 }
 
 .opening .eyebrow {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+}
+
+.opening .eyebrow,
+.opening .coupleLockup {
+  position: relative;
+  top: -3rem;
 }
 
 .coupleLockup {
@@ -106,7 +112,7 @@
   flex-wrap: wrap;
   justify-content: center;
   font-family: 'Pinky Vanilla', sans-serif;
-  font-size: clamp(4.6rem, 18vw, 7.6rem);
+  font-size: clamp(4.6rem, 18vw, 1.6rem);
   font-weight: 400;
   line-height: 0.72;
   transform: rotate(-10deg);
@@ -118,11 +124,11 @@
 }
 
 .coupleLockup > span:last-child {
-  transform: translate(0.18em, 0.36em);
+  transform: translate(-0.05em, 0.36em);
 }
 
 .ampersand {
-  transform: translate(-0.22em, 0.35em);
+  transform: translate(-0.01em, 0.15em);
 }
 
 .compactLockup {
