@@ -40,3 +40,11 @@ body{background:#333537}
 .event-time{font-family:var(--font-greeting),sans-serif;font-size:14px;line-height:20px;color:#fff;margin:0 0 24px}
 .guest-greeting{margin-bottom:28px}
 @media(max-width:767px){.invitation{padding:28px 20px 32px}.cover{min-height:calc(100svh - 60px);gap:32px}.cover-heading{width:260px}h1{height:220px;margin-top:28px;font-size:68px;line-height:68px}.first-name{left:45px}.second-name{left:80px;top:88px}.ampersand{left:0;top:127px;font-size:68px}.guest-greeting{gap:16px}.event-time{margin-bottom:20px}}
+
+/* Keep the complete names lockup centered at every viewport width. */
+.cover-heading{width:min(100%,30rem);display:flex;flex-direction:column;align-items:center}
+h1{left:50%;width:clamp(16rem,30vw,20rem);max-width:none;margin:28px 0 0;transform:translateX(-50%) rotate(-25deg);transform-origin:center center}
+.first-name{left:21%;top:0}.second-name{left:33%;top:38%}.ampersand{left:3%;top:58%}
+.open-invitation{cursor:default}
+.open-invitation:hover,.open-invitation:focus-visible{background:transparent;color:#fff}
+@media(max-width:767px){h1{left:50%;width:17rem;margin-top:28px;transform:translateX(-50%) rotate(-25deg)}.first-name{left:18%}.second-name{left:31%;top:40%}.ampersand{left:1%;top:58%}}
