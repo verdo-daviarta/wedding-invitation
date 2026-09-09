@@ -187,7 +187,7 @@
 .quote {
   margin: 0;
   font-family: 'Pinky Vanilla', sans-serif;
-  font-size: clamp(2.9rem, 12vw, 5.4rem);
+  font-size: clamp(2.1rem, 8vw, 3.8rem);
   line-height: 0.95;
   transform: rotate(-5deg);
 }
