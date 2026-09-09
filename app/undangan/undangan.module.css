@@ -331,19 +331,61 @@
   gap: 1rem;
 }
 
-.storyItem:nth-child(1) .journeyIllustration {
+.storyItem:nth-child(1) .journeyArtwork {
   order: 2;
   margin-top: 1.25rem;
 }
 
-.storyItem:nth-child(2) .journeyIllustration {
+.storyItem:nth-child(2) .journeyArtwork {
   margin: 0 0 1rem auto;
 }
 
-.journeyIllustration {
+.journeyArtwork {
+  position: relative;
+  display: block;
   width: 7rem;
-  height: auto;
-  color: #fff;
+  overflow: hidden;
+}
+
+.journeyArtwork img,
+.footstepStamp img {
+  position: absolute;
+  display: block;
+  max-width: none;
+  filter: brightness(0) invert(1);
+}
+
+.meetingArtwork {
+  aspect-ratio: 952 / 1070;
+}
+
+.meetingArtwork img {
+  top: 0;
+  left: 0;
+  width: 201.7%;
+  transform: translate(-23.4%, -0.9%);
+}
+
+.relationshipArtwork {
+  aspect-ratio: 1167 / 1067;
+}
+
+.relationshipArtwork img {
+  top: 0;
+  left: 0;
+  width: 164.5%;
+  transform: translate(-21.9%, -1.2%);
+}
+
+.weddingArtwork {
+  aspect-ratio: 716 / 1079;
+}
+
+.weddingArtwork img {
+  top: 0;
+  left: 0;
+  width: 268.2%;
+  transform: translate(-31.5%, -0.1%);
 }
 
 .storyItem h3 {
@@ -369,6 +411,7 @@
   z-index: 1;
   display: flex;
   width: 65%;
+  align-items: center;
   justify-content: space-between;
   transform: rotate(25deg);
 }
@@ -379,40 +422,27 @@
   transform: rotate(-31deg);
 }
 
-.footstepTrail span {
+.footstepStamp {
   position: relative;
-  width: 0.72rem;
-  height: 1rem;
+  display: block;
+  flex: 0 0 clamp(1rem, 2.8vw, 1.35rem);
+  aspect-ratio: 1838 / 856;
+  overflow: hidden;
 }
 
-.footstepTrail span::before,
-.footstepTrail span::after {
-  position: absolute;
-  width: 0.25rem;
-  height: 0.62rem;
-  border-radius: 70% 45% 65% 40%;
-  background: #fff;
-  content: '';
-}
-
-.footstepTrail span::before {
+.footstepStamp img {
   top: 0;
   left: 0;
-  transform: rotate(18deg);
+  width: 104.5%;
+  transform: translate(-2.1%, -12.6%);
 }
 
-.footstepTrail span::after {
-  right: 0;
-  bottom: 0;
-  transform: rotate(-18deg);
+.footstepStamp:nth-child(3n + 1) {
+  transform: translateY(-0.55rem);
 }
 
-.footstepTrail span:nth-child(3n + 1) {
-  transform: translateY(-0.75rem);
-}
-
-.footstepTrail span:nth-child(3n + 2) {
-  transform: translateY(0.45rem);
+.footstepStamp:nth-child(3n + 2) {
+  transform: translateY(0.35rem);
 }
 
 .storyItem p,
