@@ -11,16 +11,17 @@ import {
   Music2,
   Send,
 } from 'lucide-react';
+import { ScrollCueButton } from './scroll-cue-button';
 import styles from './undangan.module.css';
 
 const invitation = {
-  date: '17/05',
-  dateLong: 'Sabtu, 17 Mei 2025',
-  year: '2025',
+  date: '26/12',
+  dateLong: 'Sabtu, 26 Desember 2026',
+  year: '2026',
   bride: 'Intan',
   groom: 'Verdo',
-  venue: 'The Lindegate',
-  address: 'Bali, Indonesia',
+  venue: 'Hotel Dana Solo',
+  address: 'Solo, Indonesia',
 };
 
 const story = [
@@ -138,12 +139,13 @@ export default function InvitationPage() {
           </div>
           <p className={styles.eyebrow} id="opening-title">The Wedding of</p>
           <CoupleLockup />
-          <span className={styles.scrollCue} aria-hidden="true">
-            <ChevronDown size={24} />
-          </span>
+          <ScrollCueButton className={styles.scrollCue} />
         </section>
 
-        <section className={`${styles.section} ${styles.introduction}`}>
+        <section
+          className={`${styles.section} ${styles.introduction}`}
+          id="introduction"
+        >
           <Heart aria-hidden="true" size={28} />
           <p className={styles.quote}>
             “Falling in love is easy,<br />planning a wedding<br />not so much.”
