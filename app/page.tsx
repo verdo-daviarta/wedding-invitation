@@ -1,4 +1,5 @@
 import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 const wedding = {
   date: '17/05',
@@ -57,10 +58,10 @@ export default function Home() {
 
         <div className="hero-footer">
           <GuestGreeting />
-          <span className="open-invitation" aria-disabled="true">
+          <Link className="open-invitation" href="/undangan">
             Buka Undangan
             <ArrowRight size={17} aria-hidden="true" />
-          </span>
+          </Link>
         </div>
       </section>
     </main>

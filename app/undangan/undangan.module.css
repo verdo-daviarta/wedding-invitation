@@ -1,0 +1,761 @@
+.page {
+  --ink: #0e0f12;
+  --paper: #d8d6d4;
+  --accent: #7da9c4;
+  --charcoal: #303234;
+  --charcoal-deep: #252729;
+  min-height: 100svh;
+  background: var(--charcoal-deep);
+  color: #fff;
+}
+
+.identityPanel {
+  display: none;
+}
+
+.content {
+  position: relative;
+  width: 100%;
+  overflow: clip;
+}
+
+.section {
+  position: relative;
+  display: flex;
+  min-height: 100svh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem clamp(1.25rem, 5vw, 3.75rem);
+  text-align: center;
+}
+
+.opening,
+.storySection,
+.gallerySection,
+.wishesSection,
+.thanksSection {
+  background: var(--charcoal);
+}
+
+.introduction,
+.scheduleSection,
+.rsvpSection,
+.giftSection {
+  background: var(--charcoal-deep);
+}
+
+.coupleSection,
+.dressSection {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.menuButton,
+.musicButton {
+  position: fixed;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid rgb(255 255 255 / 0.55);
+  border-radius: 999px;
+  background: rgb(48 50 52 / 0.82);
+  color: #fff;
+  opacity: 1;
+}
+
+.menuButton {
+  top: 1.25rem;
+  right: 1.25rem;
+}
+
+.musicButton {
+  right: 1.25rem;
+  bottom: 1.25rem;
+}
+
+.eyebrow,
+.tracked {
+  margin: 0;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.dateRow {
+  position: absolute;
+  top: 3rem;
+  display: flex;
+  width: min(calc(100% - 11rem), 19rem);
+  justify-content: space-between;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.opening .eyebrow {
+  margin-bottom: 2rem;
+}
+
+.coupleLockup {
+  display: flex;
+  max-width: 25rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: 'Pinky Vanilla', sans-serif;
+  font-size: clamp(4.6rem, 18vw, 7.6rem);
+  font-weight: 400;
+  line-height: 0.72;
+  transform: rotate(-10deg);
+}
+
+.coupleLockup > span:first-child {
+  width: 100%;
+  transform: translateX(-0.4em);
+}
+
+.coupleLockup > span:last-child {
+  transform: translate(0.18em, 0.36em);
+}
+
+.ampersand {
+  transform: translate(-0.22em, 0.35em);
+}
+
+.compactLockup {
+  max-width: none;
+  gap: 0.12em;
+  justify-content: flex-start;
+  font-size: clamp(3.2rem, 6vw, 5rem);
+  transform: none;
+}
+
+.compactLockup > span:first-child {
+  width: auto;
+  transform: none;
+}
+
+.compactLockup > span:last-child,
+.compactLockup .ampersand {
+  transform: none;
+}
+
+.scrollCue {
+  position: absolute;
+  bottom: 3rem;
+  display: grid;
+  place-items: center;
+  width: 2.8rem;
+  height: 2.8rem;
+  border: 1px solid rgb(255 255 255 / 0.35);
+  border-radius: 999px;
+  animation: float 2.2s ease-in-out infinite;
+}
+
+.scriptTitle {
+  margin: 0;
+  font-family: 'Pinky Vanilla', sans-serif;
+  font-size: clamp(3rem, 11vw, 5rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.introduction {
+  gap: 2rem;
+  min-height: 66svh;
+  color: var(--paper);
+}
+
+.quote {
+  margin: 0;
+  font-family: 'Pinky Vanilla', sans-serif;
+  font-size: clamp(2.9rem, 12vw, 5.4rem);
+  line-height: 0.95;
+  transform: rotate(-5deg);
+}
+
+.coupleSection {
+  gap: 2.25rem;
+  justify-content: flex-start;
+}
+
+.sectionKicker {
+  max-width: 26rem;
+  margin: 0 auto 0.75rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.personCard {
+  width: min(100%, 31rem);
+  text-align: left;
+}
+
+.personCard .scriptTitle {
+  margin-bottom: 0.75rem;
+}
+
+.photoPlaceholder {
+  display: flex;
+  min-height: 9rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--accent);
+  color: var(--ink);
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.portrait {
+  min-height: 22rem;
+  border: 0.65rem solid #fff;
+}
+
+.personDetails {
+  padding: 1.5rem;
+  background: #fff;
+  text-align: center;
+}
+
+.personDetails h3 {
+  margin: 0;
+  font-family: 'Pinky Vanilla', sans-serif;
+  font-size: 2.75rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.personDetails p {
+  margin: 0.65rem 0 1rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.personDivider {
+  font-family: 'Pinky Vanilla', sans-serif;
+  font-size: 4rem;
+}
+
+.button {
+  display: inline-flex;
+  min-height: 2.55rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 0.7rem 1.2rem;
+  background: transparent;
+  color: inherit;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  opacity: 1;
+}
+
+.button:disabled,
+.menuButton:disabled,
+.musicButton:disabled {
+  cursor: default;
+}
+
+.iconButton {
+  color: var(--ink);
+}
+
+.storySection {
+  align-items: stretch;
+  gap: 2rem;
+  text-align: left;
+}
+
+.storySection > .scriptTitle {
+  text-align: center;
+}
+
+.storyList {
+  display: grid;
+  gap: 1.75rem;
+  max-width: 38rem;
+  margin-inline: auto;
+}
+
+.storyItem {
+  display: grid;
+  grid-template-columns: 2.25rem 1fr;
+  gap: 1rem;
+}
+
+.storyItem > span {
+  color: var(--accent);
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.storyItem h3 {
+  margin: 0 0 0.45rem;
+  font-family: 'Pinky Vanilla', sans-serif;
+  font-size: 2.1rem;
+  font-weight: 400;
+}
+
+.storyItem p,
+.dressSection > p,
+.gallerySection > p,
+.rsvpSection > p,
+.wishesSection > p,
+.giftSection > p,
+.thanksSection > p {
+  max-width: 34rem;
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.storyPhoto {
+  width: min(100%, 38rem);
+  min-height: 17rem;
+  margin-inline: auto;
+}
+
+.scheduleSection {
+  gap: 1rem;
+}
+
+.scheduleSection > svg {
+  color: var(--accent);
+}
+
+.tracked {
+  margin-top: -0.35rem;
+}
+
+.countdown {
+  display: grid;
+  width: min(100%, 25rem);
+  grid-template-columns: repeat(4, 1fr);
+  margin: 1rem 0 0.6rem;
+}
+
+.countdown div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  border-right: 1px solid rgb(255 255 255 / 0.25);
+}
+
+.countdown div:last-child {
+  border: 0;
+}
+
+.countdown strong {
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+
+.countdown span {
+  font-size: 0.72rem;
+}
+
+.eventGrid {
+  display: grid;
+  width: min(100%, 38rem);
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.eventCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  border: 1px solid rgb(255 255 255 / 0.26);
+  padding: 2rem 1.25rem;
+}
+
+.eventDate,
+.eventTime {
+  margin: 0;
+}
+
+.eventDate {
+  font-weight: 700;
+}
+
+.eventTime {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.venue {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-block: 0.65rem;
+}
+
+.venue div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.venue span {
+  font-size: 0.85rem;
+}
+
+.dressSection {
+  gap: 1.25rem;
+}
+
+.swatches {
+  display: flex;
+  gap: 0.75rem;
+  margin: 1rem 0 2.5rem;
+}
+
+.swatches span {
+  width: 4rem;
+  height: 4rem;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  box-shadow: 0 0 0 1px rgb(14 15 18 / 0.22);
+}
+
+.swatchBlack { background: var(--ink); }
+.swatchBlue { background: #355f71; }
+.swatchLight { background: var(--accent); }
+
+.photoBooth {
+  display: flex;
+  width: min(100%, 34rem);
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  border-top: 1px solid rgb(14 15 18 / 0.22);
+  padding-top: 3rem;
+}
+
+.photoBooth p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.gallerySection {
+  align-items: stretch;
+  gap: 1rem;
+  text-align: left;
+}
+
+.gallerySection > .scriptTitle {
+  text-align: center;
+}
+
+.gallerySection > p {
+  margin: 0 auto 1.5rem;
+  text-align: center;
+}
+
+.gallery {
+  display: grid;
+  width: min(100%, 40rem);
+  grid-auto-rows: 7.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+  margin-inline: auto;
+}
+
+.gallery > div:nth-child(1),
+.gallery > div:nth-child(6) {
+  grid-row: span 2;
+}
+
+.gallery > div:nth-child(5),
+.gallery > div:nth-child(10) {
+  grid-column: span 2;
+}
+
+.gallery .photoPlaceholder {
+  min-height: 0;
+}
+
+.rsvpSection,
+.wishesSection,
+.giftSection,
+.thanksSection {
+  gap: 1rem;
+}
+
+.formCard {
+  display: grid;
+  width: min(100%, 38rem);
+  gap: 1rem;
+  margin-top: 1.5rem;
+  border: 1px solid rgb(255 255 255 / 0.42);
+  padding: 1.25rem;
+  text-align: left;
+}
+
+.formCard label {
+  display: grid;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.formCard input,
+.formCard textarea,
+.formCard select {
+  width: 100%;
+  border: 1px solid rgb(255 255 255 / 0.72);
+  border-radius: 0.25rem;
+  padding: 0.75rem;
+  background: rgb(255 255 255 / 0.12);
+  color: #fff;
+  font: inherit;
+  outline: none;
+}
+
+.formCard option {
+  color: var(--ink);
+}
+
+.formCard ::placeholder {
+  color: rgb(255 255 255 / 0.55);
+}
+
+.submitButton {
+  justify-self: end;
+}
+
+.wishList,
+.bankList {
+  display: grid;
+  width: min(100%, 38rem);
+  gap: 0.65rem;
+  margin-top: 1.5rem;
+}
+
+.wishList article {
+  border: 1px solid rgb(255 255 255 / 0.4);
+  border-radius: 0.5rem;
+  padding: 0.9rem;
+  text-align: left;
+}
+
+.wishList article > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.wishList span {
+  font-size: 0.72rem;
+  opacity: 0.7;
+}
+
+.wishList p {
+  margin: 0.45rem 0 0;
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.giftSection > svg {
+  color: var(--accent);
+}
+
+.bankList article {
+  display: grid;
+  grid-template-columns: 3.25rem 1fr auto;
+  align-items: center;
+  gap: 0.85rem;
+  padding-block: 0.7rem;
+  text-align: left;
+}
+
+.bankMark {
+  display: grid;
+  min-height: 3rem;
+  place-items: center;
+  border-radius: 0.25rem;
+  background: var(--accent);
+  color: var(--ink);
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+
+.bankList article > div {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.bankList article > div span {
+  font-size: 0.76rem;
+  line-height: 1.4;
+}
+
+.copyButton {
+  width: 2.5rem;
+  min-height: 2.5rem;
+  padding: 0;
+}
+
+.registry {
+  width: min(100%, 38rem);
+  margin-top: 1.5rem;
+  text-align: left;
+}
+
+.registryHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgb(255 255 255 / 0.22);
+  padding: 1.3rem 0;
+}
+
+.registryHeading h3 {
+  margin: 0;
+}
+
+.registryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.65rem;
+}
+
+.registryGrid article {
+  display: flex;
+  flex-direction: column;
+  background: var(--ink);
+}
+
+.registryGrid .photoPlaceholder {
+  min-height: 8.5rem;
+}
+
+.registryGrid strong,
+.registryGrid article > span {
+  padding-inline: 0.75rem;
+}
+
+.registryGrid strong {
+  padding-top: 0.75rem;
+}
+
+.registryGrid article > span {
+  padding-bottom: 0.85rem;
+  font-size: 0.78rem;
+}
+
+.confirmGift {
+  width: 100%;
+  margin-top: 1.25rem;
+}
+
+.thanksSection {
+  min-height: 82svh;
+}
+
+.thanksSection > p {
+  text-align: center;
+}
+
+.thanksSection .compactLockup {
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.thanksSection footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 5rem;
+  color: rgb(255 255 255 / 0.74);
+  font-size: 0.75rem;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(0.45rem); }
+}
+
+@media (min-width: 62rem) {
+  .page {
+    display: grid;
+    grid-template-columns: minmax(0, 1.85fr) minmax(25rem, 1fr);
+  }
+
+  .identityPanel {
+    position: sticky;
+    top: 0;
+    display: flex;
+    height: 100svh;
+    align-items: flex-end;
+    padding: clamp(2rem, 4vw, 4rem);
+    background: var(--ink);
+  }
+
+  .identityCopy {
+    max-width: 47rem;
+  }
+
+  .identityCopy .eyebrow {
+    margin-bottom: 0.7rem;
+  }
+
+  .identityCopy .verse {
+    max-width: 44rem;
+    margin: 1.75rem 0 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .menuButton,
+  .musicButton {
+    right: 1.5rem;
+  }
+
+  .eventGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 36rem) {
+  .section {
+    padding-inline: 1rem;
+  }
+
+  .registryGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .registryGrid article {
+    display: grid;
+    grid-template-columns: 8rem 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .registryGrid .photoPlaceholder {
+    grid-row: 1 / 3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrollCue {
+    animation: none;
+  }
+}
