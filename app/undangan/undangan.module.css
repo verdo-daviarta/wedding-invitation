@@ -324,6 +324,7 @@
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: start;
   column-gap: 1rem;
+  row-gap: 0.65rem;
 }
 
 .storyItem:nth-child(3) {
@@ -347,8 +348,19 @@
 }
 
 .storyItem:nth-child(2) .storyCopy {
+  display: contents;
+}
+
+.storyItem:nth-child(2) h3 {
   grid-column: 1;
   grid-row: 1;
+  align-self: center;
+  margin: 0;
+}
+
+.storyItem:nth-child(2) p {
+  grid-column: 1 / -1;
+  grid-row: 2;
 }
 
 .journeyArtwork {
