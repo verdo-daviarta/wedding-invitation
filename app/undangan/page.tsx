@@ -148,7 +148,7 @@ export default function InvitationPage() {
           id="introduction"
         >
           <p className={styles.quote}>
-            “Falling in love is easy,<br />planning a wedding<br />not so much.”
+            “Ini enaknya di isi pake<br />Quotes apa yang<br />sekiranya bagus gitu..”
           </p>
         </section>
 
