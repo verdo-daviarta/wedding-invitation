@@ -341,51 +341,29 @@
 }
 
 .journeyArtwork {
-  position: relative;
-  display: block;
-  width: 7rem;
-  overflow: hidden;
+  display: inline-flex;
+  width: fit-content;
+  line-height: 0;
 }
 
-.journeyArtwork img,
+.journeyArtwork img {
+  display: block;
+  height: auto;
+  max-width: none;
+  filter: brightness(0) invert(1);
+}
+
+.meetingArtwork img,
+.relationshipArtwork img,
+.weddingArtwork img {
+  width: 7rem;
+}
+
 .footstepStamp img {
   position: absolute;
   display: block;
   max-width: none;
   filter: brightness(0) invert(1);
-}
-
-.meetingArtwork {
-  aspect-ratio: 952 / 1070;
-}
-
-.meetingArtwork img {
-  top: 0;
-  left: 0;
-  width: 80%;
-  transform: translate(-23.4%, -0.9%);
-}
-
-.relationshipArtwork {
-  aspect-ratio: 1167 / 1067;
-}
-
-.relationshipArtwork img {
-  top: 0;
-  left: 0;
-  width: 100%;
-  transform: translate(-21.9%, -1.2%);
-}
-
-.weddingArtwork {
-  aspect-ratio: 716 / 1079;
-}
-
-.weddingArtwork img {
-  top: 0;
-  left: 0;
-  width: 268.2%;
-  transform: translate(-31.5%, -0.1%);
 }
 
 .storyItem h3 {
