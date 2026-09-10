@@ -313,12 +313,12 @@
 }
 
 .storyItem:nth-child(1) {
-  top: 4%;
+  top: 2%;
   left: 0;
 }
 
 .storyItem:nth-child(2) {
-  top: 40%;
+  top: 30%;
   right: 0;
 }
 
@@ -337,7 +337,7 @@
 }
 
 .storyItem:nth-child(2) .journeyArtwork {
-  margin: 0 0 1rem auto;
+  margin: 0 0 0.35rem;
 }
 
 .journeyArtwork {
@@ -362,7 +362,7 @@
 .meetingArtwork img {
   top: 0;
   left: 0;
-  width: 201.7%;
+  width: 80%;
   transform: translate(-23.4%, -0.9%);
 }
 
@@ -373,7 +373,7 @@
 .relationshipArtwork img {
   top: 0;
   left: 0;
-  width: 164.5%;
+  width: 100%;
   transform: translate(-21.9%, -1.2%);
 }
 
