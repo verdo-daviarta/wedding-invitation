@@ -1,15 +1,11 @@
 import {
-  CalendarDays,
   Camera,
-  ChevronDown,
-  Clock3,
+  CircleCheck,
   Copy,
   Gift,
   Heart,
-  MapPin,
   Menu,
   Music2,
-  Send,
 } from 'lucide-react';
 import { ScrollCueButton } from './scroll-cue-button';
 import { FootstepTrail, JourneyIllustration } from './journey-art';
@@ -24,6 +20,17 @@ const invitation = {
   venue: 'Hotel Dana Solo',
   address: 'Solo, Indonesia',
 };
+
+const events = [
+  {
+    title: 'Akad',
+    time: '08.00 - 10.00 WIB',
+  },
+  {
+    title: 'Resepsi',
+    time: '10.30 - 14.00 WIB',
+  },
+];
 
 const story = [
   {
@@ -46,11 +53,22 @@ const wishes = [
   ['Orang Terkasih', 'Bahagia selalu sampai tua, dan semoga rumah tangga kalian dipenuhi kebaikan.'],
 ];
 
-const gifts = [
-  ['Lemari', 'Rp1.500.000'],
-  ['Dipan', 'Rp1.000.000'],
-  ['Dispenser', 'Rp900.000'],
-];
+const galleryColumns = [
+  [
+    [1, 'portrait'],
+    [5, 'landscape'],
+    [6, 'landscape'],
+    [7, 'portrait'],
+    [10, 'landscape'],
+  ],
+  [
+    [2, 'landscape'],
+    [3, 'landscape'],
+    [4, 'portrait'],
+    [8, 'landscape'],
+    [9, 'portrait'],
+  ],
+] as const;
 
 function ScriptTitle({ children }: Readonly<{ children: React.ReactNode }>) {
   return <h2 className={styles.scriptTitle}>{children}</h2>;
@@ -69,11 +87,37 @@ function CoupleLockup({ compact = false }: Readonly<{ compact?: boolean }>) {
 function InertButton({
   children,
   className = '',
-}: Readonly<{ children: React.ReactNode; className?: string }>) {
+  ariaLabel,
+}: Readonly<{ children: React.ReactNode; className?: string; ariaLabel?: string }>) {
   return (
-    <button className={`${styles.button} ${className}`} type="button" disabled>
+    <button
+      aria-label={ariaLabel}
+      className={`${styles.button} ${className}`}
+      type="button"
+      disabled
+    >
       {children}
     </button>
+  );
+}
+
+function EventDetails({
+  title,
+  time,
+}: Readonly<{ title: string; time: string }>) {
+  return (
+    <article className={styles.eventDetails}>
+      <h3 className={styles.eventTitle}>{title}</h3>
+      <div className={styles.eventDateTime}>
+        <p>{invitation.dateLong}</p>
+        <p>{time}</p>
+      </div>
+      <div className={styles.eventLocation}>
+        <strong>{invitation.venue}</strong>
+        <p>{invitation.address}</p>
+      </div>
+      <InertButton className={styles.mapButton}>Buka Maps</InertButton>
+    </article>
   );
 }
 
@@ -86,30 +130,6 @@ function PhotoPlaceholder({
       <Camera aria-hidden="true" size={22} />
       <span>{label}</span>
     </div>
-  );
-}
-
-function EventCard({
-  title,
-  time,
-}: Readonly<{ title: string; time: string }>) {
-  return (
-    <article className={styles.eventCard}>
-      <ScriptTitle>{title}</ScriptTitle>
-      <p className={styles.eventDate}>{invitation.dateLong}</p>
-      <p className={styles.eventTime}>
-        <Clock3 aria-hidden="true" size={16} />
-        {time}
-      </p>
-      <div className={styles.venue}>
-        <MapPin aria-hidden="true" size={19} />
-        <div>
-          <strong>{invitation.venue}</strong>
-          <span>{invitation.address}</span>
-        </div>
-      </div>
-      <InertButton>Buka Maps</InertButton>
-    </article>
   );
 }
 
@@ -204,65 +224,108 @@ export default function InvitationPage() {
           </div>
         </section>
 
-        <section className={`${styles.section} ${styles.scheduleSection}`}>
-          <CalendarDays aria-hidden="true" size={26} />
-          <ScriptTitle>Save The Date</ScriptTitle>
-          <p className={styles.tracked}>{invitation.dateLong}</p>
-          <div className={styles.countdown} aria-label="Hitung mundur pernikahan">
-            {['Hari', 'Jam', 'Menit', 'Detik'].map((unit) => (
-              <div key={unit}>
-                <strong>00</strong>
-                <span>{unit}</span>
-              </div>
+        <section
+          className={`${styles.section} ${styles.scheduleSection}`}
+          aria-labelledby="save-the-date-title"
+        >
+          <div className={styles.saveDateContent}>
+            <img
+              className={styles.saveDateImage}
+              src="/placeholders/save-the-date.png"
+              alt="Placeholder foto pasangan"
+            />
+            <h2 className={styles.saveDateTitle} id="save-the-date-title">
+              Save The Date
+            </h2>
+            <p className={styles.saveDateDate}>26 December 2026</p>
+            <div className={styles.countdown} aria-label="Hitung mundur pernikahan">
+              {['Days', 'Hours', 'Minutes', 'Seconds'].map((unit) => (
+                <div key={unit}>
+                  <strong>00</strong>
+                  <span>{unit}</span>
+                </div>
+              ))}
+            </div>
+            <InertButton className={styles.saveDateButton}>Simpan Tanggal</InertButton>
+          </div>
+
+          <div className={styles.eventList}>
+            {events.map((event) => (
+              <EventDetails key={event.title} {...event} />
             ))}
           </div>
-          <InertButton>Simpan Tanggal</InertButton>
-          <div className={styles.eventGrid}>
-            <EventCard title="Akad" time="Waktu akan diumumkan" />
-            <EventCard title="Resepsi" time="Waktu akan diumumkan" />
+
+          <div className={styles.dresscodeBlock}>
+            <p className={styles.dresscodeText}>
+              Kami dengan hormat menganjurkan para tamu kami untuk mengenakan
+              warna-warna ini untuk hari istimewa kami.
+            </p>
+            <div className={styles.swatches} aria-label="Warna dresscode">
+              <span className={styles.swatchBlack} />
+              <span className={styles.swatchGreen} />
+              <span className={styles.swatchLightGreen} />
+            </div>
           </div>
         </section>
 
-        <section className={`${styles.section} ${styles.dressSection}`}>
-          <ScriptTitle>Dresscode</ScriptTitle>
-          <p>Kami dengan hormat menganjurkan para tamu mengenakan warna-warna ini untuk hari istimewa kami.</p>
-          <div className={styles.swatches} aria-label="Warna dresscode">
-            <span className={styles.swatchBlack} />
-            <span className={styles.swatchBlue} />
-            <span className={styles.swatchLight} />
-          </div>
-          <div className={styles.photoBooth}>
-            <Camera aria-hidden="true" size={25} />
-            <ScriptTitle>Virtual Photo Booth</ScriptTitle>
-            <p>Abadikan momen kamu saat menghadiri pernikahan kami dengan menggunakan wedding frame.</p>
-            <InertButton>Mulai Berfoto</InertButton>
-          </div>
+        <section className={`${styles.section} ${styles.photoBoothSection}`}>
+          <h2 className={styles.showcaseTitle}>Virtual Photo Booth</h2>
+          <p className={styles.photoBoothDescription}>
+            Abadikan momen kamu saat menghadiri pernikahan kami dengan menggunakan
+            Wedding Frame di bawah ini.
+          </p>
+          <InertButton className={styles.photoBoothButton}>
+            <Camera aria-hidden="true" size={14} />
+            Mulai Berfoto
+          </InertButton>
         </section>
 
         <section className={`${styles.section} ${styles.gallerySection}`}>
-          <ScriptTitle>Our Moment</ScriptTitle>
-          <p>“I was created in time to fill your time, and I use all the time in my life to love you.”</p>
+          <div className={styles.galleryHeader}>
+            <h2 className={`${styles.showcaseTitle} ${styles.momentTitle}`}>Our Moment</h2>
+            <p className={styles.momentQuote}>
+              “I was created in time to fill your time, and I use all the time in my
+              life to love you.”
+            </p>
+          </div>
           <div className={styles.gallery}>
-            {Array.from({ length: 10 }, (_, index) => (
-              <PhotoPlaceholder label={`Momen ${index + 1}`} key={index} />
+            {galleryColumns.map((column, columnIndex) => (
+              <div className={styles.galleryColumn} key={columnIndex}>
+                {column.map(([number, orientation]) => (
+                  <PhotoPlaceholder
+                    className={`${styles.galleryItem} ${
+                      orientation === 'portrait'
+                        ? styles.galleryPortrait
+                        : styles.galleryLandscape
+                    }`}
+                    label={`Momen ${number}`}
+                    key={number}
+                  />
+                ))}
+              </div>
             ))}
           </div>
         </section>
 
         <section className={`${styles.section} ${styles.rsvpSection}`}>
-          <ScriptTitle>RSVP</ScriptTitle>
-          <p>Bagi tamu yang akan hadir, silakan kirimkan konfirmasi kehadiran melalui formulir berikut.</p>
+          <div className={styles.rsvpHeader}>
+            <h2 className={styles.rsvpTitle}>RSVP</h2>
+            <p className={styles.rsvpDescription}>
+              Bagi tamu undangan yang akan hadir di acara pernikahan kami silahkan
+              kirimkan konfirmasi kehadiran dengan mengisi form berikut :
+            </p>
+          </div>
           <div className={styles.formCard} aria-label="Formulir RSVP">
             <label>
-              Nama <span>*</span>
-              <input type="text" placeholder="Nama lengkap" />
+              <span className={styles.fieldLabel}>Nama <b>*</b></span>
+              <input type="text" />
             </label>
             <label>
-              Ucapan &amp; Doa
-              <textarea rows={4} placeholder="Tuliskan ucapan terbaik Anda" />
+              <span className={styles.fieldLabel}>Ucapan &amp; Doa</span>
+              <textarea rows={2} />
             </label>
             <label>
-              Konfirmasi Kehadiran <span>*</span>
+              <span className={styles.fieldLabel}>Konfirmasi Kehadiran <b>*</b></span>
               <select defaultValue="Hadir">
                 <option>Hadir</option>
                 <option>Tidak Hadir</option>
@@ -270,28 +333,33 @@ export default function InvitationPage() {
               </select>
             </label>
             <label>
-              Jumlah Tamu
+              <span className={styles.fieldLabel}>Jumlah Tamu</span>
               <select defaultValue="1 Orang">
                 <option>1 Orang</option>
                 <option>2 Orang</option>
               </select>
             </label>
-            <InertButton className={styles.submitButton}>
-              <Send aria-hidden="true" size={15} />
-              Kirim
-            </InertButton>
+            <InertButton className={styles.submitButton}>Kirim</InertButton>
           </div>
         </section>
 
         <section className={`${styles.section} ${styles.wishesSection}`}>
-          <ScriptTitle>Wishes</ScriptTitle>
-          <p>Terima kasih telah memberikan ucapan selamat dan doa untuk kami.</p>
+          <div className={styles.wishesHeader}>
+            <h2 className={styles.wishesTitle}>Wishes</h2>
+            <p className={styles.wishesDescription}>
+              Terima kasih telah memberikan ucapan selamat, saran pernikahan terbaik,
+              hal-hal lucu, atau apa pun itu semuanya istimewa bagi kami!
+            </p>
+          </div>
           <div className={styles.wishList}>
             {wishes.map(([name, message]) => (
               <article key={name}>
-                <div>
-                  <strong>{name}</strong>
-                  <span>baru saja</span>
+                <div className={styles.wishMeta}>
+                  <div className={styles.wishAuthor}>
+                    <strong>{name}</strong>
+                    <CircleCheck aria-label="Hadir" size={16} />
+                  </div>
+                  <time>baru saja</time>
                 </div>
                 <p>{message}</p>
               </article>
@@ -300,53 +368,50 @@ export default function InvitationPage() {
         </section>
 
         <section className={`${styles.section} ${styles.giftSection}`}>
-          <Gift aria-hidden="true" size={27} />
-          <ScriptTitle>Wedding Gift</ScriptTitle>
-          <p>Doa dan kehadiran Anda adalah hadiah terbaik. Jika ingin memberi tanda kasih, detailnya tersedia di bawah ini.</p>
+          <h2 className={styles.giftTitle}>Wedding Gift</h2>
 
           <div className={styles.bankList}>
             <article>
-              <span className={styles.bankMark}>BCA</span>
+              <span className={`${styles.bankMark} ${styles.bankMarkBca}`}>BCA</span>
               <div><strong>Verdo</strong><span>0000 0000 0000</span></div>
-              <InertButton className={styles.copyButton}><Copy aria-hidden="true" size={18} /></InertButton>
+              <InertButton ariaLabel="Salin nomor rekening Verdo" className={styles.copyButton}>
+                <Copy aria-hidden="true" size={20} />
+              </InertButton>
             </article>
             <article>
-              <span className={styles.bankMark}>BANK</span>
+              <span className={`${styles.bankMark} ${styles.bankMarkSea}`}>
+                <span>S</span>
+              </span>
               <div><strong>Intan</strong><span>0000 0000 0000</span></div>
-              <InertButton className={styles.copyButton}><Copy aria-hidden="true" size={18} /></InertButton>
+              <InertButton ariaLabel="Salin nomor rekening Intan" className={styles.copyButton}>
+                <Copy aria-hidden="true" size={20} />
+              </InertButton>
             </article>
-            <article>
-              <span className={styles.bankMark}><Gift aria-hidden="true" size={19} /></span>
+            <article className={styles.giftDelivery}>
+              <span className={`${styles.bankMark} ${styles.deliveryMark}`}>
+                <Gift aria-hidden="true" size={24} />
+              </span>
               <div><strong>Kirim Kado</strong><span>{invitation.venue}, {invitation.address}</span></div>
-              <InertButton className={styles.copyButton}><Copy aria-hidden="true" size={18} /></InertButton>
+              <InertButton ariaLabel="Salin alamat pengiriman kado" className={styles.copyButton}>
+                <Copy aria-hidden="true" size={20} />
+              </InertButton>
             </article>
-          </div>
-
-          <div className={styles.registry}>
-            <div className={styles.registryHeading}>
-              <h3>Gift Registry</h3>
-              <ChevronDown aria-hidden="true" size={20} />
-            </div>
-            <div className={styles.registryGrid}>
-              {gifts.map(([name, price]) => (
-                <article key={name}>
-                  <PhotoPlaceholder label={name} />
-                  <strong>{name}</strong>
-                  <span>{price}</span>
-                </article>
-              ))}
-            </div>
-            <InertButton className={styles.confirmGift}>Konfirmasi Kado</InertButton>
           </div>
         </section>
 
         <section className={`${styles.section} ${styles.thanksSection}`}>
-          <ScriptTitle>Thank You!</ScriptTitle>
-          <p>Merupakan suatu kebahagiaan dan kehormatan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir di hari bahagia kami.</p>
-          <CoupleLockup compact />
+          <div className={styles.thanksTitleStage}>
+            <h2 className={styles.thanksTitle}>Thank You!</h2>
+          </div>
+          <p className={styles.thanksMessage}>
+            Merupakan suatu kebahagiaan dan kehormatan bagi kami apabila
+            Bapak/Ibu/Saudara/i berkenan hadir di hari bahagia kami.
+          </p>
+          <p className={styles.thanksCouple}>
+            {invitation.groom} <span>&amp;</span> {invitation.bride}
+          </p>
           <footer>
-            <strong>Verdo &amp; Intan</strong>
-            <span>Digital Wedding Invitation © 2026</span>
+            <span>Daviarta copyright 2026</span>
           </footer>
         </section>
 

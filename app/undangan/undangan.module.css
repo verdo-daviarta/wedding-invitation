@@ -48,8 +48,7 @@
   background: var(--charcoal-deep);
 }
 
-.coupleSection,
-.dressSection {
+.coupleSection {
   background: var(--paper);
   color: var(--ink);
 }
@@ -79,8 +78,7 @@
   bottom: 1.25rem;
 }
 
-.eyebrow,
-.tracked {
+.eyebrow {
   margin: 0;
   font-family: var(--font-inter), sans-serif;
   font-size: 0.78rem;
@@ -474,114 +472,216 @@
   transform: translateY(0.35rem);
 }
 
-.storyItem p,
-.dressSection > p,
-.gallerySection > p,
-.rsvpSection > p,
-.wishesSection > p,
-.giftSection > p,
-.thanksSection > p {
-  max-width: 34rem;
+.storyItem p {
   margin: 0;
-  font-size: 0.9rem;
-  line-height: 1.65;
 }
 
 .scheduleSection {
-  gap: 1rem;
+  min-height: 0;
+  justify-content: flex-start;
+  padding-block: 5rem;
+  padding-inline: 2.5rem;
+  background: var(--charcoal-deep);
 }
 
-.scheduleSection > svg {
-  color: var(--accent);
+.saveDateContent {
+  display: flex;
+  width: min(100%, 24rem);
+  flex-direction: column;
+  align-items: center;
 }
 
-.tracked {
-  margin-top: -0.35rem;
+.saveDateImage {
+  display: block;
+  width: min(12.5rem, 52vw);
+  height: auto;
+  aspect-ratio: 1;
+  margin: 0 0 1rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.saveDateTitle {
+  margin: 0 0 1rem;
+  font-family: 'Pinky Vanilla', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.saveDateDate {
+  margin: 0 0 1rem;
+  font-family: var(--font-cabin), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.3125rem;
+  letter-spacing: 0.25rem;
+  text-transform: uppercase;
 }
 
 .countdown {
-  display: grid;
-  width: min(100%, 25rem);
-  grid-template-columns: repeat(4, 1fr);
-  margin: 1rem 0 0.6rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 0 0 1rem;
 }
 
 .countdown div {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-  border-right: 1px solid rgb(255 255 255 / 0.25);
-}
-
-.countdown div:last-child {
-  border: 0;
+  align-items: center;
+  margin-inline: 0.625rem;
 }
 
 .countdown strong {
-  font-size: 1.75rem;
-  font-weight: 500;
+  font-family: var(--font-cabin), sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 2.25rem;
 }
 
 .countdown span {
-  font-size: 0.72rem;
+  font-family: var(--font-cabin), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.3125rem;
 }
 
-.eventGrid {
-  display: grid;
-  width: min(100%, 38rem);
-  gap: 1rem;
-  margin-top: 2.5rem;
+.scheduleSection .saveDateButton {
+  min-height: 0;
+  border: 1px solid #fff;
+  border-radius: 1.25rem;
+  padding: 0.625rem;
+  font-family: var(--font-cabin), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 0.75rem;
 }
 
-.eventCard {
+.eventList {
+  display: flex;
+  width: min(100%, 29rem);
+  flex-direction: column;
+  gap: 3rem;
+  margin-top: 6rem;
+}
+
+.eventDetails {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.8rem;
-  border: 1px solid rgb(255 255 255 / 0.26);
-  padding: 2rem 1.25rem;
+  color: #fff;
+  font-family: var(--font-cabin), sans-serif;
 }
 
-.eventDate,
-.eventTime {
+.eventTitle {
+  margin: 0 0 0.625rem;
+  font-family: 'Pinky Vanilla', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 3.75rem;
+}
+
+.eventDateTime,
+.eventLocation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.eventDateTime p,
+.eventLocation p {
   margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.3125rem;
 }
 
-.eventDate {
+.eventDateTime p:first-child,
+.eventLocation strong {
+  font-size: 0.875rem;
   font-weight: 700;
+  line-height: 1.3125rem;
 }
 
-.eventTime {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
+.eventLocation {
+  margin-top: 1.25rem;
 }
 
-.venue {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.6rem;
-  margin-block: 0.65rem;
+.eventLocation p {
+  max-width: 27.125rem;
 }
 
-.venue div {
+.scheduleSection .mapButton {
+  width: 5.8125rem;
+  height: 1.8125rem;
+  min-height: 0;
+  margin-top: 1.5rem;
+  border-radius: 1.25rem;
+  padding: 0;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.75rem;
+  line-height: 0.75rem;
+}
+
+.dresscodeBlock {
   display: flex;
+  width: min(100%, 28.5625rem);
   flex-direction: column;
-  gap: 0.25rem;
+  align-items: center;
+  margin-top: 6rem;
 }
 
-.venue span {
-  font-size: 0.85rem;
+.dresscodeText {
+  margin: 0;
+  font-family: var(--font-cabin), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 300;
+  line-height: 1.125rem;
 }
 
-.dressSection {
-  gap: 1.25rem;
+.photoBoothSection {
+  min-height: 0;
+  gap: 1rem;
+  padding-block: 5rem 3rem;
+  padding-inline: 2.5rem;
+  background: var(--charcoal);
+  color: #fff;
+}
+
+.showcaseTitle {
+  margin: 0;
+  font-family: 'Pinky Vanilla', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 2.5rem;
+}
+
+.photoBoothDescription {
+  width: min(100%, 28.5625rem);
+  margin: 0;
+  font-family: var(--font-cabin), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.125rem;
+  text-align: center;
+}
+
+.photoBoothSection .photoBoothButton {
+  width: 7.75rem;
+  height: 1.875rem;
+  min-height: 0;
+  border-radius: 1.25rem;
+  padding: 0;
+  font-family: var(--font-cabin), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 0.75rem;
 }
 
 .swatches {
   display: flex;
-  gap: 0.75rem;
-  margin: 1rem 0 2.5rem;
+  gap: 0.5rem;
+  margin-top: 2.25rem;
 }
 
 .swatches span {
@@ -589,263 +689,406 @@
   height: 4rem;
   border: 2px solid #fff;
   border-radius: 999px;
-  box-shadow: 0 0 0 1px rgb(14 15 18 / 0.22);
 }
 
-.swatchBlack { background: var(--ink); }
-.swatchBlue { background: #355f71; }
-.swatchLight { background: var(--accent); }
+.swatchBlack { background: #1e1e1e; }
+.swatchGreen { background: #345e37; }
+.swatchLightGreen { background: #8fbc8f; }
 
-.photoBooth {
+.gallerySection {
+  min-height: 0;
+  justify-content: flex-start;
+  padding-block: 3rem 5rem;
+  padding-inline: 2.5rem;
+  text-align: center;
+}
+
+.galleryHeader {
   display: flex;
-  width: min(100%, 34rem);
+  width: min(100%, 28.5625rem);
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  border-top: 1px solid rgb(14 15 18 / 0.22);
-  padding-top: 3rem;
 }
 
-.photoBooth p {
+.momentTitle {
+  font-weight: 600;
+}
+
+.momentQuote {
   margin: 0;
-  font-size: 0.9rem;
-  line-height: 1.6;
-}
-
-.gallerySection {
-  align-items: stretch;
-  gap: 1rem;
-  text-align: left;
-}
-
-.gallerySection > .scriptTitle {
-  text-align: center;
-}
-
-.gallerySection > p {
-  margin: 0 auto 1.5rem;
-  text-align: center;
+  font-family: var(--font-cabin), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 0.875rem;
 }
 
 .gallery {
   display: grid;
-  width: min(100%, 40rem);
-  grid-auto-rows: 7.5rem;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.6rem;
+  width: min(100%, 27.6875rem);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-top: 1.5rem;
   margin-inline: auto;
 }
 
-.gallery > div:nth-child(1),
-.gallery > div:nth-child(6) {
-  grid-row: span 2;
+.galleryColumn {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-.gallery > div:nth-child(5),
-.gallery > div:nth-child(10) {
-  grid-column: span 2;
-}
-
-.gallery .photoPlaceholder {
+.gallery .galleryItem {
+  width: 100%;
   min-height: 0;
 }
 
-.rsvpSection,
-.wishesSection,
-.giftSection,
-.thanksSection {
+.galleryPortrait { aspect-ratio: 2 / 3; }
+.galleryLandscape { aspect-ratio: 3 / 2; }
+
+.rsvpSection {
+  min-height: 100svh;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 2.5rem;
+  background: var(--charcoal);
+  text-align: left;
+}
+
+.rsvpHeader,
+.wishesHeader {
+  display: flex;
+  width: min(100%, 28.5625rem);
+  flex-direction: column;
   gap: 1rem;
+  margin-inline: auto;
+}
+
+.rsvpTitle,
+.wishesTitle {
+  width: 100%;
+  margin: 0;
+  font-family: 'Pinky Vanilla', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 2.5rem;
+}
+
+.rsvpDescription,
+.wishesDescription {
+  width: 100%;
+  margin: 0;
+  font-family: var(--font-cabin), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.125rem;
 }
 
 .formCard {
-  display: grid;
-  width: min(100%, 38rem);
-  gap: 1rem;
+  display: flex;
+  width: min(100%, 28.5625rem);
+  min-height: 26.5625rem;
+  flex-direction: column;
   margin-top: 1.5rem;
+  margin-inline: auto;
   border: 1px solid rgb(255 255 255 / 0.42);
-  padding: 1.25rem;
+  border-radius: 0.625rem;
+  padding: 1.25rem 1.25rem 2.5rem;
   text-align: left;
 }
 
 .formCard label {
-  display: grid;
-  gap: 0.4rem;
-  font-size: 0.82rem;
-  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  padding-block: 0.3125rem;
+}
+
+.fieldLabel {
+  height: 1.3125rem;
+  font-family: var(--font-cabin), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.3125rem;
+}
+
+.fieldLabel b {
+  font-weight: inherit;
 }
 
 .formCard input,
 .formCard textarea,
 .formCard select {
   width: 100%;
-  border: 1px solid rgb(255 255 255 / 0.72);
-  border-radius: 0.25rem;
-  padding: 0.75rem;
-  background: rgb(255 255 255 / 0.12);
+  border: 1px solid #fff;
+  border-radius: 0.3125rem;
+  padding: 0.5rem 1rem;
+  background: rgb(255 255 255 / 0.25);
   color: #fff;
-  font: inherit;
+  font-family: var(--font-cabin), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
   outline: none;
 }
+
+.formCard input { height: 2.4375rem; }
+
+.formCard textarea {
+  height: 3.75rem;
+  line-height: 1.3125rem;
+  resize: none;
+}
+
+.formCard select { height: 2.3125rem; }
 
 .formCard option {
   color: var(--ink);
 }
 
-.formCard ::placeholder {
-  color: rgb(255 255 255 / 0.55);
+.formCard .submitButton {
+  width: 5.75rem;
+  height: 2.25rem;
+  min-height: 0;
+  align-self: flex-end;
+  margin-top: 0.625rem;
+  border-radius: 5rem;
+  padding: 0.5rem 2rem;
+  font-family: var(--font-cabin), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.125rem;
 }
 
-.submitButton {
-  justify-self: end;
-}
-
-.wishList,
-.bankList {
-  display: grid;
-  width: min(100%, 38rem);
-  gap: 0.65rem;
-  margin-top: 1.5rem;
-}
-
-.wishList article {
-  border: 1px solid rgb(255 255 255 / 0.4);
-  border-radius: 0.5rem;
-  padding: 0.9rem;
+.wishesSection {
+  min-height: 32.125rem;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 0 2.5rem 5rem;
+  background: var(--charcoal);
   text-align: left;
 }
 
-.wishList article > div {
+.wishList {
   display: flex;
+  width: min(100%, 28.5625rem);
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 1.75rem auto 0;
+}
+
+.wishList article {
+  display: flex;
+  min-height: 5.125rem;
+  flex-direction: column;
+  gap: 0.25rem;
+  border: 1px solid rgb(255 255 255 / 0.52);
+  border-radius: 0.625rem;
+  padding: 0.75rem;
+  background: rgb(255 255 255 / 0.19);
+  text-align: left;
+}
+
+.wishMeta {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: 1rem;
 }
 
-.wishList span {
-  font-size: 0.72rem;
-  opacity: 0.7;
+.wishAuthor {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.wishAuthor strong {
+  font-family: var(--font-cabin), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 0.875rem;
+}
+
+.wishAuthor svg {
+  color: #27ae60;
+  fill: #27ae60;
+  stroke: #fff;
+}
+
+.wishMeta time {
+  font-family: var(--font-cabin), sans-serif;
+  font-size: 0.75rem;
+  line-height: 1.125rem;
 }
 
 .wishList p {
-  margin: 0.45rem 0 0;
-  font-size: 0.85rem;
-  line-height: 1.45;
+  margin: 0;
+  font-family: var(--font-cabin), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 0.875rem;
 }
 
-.giftSection > svg {
-  color: var(--accent);
+.bankList {
+  display: flex;
+  width: min(100%, 28.5625rem);
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 1.75rem auto 0;
+}
+
+.giftSection {
+  min-height: 0;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 5rem 2.5rem;
+  background: var(--charcoal);
+  text-align: left;
+}
+
+.giftTitle {
+  width: min(100%, 28.5625rem);
+  margin: 0 auto;
+  font-family: 'Pinky Vanilla', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 400;
+  line-height: 2.5rem;
 }
 
 .bankList article {
   display: grid;
-  grid-template-columns: 3.25rem 1fr auto;
+  width: 100%;
+  height: 3.125rem;
+  grid-template-columns: 3.125rem minmax(0, 1fr) 1.25rem;
   align-items: center;
-  gap: 0.85rem;
-  padding-block: 0.7rem;
+  gap: 0.75rem;
   text-align: left;
 }
 
 .bankMark {
   display: grid;
-  min-height: 3rem;
+  width: 3.125rem;
+  height: 3.125rem;
   place-items: center;
   border-radius: 0.25rem;
-  background: var(--accent);
-  color: var(--ink);
-  font-size: 0.68rem;
-  font-weight: 800;
+  font-family: var(--font-cabin), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.bankMarkBca {
+  background: #0072b8;
+  color: #fff;
+  font-style: italic;
+}
+
+.bankMarkSea {
+  background: #fff;
+}
+
+.bankMarkSea > span {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border: 0.1875rem solid #e97924;
+  border-radius: 999px;
+  color: #e97924;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.deliveryMark {
+  border-radius: 10%;
+  background: #727272;
+  color: #fff;
 }
 
 .bankList article > div {
   display: flex;
   min-width: 0;
   flex-direction: column;
-  gap: 0.2rem;
+  justify-content: center;
+}
+
+.bankList article strong {
+  font-family: var(--font-cabin), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.3125rem;
 }
 
 .bankList article > div span {
-  font-size: 0.76rem;
-  line-height: 1.4;
+  font-family: var(--font-cabin), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.125rem;
 }
 
-.copyButton {
-  width: 2.5rem;
-  min-height: 2.5rem;
+.giftDelivery strong {
+  font-weight: 600;
+  line-height: 0.875rem;
+}
+
+.bankList .copyButton {
+  width: 1.25rem;
+  height: 1.25rem;
+  min-height: 0;
+  border: 0;
+  border-radius: 0;
   padding: 0;
-}
-
-.registry {
-  width: min(100%, 38rem);
-  margin-top: 1.5rem;
-  text-align: left;
-}
-
-.registryHeading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-top: 1px solid rgb(255 255 255 / 0.22);
-  padding: 1.3rem 0;
-}
-
-.registryHeading h3 {
-  margin: 0;
-}
-
-.registryGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.65rem;
-}
-
-.registryGrid article {
-  display: flex;
-  flex-direction: column;
-  background: var(--ink);
-}
-
-.registryGrid .photoPlaceholder {
-  min-height: 8.5rem;
-}
-
-.registryGrid strong,
-.registryGrid article > span {
-  padding-inline: 0.75rem;
-}
-
-.registryGrid strong {
-  padding-top: 0.75rem;
-}
-
-.registryGrid article > span {
-  padding-bottom: 0.85rem;
-  font-size: 0.78rem;
-}
-
-.confirmGift {
-  width: 100%;
-  margin-top: 1.25rem;
+  color: #959595;
 }
 
 .thanksSection {
-  min-height: 82svh;
+  min-height: 100svh;
+  justify-content: flex-start;
+  padding: 0 2.5rem 9.875rem;
+  background: var(--charcoal);
 }
 
-.thanksSection > p {
+.thanksTitleStage {
+  display: grid;
+  width: 100%;
+  height: clamp(18rem, 64vw, 21.5rem);
+  place-items: center;
+}
+
+.thanksTitle {
+  margin: 0;
+  font-family: 'Pinky Vanilla', sans-serif;
+  font-size: clamp(4rem, 15vw, 5rem);
+  font-weight: 400;
+  line-height: 1;
+  white-space: nowrap;
+  transform: rotate(-30deg);
+}
+
+.thanksMessage {
+  width: min(100%, 32rem);
+  margin: 0;
+  font-family: var(--font-cabin), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.125rem;
   text-align: center;
 }
 
-.thanksSection .compactLockup {
-  justify-content: center;
-  margin-top: 1rem;
+.thanksCouple {
+  margin: 1.5rem 0 0;
+  font-family: 'Pinky Vanilla', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  text-align: center;
 }
 
 .thanksSection footer {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  margin-top: 5rem;
-  color: rgb(255 255 255 / 0.74);
+  margin-top: auto;
+  color: #fff;
+  font-family: var(--font-inter), sans-serif;
   font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 0.875rem;
 }
 
 @keyframes float {
@@ -889,9 +1132,6 @@
     right: 1.5rem;
   }
 
-  .eventGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 @media (max-width: 36rem) {
@@ -912,19 +1152,11 @@
     width: clamp(4rem, 10vw, 4rem);
   }
 
-  .registryGrid {
-    grid-template-columns: 1fr;
+  .gallery,
+  .galleryColumn {
+    gap: 0.625rem;
   }
 
-  .registryGrid article {
-    display: grid;
-    grid-template-columns: 8rem 1fr;
-    grid-template-rows: auto auto;
-  }
-
-  .registryGrid .photoPlaceholder {
-    grid-row: 1 / 3;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
