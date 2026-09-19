@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Cabin, Inter } from 'next/font/google';
+import { Cabin, Cookie, Inter } from 'next/font/google';
 import './globals.css';
 
 const cabin = Cabin({
@@ -13,6 +13,12 @@ const inter = Inter({
   variable: '--font-inter',
   display: 'swap',
 });
+const cookie = Cookie({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-cookie',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'The Wedding of Verdo & Intan',
@@ -24,7 +30,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="id">
-      <body className={`${cabin.variable} ${inter.variable}`}>{children}</body>
+      <body className={`${cabin.variable} ${inter.variable} ${cookie.variable}`}>
+        {children}
+      </body>
     </html>
   );
 }

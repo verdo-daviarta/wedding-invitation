@@ -104,7 +104,7 @@
 .opening .eyebrow,
 .opening .coupleLockup {
   position: relative;
-  top: -16rem;
+  top: -10rem;
 }
 
 .coupleLockup {
@@ -207,7 +207,7 @@
 }
 
 .personCard {
-  width: min(100%, 31rem);
+  width: min(100%, 26rem);
   text-align: left;
 }
 
@@ -254,6 +254,15 @@
   font-size: 0.78rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+.personDetails .fullName {
+  margin: 0.65rem 0 0.25rem;
+  font-family: var(--font-cookie), cursive;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: none;
 }
 
 .personDivider {

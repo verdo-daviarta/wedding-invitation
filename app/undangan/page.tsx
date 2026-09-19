@@ -179,10 +179,11 @@ export default function InvitationPage() {
             <PhotoPlaceholder label="Foto Intan" className={styles.portrait} />
             <div className={styles.personDetails}>
               <h3>Intan</h3>
+              <p className={styles.fullName}>(Carolina Haslita Intan Cahyaningrum, S.M)</p>
               <p>Putri dari keluarga tercinta</p>
               <InertButton className={styles.iconButton}>
                 <Heart aria-hidden="true" size={15} />
-                Instagram Intan
+                intan1210
               </InertButton>
             </div>
           </article>
@@ -194,10 +195,11 @@ export default function InvitationPage() {
             <PhotoPlaceholder label="Foto Verdo" className={styles.portrait} />
             <div className={styles.personDetails}>
               <h3>Verdo</h3>
+              <p className={styles.fullName}>(Benidiktus Verdo Daviarta, S.E, M.Msi)</p>
               <p>Putra dari keluarga tercinta</p>
               <InertButton className={styles.iconButton}>
                 <Heart aria-hidden="true" size={15} />
-                Instagram Verdo
+                verdo_aseli
               </InertButton>
             </div>
           </article>
