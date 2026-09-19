@@ -23,7 +23,7 @@ const invitation = {
 
 const events = [
   {
-    title: 'Akad',
+    title: 'Pemberkatan',
     time: '08.00 - 10.00 WIB',
   },
   {
