@@ -301,188 +301,92 @@
   min-height: 0;
   align-items: center;
   justify-content: flex-start;
-  padding-block: 4rem 4rem;
+  gap: clamp(2.5rem, 8vw, 4rem);
+  padding-block: clamp(5rem, 12vw, 7rem);
+  background:
+    radial-gradient(circle at 50% 0%, rgb(125 169 196 / 0.13), transparent 38%),
+    #e7e1d9;
+  color: var(--ink);
   text-align: left;
 }
 
+.storyHeader {
+  width: min(100%, 36rem);
+  margin-inline: auto;
+  text-align: center;
+}
+
+.storyKicker {
+  margin: 0 0 0.6rem;
+  color: rgb(14 15 18 / 0.62);
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.storyHeader h2 {
+  margin: 0;
+  font-family: 'Pinky Vanilla', sans-serif;
+  font-size: clamp(3rem, 11vw, 4.75rem);
+  font-weight: 400;
+  line-height: 0.9;
+}
+
+.storyIntroduction {
+  max-width: 29rem;
+  margin: 1.15rem auto 0;
+  color: rgb(14 15 18 / 0.68);
+  font-size: 0.88rem;
+  line-height: 1.7;
+  text-align: center;
+}
+
 .storyList {
-  position: relative;
   display: grid;
   width: min(100%, 38rem);
-  height: auto;
   margin-inline: auto;
-  row-gap: clamp(7rem, 20vw, 10rem);
+  gap: 1rem;
 }
 
 .storyItem {
   position: relative;
-  z-index: 2;
-  display: flex;
-  width: min(86%, 28rem);
-  flex-direction: column;
-}
-
-.storyItem:nth-child(1) {
-  justify-self: start;
-}
-
-.storyItem:nth-child(2) {
-  justify-self: end;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: start;
-  column-gap: 0.7rem;
-  row-gap: 0.15rem;
-}
-
-.storyItem:nth-child(3) {
-  justify-self: start;
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  align-items: start;
-  align-content: start;
-  column-gap: 0.1rem;
-  row-gap: 0.15rem;
-}
-/* Gambar awal bertemu */
-.storyItem:nth-child(1) .journeyArtwork {
-  order: 2;
-  margin-top: 1.25rem;
-}
-/* Gambar menjalin hubungan */
-.storyItem:nth-child(2) .journeyArtwork {
-  grid-column: 2;
-  grid-row: 1;
-  margin: 0;
-}
-
-.storyItem:nth-child(2) .storyCopy {
-  display: contents;
-}
-
-.storyItem:nth-child(2) h3 {
-  grid-column: 1;
-  grid-row: 1;
-  align-self: end;
-  margin: 0;
-}
-
-.storyItem:nth-child(2) p {
-  grid-column: 1 / -1;
-  grid-row: 2;
-}
-
-/* Gambar hari pernikahan */
-.storyItem:nth-child(3) .journeyArtwork {
-  grid-column: 1;
-  grid-row: 1;
-  margin: 0;
-}
-
-.storyItem:nth-child(3) .storyCopy {
-  display: contents;
-}
-
-.journeyArtwork {
-  display: inline-flex;
-  width: fit-content;
-  line-height: 0;
-}
-
-.journeyArtwork img {
-  display: block;
-  height: auto;
-  max-width: none;
-  filter: brightness(0) invert(1);
-}
-/* Ukuran Gambar awal bertemu */
-.meetingArtwork img {
-  width: 3rem;
-}
-/* Ukuran Gambar menjalin hubungan */
-.relationshipArtwork img {
-  width: 5rem;
-}
-/* Ukuran Gambar hari pernikahan */
-.weddingArtwork img {
-  width: 3rem;
-}
-
-.footstepStamp img {
-  position: absolute;
-  display: block;
-  max-width: none;
-  filter: brightness(0) invert(1);
+  padding: clamp(1.75rem, 6vw, 2.4rem);
+  border: 1px solid rgb(255 255 255 / 0.58);
+  border-radius: 1.35rem;
+  background: linear-gradient(
+    135deg,
+    rgb(255 255 255 / 0.4),
+    rgb(255 255 255 / 0.14)
+  );
+  box-shadow:
+    0 1.1rem 2.5rem rgb(54 44 36 / 0.08),
+    inset 0 1px 0 rgb(255 255 255 / 0.72);
+  backdrop-filter: blur(18px) saturate(125%);
+  transition:
+    border-color 450ms ease,
+    box-shadow 450ms ease,
+    transform 450ms ease;
+  transform: translate3d(0, 0, 0);
+  -webkit-backdrop-filter: blur(18px) saturate(125%);
+  backface-visibility: hidden;
+  will-change: transform;
 }
 
 .storyItem h3 {
-  margin: 0 0 0.45rem;
+  margin: 0 0 0.65rem;
   font-family: 'Pinky Vanilla', sans-serif;
-  font-size: 2.1rem;
+  font-size: clamp(2rem, 7vw, 2.6rem);
   font-weight: 400;
-}
-
-.storyItem:nth-child(3) h3 {
-  grid-column: 2;
-  grid-row: 1;
-  align-self: end;
-  margin: 0;
-  font-size: clamp(1.65rem, 6vw, 2rem);
-  white-space: nowrap;
+  line-height: 1;
 }
 
 .storyItem p {
   margin: 0;
-}
-
-.storyItem:nth-child(3) p {
-  grid-column: 1 / -1;
-  grid-row: 2;
-}
-
-.footstepTrail {
-  position: absolute;
-  top: 35%;
-  left: 15%;
-  z-index: 1;
-  display: flex;
-  width: 65%;
-  align-items: center;
-  justify-content: space-between;
-  transform: rotate(25deg);
-}
-
-.footstepTrail.reverseTrail {
-  top: 73%;
-  left: 18%;
-  transform: rotate(-31deg);
-}
-
-.footstepStamp {
-  position: relative;
-  display: block;
-  flex: 0 0 clamp(1rem, 2.8vw, 1.35rem);
-  aspect-ratio: 1838 / 856;
-  overflow: hidden;
-}
-
-.footstepStamp img {
-  top: 0;
-  left: 0;
-  width: 104.5%;
-  transform: translate(-2.1%, -12.6%);
-}
-
-.footstepStamp:nth-child(3n + 1) {
-  transform: translateY(-0.55rem);
-}
-
-.footstepStamp:nth-child(3n + 2) {
-  transform: translateY(0.35rem);
-}
-
-.storyItem p {
-  margin: 0;
+  color: rgb(14 15 18 / 0.72);
+  font-size: 0.88rem;
+  line-height: 1.75;
 }
 
 .scheduleSection {
@@ -1105,6 +1009,25 @@
   50% { transform: translateY(0.45rem); }
 }
 
+@keyframes storyBreath {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -0.18rem, 0) scale(1.008);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .storyItem:hover {
+    border-color: rgb(125 169 196 / 0.58);
+    box-shadow:
+      0 1.45rem 3rem rgb(54 44 36 / 0.13),
+      inset 0 1px 0 rgb(255 255 255 / 0.86);
+    animation: storyBreath 3.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  }
+}
+
 @media (min-width: 62rem) {
   .page {
     display: grid;
@@ -1148,19 +1071,6 @@
     padding-inline: 1rem;
   }
 
-  /* Gambar awal bertemu (Ponsel) */
-  .meetingArtwork img{
-    width: clamp(2rem, 10vw, 4rem);
-  }
-  /* Gambar hari pernikahan (Ponsel) */
-  .weddingArtwork img {
-    width: clamp(2rem, 7vw, 2rem);
-  }
-  /* Gambar hubungan (Ponsel) */
-  .relationshipArtwork img {
-    width: clamp(4rem, 10vw, 4rem);
-  }
-
   .gallery,
   .galleryColumn {
     gap: 0.625rem;
@@ -1169,7 +1079,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .scrollCue {
+  .scrollCue,
+  .storyItem:hover {
     animation: none;
   }
 }
