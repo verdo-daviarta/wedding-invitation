@@ -1,14 +1,15 @@
 import {
   Camera,
-  CircleCheck,
-  Copy,
   Gift,
   Heart,
   Menu,
   Music2,
 } from 'lucide-react';
+import { CopyButton } from './copy-button';
 import { Countdown } from './countdown';
+import { RsvpForm } from './rsvp-form';
 import { ScrollCueButton } from './scroll-cue-button';
+import { WishesForm } from './wishes-form';
 import styles from './undangan.module.css';
 
 const invitation = {
@@ -64,12 +65,6 @@ const story = [
     title: 'Hari Pernikahan',
     text: 'Kini, perjalanan itu membawa kami pada langkah baru yang lebih berarti: menjadi dua jiwa yang bersatu dalam satu janji suci.',
   },
-];
-
-const wishes = [
-  ['Keluarga & Sahabat', 'Semoga hari bahagia ini menjadi awal perjalanan yang penuh kasih, damai, dan sukacita.'],
-  ['Teman-teman', 'Selamat menempuh hidup baru. Semoga selalu saling menjaga dan bertumbuh bersama.'],
-  ['Orang Terkasih', 'Bahagia selalu sampai tua, dan semoga rumah tangga kalian dipenuhi kebaikan.'],
 ];
 
 const galleryColumns = [
@@ -255,7 +250,6 @@ export default function InvitationPage() {
           aria-labelledby="journey-title"
         >
           <header className={styles.storyHeader}>
-            <p className={styles.storyKicker}>Our Story</p>
             <h2 id="journey-title">Journey of Love</h2>
             <p className={styles.storyIntroduction}>
               Tiga bab sederhana yang membawa kami menuju <br />satu perjalanan seumur hidup.
@@ -357,38 +351,13 @@ export default function InvitationPage() {
 
         <section className={`${styles.section} ${styles.rsvpSection}`}>
           <div className={styles.rsvpHeader}>
-            <h2 className={styles.rsvpTitle}>RSVP</h2>
+            <h2 className={styles.rsvpTitle}>Konfirmasi Kehadiran</h2>
             <p className={styles.rsvpDescription}>
-              Bagi tamu undangan yang akan hadir di acara pernikahan kami silahkan
-              kirimkan konfirmasi kehadiran dengan mengisi form berikut :
+              Silakan isi formulir singkat ini untuk membantu kami mempersiapkan
+              hari bahagia dengan lebih baik.
             </p>
           </div>
-          <div className={styles.formCard} aria-label="Formulir RSVP">
-            <label>
-              <span className={styles.fieldLabel}>Nama <b>*</b></span>
-              <input type="text" />
-            </label>
-            <label>
-              <span className={styles.fieldLabel}>Ucapan &amp; Doa</span>
-              <textarea rows={2} />
-            </label>
-            <label>
-              <span className={styles.fieldLabel}>Konfirmasi Kehadiran <b>*</b></span>
-              <select defaultValue="Hadir">
-                <option>Hadir</option>
-                <option>Tidak Hadir</option>
-                <option>Masih Ragu</option>
-              </select>
-            </label>
-            <label>
-              <span className={styles.fieldLabel}>Jumlah Tamu</span>
-              <select defaultValue="1 Orang">
-                <option>1 Orang</option>
-                <option>2 Orang</option>
-              </select>
-            </label>
-            <InertButton className={styles.submitButton}>Kirim</InertButton>
-          </div>
+          <RsvpForm />
         </section>
 
         <section className={`${styles.section} ${styles.wishesSection}`}>
@@ -399,20 +368,7 @@ export default function InvitationPage() {
               hal-hal lucu, atau apa pun itu semuanya istimewa bagi kami!
             </p>
           </div>
-          <div className={styles.wishList}>
-            {wishes.map(([name, message]) => (
-              <article key={name}>
-                <div className={styles.wishMeta}>
-                  <div className={styles.wishAuthor}>
-                    <strong>{name}</strong>
-                    <CircleCheck aria-label="Hadir" size={16} />
-                  </div>
-                  <time>baru saja</time>
-                </div>
-                <p>{message}</p>
-              </article>
-            ))}
-          </div>
+          <WishesForm />
         </section>
 
         <section className={`${styles.section} ${styles.giftSection}`}>
@@ -420,29 +376,37 @@ export default function InvitationPage() {
 
           <div className={styles.bankList}>
             <article>
-              <span className={`${styles.bankMark} ${styles.bankMarkBca}`}>BCA</span>
-              <div><strong>Verdo</strong><span>0000 0000 0000</span></div>
-              <InertButton ariaLabel="Salin nomor rekening Verdo" className={styles.copyButton}>
-                <Copy aria-hidden="true" size={20} />
-              </InertButton>
+              <span className={styles.bankMark}>
+                <img className={styles.bankLogo} src="/images/mandiri.svg" alt="Bank Mandiri" />
+              </span>
+              <div><strong>A.N Benidiktus Verdo Dav</strong><span>1570 0102 6013 2</span></div>
+              <CopyButton
+                ariaLabel="Salin nomor rekening Verdo"
+                className={styles.copyButton}
+                value="1570010260132"
+              />
             </article>
             <article>
-              <span className={`${styles.bankMark} ${styles.bankMarkSea}`}>
-                <span>S</span>
+              <span className={styles.bankMark}>
+                <img className={styles.bankLogo} src="/images/bca.svg" alt="Bank BCA" />
               </span>
-              <div><strong>Intan</strong><span>0000 0000 0000</span></div>
-              <InertButton ariaLabel="Salin nomor rekening Intan" className={styles.copyButton}>
-                <Copy aria-hidden="true" size={20} />
-              </InertButton>
+              <div><strong>A.N Carolina Haslita Intan C.</strong><span>1662 4558 94</span></div>
+              <CopyButton
+                ariaLabel="Salin nomor rekening Intan"
+                className={styles.copyButton}
+                value="1662455894"
+              />
             </article>
             <article className={styles.giftDelivery}>
               <span className={`${styles.bankMark} ${styles.deliveryMark}`}>
                 <Gift aria-hidden="true" size={24} />
               </span>
               <div><strong>Kirim Kado</strong><span>{invitation.venue}, {invitation.address}</span></div>
-              <InertButton ariaLabel="Salin alamat pengiriman kado" className={styles.copyButton}>
-                <Copy aria-hidden="true" size={20} />
-              </InertButton>
+              <CopyButton
+                ariaLabel="Salin alamat pengiriman kado"
+                className={styles.copyButton}
+                value={`${invitation.venue}, ${invitation.address}`}
+              />
             </article>
           </div>
         </section>
