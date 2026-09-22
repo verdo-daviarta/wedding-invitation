@@ -7,6 +7,7 @@ import {
   Menu,
   Music2,
 } from 'lucide-react';
+import { Countdown } from './countdown';
 import { ScrollCueButton } from './scroll-cue-button';
 import styles from './undangan.module.css';
 
@@ -17,17 +18,36 @@ const invitation = {
   bride: 'Intan',
   groom: 'Verdo',
   venue: 'Hotel Dana Solo',
-  address: 'Solo, Indonesia',
+  address: 'Jl. Slamet Riyadi St No.286, Sriwedari, Laweyan, Kota Surakarta, Jawa Tengah 57141',
 };
+
+const googleCalendarUrl = `https://calendar.google.com/calendar/render?${new URLSearchParams({
+  action: 'TEMPLATE',
+  text: `The Wedding of ${invitation.groom} & ${invitation.bride}`,
+  dates: '20261226T010000Z/20261226T060000Z',
+  details: `Pernikahan ${invitation.groom} dan ${invitation.bride}`,
+  location: `${invitation.venue}, Indonesia`,
+  ctz: 'Asia/Jakarta',
+}).toString()}`;
 
 const events = [
   {
     title: 'Pemberkatan',
     time: '08.00 - 10.00 WIB',
+    venue: 'Paroki St. Maria Diangkat Ke Surga - Palur',
+    addressLine1: 'Jl. Cemp. No.1, Randurejo, Ngringo,',
+    addressLine2: 'Kabupaten Karanganyar, Jawa Tengah 57772',
+    mapUrl:
+      'https://www.google.com/maps/search/?api=1&query=Paroki%20St.%20Maria%20Diangkat%20Ke%20Surga%20-%20Palur%2C%20Jl.%20Cemp.%20No.1%2C%20Randurejo%2C%20Ngringo%2C%20Karanganyar%2C%20Kabupaten%20Karanganyar%2C%20Jawa%20Tengah%2057772',
   },
   {
     title: 'Resepsi',
-    time: '10.30 - 14.00 WIB',
+    time: '11.00 - 14.00 WIB',
+    venue: invitation.venue,
+    addressLine1: 'Jl. Slamet Riyadi St No.286, Sriwedari, Laweyan',
+    addressLine2: 'Kota Surakarta, Jawa Tengah 57141',
+    mapUrl:
+      'https://www.google.com/maps/search/?api=1&query=Hotel%20Dana%20Solo%2C%20Jl.%20Slamet%20Riyadi%20St%20No.286%2C%20Sriwedari%2C%20Laweyan%2C%20Surakarta%20City%2C%20Central%20Java%2057141',
   },
 ];
 
@@ -103,7 +123,18 @@ function InertButton({
 function EventDetails({
   title,
   time,
-}: Readonly<{ title: string; time: string }>) {
+  venue,
+  addressLine1,
+  addressLine2,
+  mapUrl,
+}: Readonly<{
+  title: string;
+  time: string;
+  venue: string;
+  addressLine1: string;
+  addressLine2: string;
+  mapUrl?: string;
+}>) {
   return (
     <article className={styles.eventDetails}>
       <h3 className={styles.eventTitle}>{title}</h3>
@@ -112,10 +143,25 @@ function EventDetails({
         <p>{time}</p>
       </div>
       <div className={styles.eventLocation}>
-        <strong>{invitation.venue}</strong>
-        <p>{invitation.address}</p>
+        <strong>{venue}</strong>
+        <p>
+          {addressLine1}
+          <br />
+          {addressLine2}
+        </p>
       </div>
-      <InertButton className={styles.mapButton}>Buka Maps</InertButton>
+      {mapUrl ? (
+        <a
+          className={`${styles.button} ${styles.mapButton}`}
+          href={mapUrl}
+          rel="noreferrer"
+          target="_blank"
+        >
+          Buka Maps
+        </a>
+      ) : (
+        <InertButton className={styles.mapButton}>Buka Maps</InertButton>
+      )}
     </article>
   );
 }
@@ -240,15 +286,15 @@ export default function InvitationPage() {
               Save The Date
             </h2>
             <p className={styles.saveDateDate}>26 December 2026</p>
-            <div className={styles.countdown} aria-label="Hitung mundur pernikahan">
-              {['Days', 'Hours', 'Minutes', 'Seconds'].map((unit) => (
-                <div key={unit}>
-                  <strong>00</strong>
-                  <span>{unit}</span>
-                </div>
-              ))}
-            </div>
-            <InertButton className={styles.saveDateButton}>Simpan Tanggal</InertButton>
+            <Countdown />
+            <a
+              className={`${styles.button} ${styles.saveDateButton}`}
+              href={googleCalendarUrl}
+              rel="noreferrer"
+              target="_blank"
+            >
+              Simpan Tanggal
+            </a>
           </div>
 
           <div className={styles.eventList}>

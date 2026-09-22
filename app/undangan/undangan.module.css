@@ -465,10 +465,23 @@
   border: 1px solid #fff;
   border-radius: 1.25rem;
   padding: 0.625rem;
+  color: inherit;
+  cursor: pointer;
   font-family: var(--font-cabin), sans-serif;
   font-size: 0.75rem;
   font-weight: 500;
   line-height: 0.75rem;
+  text-decoration: none;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .scheduleSection .saveDateButton:hover {
+    background: #fff;
+    color: var(--charcoal-deep);
+  }
 }
 
 .eventList {
@@ -531,9 +544,22 @@
   margin-top: 1.5rem;
   border-radius: 1.25rem;
   padding: 0;
+  color: inherit;
+  cursor: pointer;
   font-family: var(--font-inter), sans-serif;
   font-size: 0.75rem;
   line-height: 0.75rem;
+  text-decoration: none;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .scheduleSection a.mapButton:hover {
+    background: #fff;
+    color: var(--charcoal-deep);
+  }
 }
 
 .dresscodeBlock {
