@@ -373,35 +373,38 @@
   will-change: transform;
 }
 
-.storySection [data-journey-reveal] {
-  --journey-reveal-delay: 0ms;
+.storySection [data-scroll-reveal],
+.scheduleSection [data-scroll-reveal] {
+  --section-reveal-delay: 0ms;
 }
 
-.storyIntroduction[data-journey-reveal] {
-  --journey-reveal-delay: 110ms;
+.storyIntroduction[data-scroll-reveal] {
+  --section-reveal-delay: 110ms;
 }
 
 .storyItem:nth-child(1) {
-  --journey-reveal-delay: 80ms;
+  --section-reveal-delay: 80ms;
 }
 
 .storyItem:nth-child(2) {
-  --journey-reveal-delay: 160ms;
+  --section-reveal-delay: 160ms;
 }
 
 .storyItem:nth-child(3) {
-  --journey-reveal-delay: 240ms;
+  --section-reveal-delay: 240ms;
 }
 
-.storySection [data-journey-reveal][data-reveal-state='ready'] {
+.storySection [data-scroll-reveal][data-reveal-state='ready'],
+.scheduleSection [data-scroll-reveal][data-reveal-state='ready'] {
   opacity: 0;
   filter: blur(0.3rem);
   transform: translate3d(0, 1.6rem, 0) scale(0.985);
 }
 
-.storySection [data-journey-reveal][data-reveal-state='visible'] {
-  animation: journeyAppear 850ms cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-delay: var(--journey-reveal-delay);
+.storySection [data-scroll-reveal][data-reveal-state='visible'],
+.scheduleSection [data-scroll-reveal][data-reveal-state='visible'] {
+  animation: sectionAppear 850ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--section-reveal-delay);
 }
 
 .storyItem h3 {
@@ -425,6 +428,22 @@
   padding-block: 5rem;
   padding-inline: 2.5rem;
   background: var(--charcoal-deep);
+}
+
+.saveDateContent[data-scroll-reveal] {
+  --section-reveal-delay: 0ms;
+}
+
+.eventDetails:nth-child(1) {
+  --section-reveal-delay: 80ms;
+}
+
+.eventDetails:nth-child(2) {
+  --section-reveal-delay: 160ms;
+}
+
+.dresscodeBlock[data-scroll-reveal] {
+  --section-reveal-delay: 120ms;
 }
 
 .saveDateContent {
@@ -608,43 +627,12 @@
   line-height: 1.125rem;
 }
 
-.photoBoothSection {
-  min-height: 0;
-  gap: 1rem;
-  padding-block: 5rem 3rem;
-  padding-inline: 2.5rem;
-  background: var(--charcoal);
-  color: #fff;
-}
-
 .showcaseTitle {
   margin: 0;
   font-family: 'Pinky Vanilla', sans-serif;
   font-size: 2.5rem;
   font-weight: 500;
   line-height: 2.5rem;
-}
-
-.photoBoothDescription {
-  width: min(100%, 28.5625rem);
-  margin: 0;
-  font-family: var(--font-cabin), sans-serif;
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.125rem;
-  text-align: center;
-}
-
-.photoBoothSection .photoBoothButton {
-  width: 7.75rem;
-  height: 1.875rem;
-  min-height: 0;
-  border-radius: 1.25rem;
-  padding: 0;
-  font-family: var(--font-cabin), sans-serif;
-  font-size: 0.75rem;
-  font-weight: 600;
-  line-height: 0.75rem;
 }
 
 .swatches {
@@ -1692,7 +1680,7 @@
   50% { transform: translateY(0.45rem); }
 }
 
-@keyframes journeyAppear {
+@keyframes sectionAppear {
   from {
     opacity: 0;
     filter: blur(0.3rem);
@@ -1812,7 +1800,8 @@
     animation: none;
   }
 
-  .storySection [data-journey-reveal][data-reveal-state='visible'] {
+  .storySection [data-scroll-reveal][data-reveal-state='visible'],
+  .scheduleSection [data-scroll-reveal][data-reveal-state='visible'] {
     opacity: 1;
     filter: none;
     transform: none;

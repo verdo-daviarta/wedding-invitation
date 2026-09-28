@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 import { CopyButton } from './copy-button';
 import { Countdown } from './countdown';
-import { JourneyRevealSection } from './journey-reveal-section';
+import { RevealSection } from './reveal-section';
 import { RsvpForm } from './rsvp-form';
 import { ScrollCueButton } from './scroll-cue-button';
 import { WishesForm } from './wishes-form';
@@ -132,7 +132,7 @@ function EventDetails({
   mapUrl?: string;
 }>) {
   return (
-    <article className={styles.eventDetails}>
+    <article className={styles.eventDetails} data-scroll-reveal>
       <h3 className={styles.eventTitle}>{title}</h3>
       <div className={styles.eventDateTime}>
         <p>{invitation.dateLong}</p>
@@ -246,31 +246,32 @@ export default function InvitationPage() {
           </article>
         </section>
 
-        <JourneyRevealSection
+        <RevealSection
+          ariaLabelledBy="journey-title"
           className={`${styles.section} ${styles.storySection}`}
         >
           <header className={styles.storyHeader}>
-            <h2 data-journey-reveal id="journey-title">Journey of Love</h2>
-            <p className={styles.storyIntroduction} data-journey-reveal>
+            <h2 data-scroll-reveal id="journey-title">Journey of Love</h2>
+            <p className={styles.storyIntroduction} data-scroll-reveal>
               Tiga bab sederhana yang membawa kami menuju <br />satu perjalanan seumur hidup.
             </p>
           </header>
 
           <div className={styles.storyList}>
             {story.map((item) => (
-              <article className={styles.storyItem} data-journey-reveal key={item.title}>
+              <article className={styles.storyItem} data-scroll-reveal key={item.title}>
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
               </article>
             ))}
           </div>
-        </JourneyRevealSection>
+        </RevealSection>
 
-        <section
+        <RevealSection
+          ariaLabelledBy="save-the-date-title"
           className={`${styles.section} ${styles.scheduleSection}`}
-          aria-labelledby="save-the-date-title"
         >
-          <div className={styles.saveDateContent}>
+          <div className={styles.saveDateContent} data-scroll-reveal>
             <img
               className={styles.saveDateImage}
               src="/placeholders/save-the-date.png"
@@ -297,7 +298,7 @@ export default function InvitationPage() {
             ))}
           </div>
 
-          <div className={styles.dresscodeBlock}>
+          <div className={styles.dresscodeBlock} data-scroll-reveal>
             <p className={styles.dresscodeText}>
               Kami dengan hormat menganjurkan para tamu kami untuk mengenakan
               warna-warna ini untuk hari istimewa kami.
@@ -308,19 +309,7 @@ export default function InvitationPage() {
               <span className={styles.swatchLightGreen} />
             </div>
           </div>
-        </section>
-
-        <section className={`${styles.section} ${styles.photoBoothSection}`}>
-          <h2 className={styles.showcaseTitle}>Virtual Photo Booth</h2>
-          <p className={styles.photoBoothDescription}>
-            Abadikan momen kamu saat menghadiri pernikahan kami dengan menggunakan
-            Wedding Frame di bawah ini.
-          </p>
-          <InertButton className={styles.photoBoothButton}>
-            <Camera aria-hidden="true" size={14} />
-            Mulai Berfoto
-          </InertButton>
-        </section>
+        </RevealSection>
 
         <section className={`${styles.section} ${styles.gallerySection}`}>
           <div className={styles.galleryHeader}>

@@ -1,11 +1,14 @@
 'use client';
 
-import { ReactNode, useEffect, useRef } from 'react';
+import type { ReactNode } from 'react';
+import { useEffect, useRef } from 'react';
 
-export function JourneyRevealSection({
+export function RevealSection({
+  ariaLabelledBy,
   children,
   className,
 }: Readonly<{
+  ariaLabelledBy: string;
   children: ReactNode;
   className: string;
 }>) {
@@ -15,7 +18,7 @@ export function JourneyRevealSection({
     const section = sectionRef.current;
     if (!section) return;
 
-    const targets = section.querySelectorAll<HTMLElement>('[data-journey-reveal]');
+    const targets = section.querySelectorAll<HTMLElement>('[data-scroll-reveal]');
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (prefersReducedMotion || !('IntersectionObserver' in window)) {
@@ -28,15 +31,19 @@ export function JourneyRevealSection({
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.16) {
+            entry.target.setAttribute('data-reveal-state', 'visible');
+            return;
+          }
 
-          entry.target.setAttribute('data-reveal-state', 'visible');
-          observer.unobserve(entry.target);
+          if (!entry.isIntersecting) {
+            entry.target.setAttribute('data-reveal-state', 'ready');
+          }
         });
       },
       {
         rootMargin: '0px 0px -8% 0px',
-        threshold: 0.16,
+        threshold: [0, 0.16],
       },
     );
 
@@ -46,7 +53,7 @@ export function JourneyRevealSection({
 
   return (
     <section
-      aria-labelledby="journey-title"
+      aria-labelledby={ariaLabelledBy}
       className={className}
       ref={sectionRef}
     >
