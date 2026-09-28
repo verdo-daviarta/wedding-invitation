@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { CopyButton } from './copy-button';
 import { Countdown } from './countdown';
+import { JourneyRevealSection } from './journey-reveal-section';
 import { RsvpForm } from './rsvp-form';
 import { ScrollCueButton } from './scroll-cue-button';
 import { WishesForm } from './wishes-form';
@@ -245,26 +246,25 @@ export default function InvitationPage() {
           </article>
         </section>
 
-        <section
+        <JourneyRevealSection
           className={`${styles.section} ${styles.storySection}`}
-          aria-labelledby="journey-title"
         >
           <header className={styles.storyHeader}>
-            <h2 id="journey-title">Journey of Love</h2>
-            <p className={styles.storyIntroduction}>
+            <h2 data-journey-reveal id="journey-title">Journey of Love</h2>
+            <p className={styles.storyIntroduction} data-journey-reveal>
               Tiga bab sederhana yang membawa kami menuju <br />satu perjalanan seumur hidup.
             </p>
           </header>
 
           <div className={styles.storyList}>
             {story.map((item) => (
-              <article className={styles.storyItem} key={item.title}>
+              <article className={styles.storyItem} data-journey-reveal key={item.title}>
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
               </article>
             ))}
           </div>
-        </section>
+        </JourneyRevealSection>
 
         <section
           className={`${styles.section} ${styles.scheduleSection}`}
