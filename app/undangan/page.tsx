@@ -2,11 +2,11 @@ import {
   Camera,
   Gift,
   Heart,
-  Menu,
-  Music2,
 } from 'lucide-react';
 import { CopyButton } from './copy-button';
 import { Countdown } from './countdown';
+import { InvitationMenu } from './invitation-menu';
+import { MusicButton } from './music-button';
 import { RevealSection } from './reveal-section';
 import { RsvpForm } from './rsvp-form';
 import { ScrollCueButton } from './scroll-cue-button';
@@ -190,11 +190,9 @@ export default function InvitationPage() {
       </aside>
 
       <div className={styles.content}>
-        <button className={styles.menuButton} type="button" aria-label="Menu" disabled>
-          <Menu aria-hidden="true" size={21} />
-        </button>
+        <InvitationMenu />
 
-        <section className={`${styles.section} ${styles.opening}`} aria-labelledby="opening-title">
+        <section id="opening" tabIndex={-1} className={`${styles.section} ${styles.opening}`} aria-labelledby="opening-title">
           <div className={styles.dateRow}>
             <span>{invitation.date}</span>
             <span>{invitation.year}</span>
@@ -207,13 +205,14 @@ export default function InvitationPage() {
         <section
           className={`${styles.section} ${styles.introduction}`}
           id="introduction"
+          tabIndex={-1}
         >
           <p className={styles.quote}>
             “Ini enaknya di isi pake<br />Quotes apa yang<br />sekiranya bagus gitu..”
           </p>
         </section>
 
-        <section className={`${styles.section} ${styles.coupleSection}`}>
+        <section id="couple" tabIndex={-1} className={`${styles.section} ${styles.coupleSection}`}>
           <p className={styles.sectionKicker}>Dengan penuh rasa syukur, kami memperkenalkan</p>
           <article className={styles.personCard}>
             <ScriptTitle>The Bride</ScriptTitle>
@@ -247,6 +246,7 @@ export default function InvitationPage() {
         </section>
 
         <RevealSection
+          id="journey"
           ariaLabelledBy="journey-title"
           className={`${styles.section} ${styles.storySection}`}
         >
@@ -268,6 +268,7 @@ export default function InvitationPage() {
         </RevealSection>
 
         <RevealSection
+          id="schedule"
           ariaLabelledBy="save-the-date-title"
           className={`${styles.section} ${styles.scheduleSection}`}
         >
@@ -311,7 +312,7 @@ export default function InvitationPage() {
           </div>
         </RevealSection>
 
-        <section className={`${styles.section} ${styles.gallerySection}`}>
+        <section id="moments" tabIndex={-1} className={`${styles.section} ${styles.gallerySection}`}>
           <div className={styles.galleryHeader}>
             <h2 className={`${styles.showcaseTitle} ${styles.momentTitle}`}>Our Moment</h2>
             <p className={styles.momentQuote}>
@@ -338,7 +339,7 @@ export default function InvitationPage() {
           </div>
         </section>
 
-        <section className={`${styles.section} ${styles.rsvpSection}`}>
+        <section id="rsvp" tabIndex={-1} className={`${styles.section} ${styles.rsvpSection}`}>
           <div className={styles.rsvpHeader}>
             <h2 className={styles.rsvpTitle}>Konfirmasi Kehadiran</h2>
             <p className={styles.rsvpDescription}>
@@ -349,7 +350,7 @@ export default function InvitationPage() {
           <RsvpForm />
         </section>
 
-        <section className={`${styles.section} ${styles.wishesSection}`}>
+        <section id="wishes" tabIndex={-1} className={`${styles.section} ${styles.wishesSection}`}>
           <div className={styles.wishesHeader}>
             <h2 className={styles.wishesTitle}>Wishes</h2>
             <p className={styles.wishesDescription}>
@@ -360,7 +361,7 @@ export default function InvitationPage() {
           <WishesForm />
         </section>
 
-        <section className={`${styles.section} ${styles.giftSection}`}>
+        <section id="gift" tabIndex={-1} className={`${styles.section} ${styles.giftSection}`}>
           <h2 className={styles.giftTitle}>Wedding Gift</h2>
 
           <div className={styles.bankList}>
@@ -400,7 +401,7 @@ export default function InvitationPage() {
           </div>
         </section>
 
-        <section className={`${styles.section} ${styles.thanksSection}`}>
+        <section id="thanks" tabIndex={-1} className={`${styles.section} ${styles.thanksSection}`}>
           <div className={styles.thanksTitleStage}>
             <h2 className={styles.thanksTitle}>Thank You!</h2>
           </div>
@@ -413,12 +414,14 @@ export default function InvitationPage() {
           </p>
           <footer>
             <span>Daviarta copyright 2026</span>
+            <small className={styles.musicCredit}>
+              Musik: <a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100044" target="_blank" rel="noopener noreferrer">There is Romance — Kevin MacLeod</a>
+              {' · '}<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>
+            </small>
           </footer>
         </section>
 
-        <button className={styles.musicButton} type="button" aria-label="Musik" disabled>
-          <Music2 aria-hidden="true" size={18} />
-        </button>
+        <MusicButton />
       </div>
     </main>
   );

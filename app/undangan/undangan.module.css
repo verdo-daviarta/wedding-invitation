@@ -53,29 +53,17 @@
   color: var(--ink);
 }
 
-.menuButton,
-.musicButton {
-  position: fixed;
-  z-index: 20;
-  display: grid;
-  place-items: center;
-  width: 3rem;
-  height: 3rem;
-  border: 1px solid rgb(255 255 255 / 0.55);
-  border-radius: 999px;
-  background: rgb(48 50 52 / 0.82);
-  color: #fff;
-  opacity: 1;
+.musicCredit {
+  display: block;
+  margin-top: 0.65rem;
+  color: var(--paper);
+  font-size: 0.65rem;
+  line-height: 1.6;
 }
 
-.menuButton {
-  top: 1.25rem;
-  right: 1.25rem;
-}
-
-.musicButton {
-  right: 1.25rem;
-  bottom: 1.25rem;
+.musicCredit a {
+  color: inherit;
+  text-underline-offset: 0.2em;
 }
 
 .eyebrow {
@@ -287,9 +275,7 @@
   opacity: 1;
 }
 
-.button:disabled,
-.menuButton:disabled,
-.musicButton:disabled {
+.button:disabled {
   cursor: default;
 }
 
@@ -1774,10 +1760,6 @@
     line-height: 1.6;
   }
 
-  .menuButton,
-  .musicButton {
-    right: 1.5rem;
-  }
 
 }
 

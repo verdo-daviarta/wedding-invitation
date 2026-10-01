@@ -4,10 +4,12 @@ import type { ReactNode } from 'react';
 import { useEffect, useRef } from 'react';
 
 export function RevealSection({
+  id,
   ariaLabelledBy,
   children,
   className,
 }: Readonly<{
+  id: string;
   ariaLabelledBy: string;
   children: ReactNode;
   className: string;
@@ -53,6 +55,8 @@ export function RevealSection({
 
   return (
     <section
+      id={id}
+      tabIndex={-1}
       aria-labelledby={ariaLabelledBy}
       className={className}
       ref={sectionRef}
