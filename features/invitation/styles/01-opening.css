@@ -1,0 +1,92 @@
+.dateRow {
+  position: absolute;
+  top: 3rem;
+  display: flex;
+  width: min(calc(100% - 11rem), 19rem);
+  justify-content: space-between;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.opening .eyebrow {
+  margin-bottom: 1rem;
+}
+
+.opening .eyebrow,
+.opening .coupleLockup {
+  position: relative;
+  top: clamp(-10rem, -18svh, -3rem);
+}
+
+.coupleLockup {
+  display: flex;
+  max-width: 25rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: 'Pinky Vanilla', sans-serif;
+  font-size: clamp(3.6rem, 18vw, 4.6rem);
+  font-weight: 400;
+  line-height: 0.72;
+  transform: rotate(-10deg);
+}
+
+.coupleLockup > span:first-child {
+  width: 100%;
+  transform: translateX(-0.4em);
+}
+
+.coupleLockup > span:last-child {
+  transform: translate(-0.05em, 0.36em);
+}
+
+.ampersand {
+  transform: translate(-0.01em, 0.15em);
+}
+
+.compactLockup {
+  max-width: none;
+  gap: 0.12em;
+  justify-content: flex-start;
+  font-size: clamp(3.2rem, 6vw, 5rem);
+  transform: none;
+}
+
+.compactLockup > span:first-child {
+  width: auto;
+  transform: none;
+}
+
+.compactLockup > span:last-child,
+.compactLockup .ampersand {
+  transform: none;
+}
+
+.scrollCue {
+  position: absolute;
+  bottom: 3rem;
+  display: grid;
+  place-items: center;
+  width: 2.8rem;
+  height: 2.8rem;
+  border: 1px solid rgb(255 255 255 / 0.35);
+  border-radius: 999px;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  animation: float 2.2s ease-in-out infinite;
+}
+
+.scrollCue:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 0.25rem;
+}
+
+.scriptTitle {
+  margin: 0;
+  font-family: 'Pinky Vanilla', sans-serif;
+  font-size: clamp(3rem, 11vw, 5rem);
+  font-weight: 400;
+  line-height: 1;
+}

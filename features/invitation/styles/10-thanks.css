@@ -1,0 +1,51 @@
+.thanksSection {
+  min-height: 100svh;
+  justify-content: flex-start;
+  padding: 0 2.5rem 9.875rem;
+  background: var(--charcoal);
+}
+
+.thanksTitleStage {
+  display: grid;
+  width: 100%;
+  height: clamp(18rem, 64vw, 21.5rem);
+  place-items: center;
+}
+
+.thanksTitle {
+  margin: 0;
+  font-family: 'Pinky Vanilla', sans-serif;
+  font-size: clamp(4rem, 15vw, 5rem);
+  font-weight: 400;
+  line-height: 1;
+  white-space: nowrap;
+  transform: rotate(-30deg);
+}
+
+.thanksMessage {
+  width: min(100%, 32rem);
+  margin: 0;
+  font-family: var(--font-cabin), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.125rem;
+  text-align: center;
+}
+
+.thanksCouple {
+  margin: 1.5rem 0 0;
+  font-family: 'Pinky Vanilla', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.thanksSection footer {
+  margin-top: auto;
+  color: #fff;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 0.875rem;
+}

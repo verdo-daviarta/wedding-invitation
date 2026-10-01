@@ -1,0 +1,75 @@
+.page {
+  --ink: #0e0f12;
+  --paper: #d8d6d4;
+  --accent: #7da9c4;
+  --charcoal: #303234;
+  --charcoal-deep: #252729;
+  min-height: 100svh;
+  background: var(--charcoal-deep);
+  color: #fff;
+}
+
+.identityPanel {
+  display: none;
+}
+
+.content {
+  position: relative;
+  width: 100%;
+  overflow: clip;
+}
+
+.section {
+  position: relative;
+  display: flex;
+  min-height: 100svh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem clamp(1.25rem, 5vw, 3.75rem);
+  text-align: center;
+}
+
+.opening,
+.storySection,
+.gallerySection,
+.wishesSection,
+.thanksSection {
+  background: var(--charcoal);
+}
+
+.introduction {
+  background: var(--charcoal);
+}
+
+.scheduleSection,
+.rsvpSection,
+.giftSection {
+  background: var(--charcoal-deep);
+}
+
+.coupleSection {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.musicCredit {
+  display: block;
+  margin-top: 0.65rem;
+  color: var(--paper);
+  font-size: 0.65rem;
+  line-height: 1.6;
+}
+
+.musicCredit a {
+  color: inherit;
+  text-underline-offset: 0.2em;
+}
+
+.eyebrow {
+  margin: 0;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}

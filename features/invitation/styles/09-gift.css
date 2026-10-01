@@ -1,0 +1,170 @@
+.bankList {
+  display: flex;
+  width: min(100%, 28.5625rem);
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 1.75rem auto 0;
+}
+
+.giftSection {
+  min-height: 0;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 5rem 2.5rem;
+  background: var(--charcoal);
+  text-align: left;
+}
+
+.giftTitle {
+  width: min(100%, 28.5625rem);
+  margin: 0 auto;
+  font-family: 'Pinky Vanilla', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 400;
+  line-height: 2.5rem;
+}
+
+.bankList article {
+  display: grid;
+  width: 100%;
+  min-height: 3.125rem;
+  grid-template-columns: 3.125rem minmax(0, 1fr) 2.75rem;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: left;
+}
+
+.bankMark {
+  display: grid;
+  width: 3.125rem;
+  height: 3.125rem;
+  place-items: center;
+  border-radius: 0.25rem;
+  padding: 0.4rem;
+  background: #fff;
+}
+
+.bankLogo {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.deliveryMark {
+  border-radius: 10%;
+  background: #727272;
+  color: #fff;
+}
+
+.bankList article > div {
+  overflow-wrap: anywhere;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bankList article strong {
+  font-family: var(--font-cabin), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.3125rem;
+}
+
+.bankList article > div span {
+  font-family: var(--font-cabin), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.125rem;
+}
+
+.giftDelivery strong {
+  font-weight: 600;
+  line-height: 0.875rem;
+}
+
+.bankList .copyButton {
+  position: relative;
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  min-height: 0;
+  place-items: center;
+  border: 1px solid rgb(149 149 149 / 0.42);
+  border-radius: 50%;
+  padding: 0;
+  background: transparent;
+  color: #959595;
+  cursor: pointer;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.bankList .copyButton[data-copy-state='copied'] {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--ink);
+}
+
+.bankList .copyButton[data-copy-state='error'] {
+  border-color: #e7a5a0;
+  color: #ffd3cf;
+}
+
+.bankList .copyButton:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 0.15rem;
+}
+
+.copyFeedback {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 0.4rem);
+  width: max-content;
+  border-radius: 0.35rem;
+  padding: 0.28rem 0.45rem;
+  background: var(--ink);
+  color: #fff;
+  font-family: var(--font-cabin), sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  line-height: 1;
+  box-shadow: 0 0.4rem 1rem rgb(0 0 0 / 0.18);
+  pointer-events: none;
+}
+
+.copyControl {
+  position: relative;
+}
+.copyManual {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 0.5rem);
+  z-index: 10;
+  display: grid;
+  gap: 0.75rem;
+  width: min(16rem, calc(100vw - 3rem));
+  padding: 1rem;
+  border: 1px solid var(--accent);
+  border-radius: 0.75rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+.copyManual input {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid var(--accent);
+  border-radius: 0.25rem;
+}
+.copyManual button {
+  min-height: 2.75rem;
+  color: var(--accent);
+  cursor: pointer;
+}

@@ -1,0 +1,113 @@
+.storySection {
+  min-height: 0;
+  align-items: center;
+  justify-content: flex-start;
+  gap: clamp(2.5rem, 8vw, 4rem);
+  padding-block: clamp(5rem, 12vw, 7rem);
+  background:
+    radial-gradient(circle at 50% 0%, rgb(125 169 196 / 0.13), transparent 38%),
+    #e7e1d9;
+  color: var(--ink);
+  text-align: left;
+}
+
+.storyHeader {
+  width: min(100%, 36rem);
+  margin-inline: auto;
+  text-align: center;
+}
+
+.storyHeader h2 {
+  margin: 0;
+  font-family: 'Pinky Vanilla', sans-serif;
+  font-size: clamp(3rem, 11vw, 4.75rem);
+  font-weight: 400;
+  line-height: 0.9;
+}
+
+.storyIntroduction {
+  max-width: 29rem;
+  margin: 1.15rem auto 0;
+  color: rgb(14 15 18 / 0.68);
+  font-size: 0.88rem;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.storyList {
+  display: grid;
+  width: min(100%, 38rem);
+  margin-inline: auto;
+  gap: 1rem;
+}
+
+.storyItem {
+  position: relative;
+  padding: clamp(1.75rem, 6vw, 2.4rem);
+  border: 1px solid rgb(255 255 255 / 0.58);
+  border-radius: 1.35rem;
+  background: linear-gradient(
+    135deg,
+    rgb(255 255 255 / 0.4),
+    rgb(255 255 255 / 0.14)
+  );
+  box-shadow:
+    0 1.1rem 2.5rem rgb(54 44 36 / 0.08),
+    inset 0 1px 0 rgb(255 255 255 / 0.72);
+  backdrop-filter: blur(18px) saturate(125%);
+  transition:
+    border-color 450ms ease,
+    box-shadow 450ms ease;
+  transform: translate3d(0, 0, 0);
+  -webkit-backdrop-filter: blur(18px) saturate(125%);
+  backface-visibility: hidden;
+}
+
+.storySection [data-scroll-reveal],
+.scheduleSection [data-scroll-reveal] {
+  --section-reveal-delay: 0ms;
+}
+
+.storyIntroduction[data-scroll-reveal] {
+  --section-reveal-delay: 110ms;
+}
+
+.storyItem:nth-child(1) {
+  --section-reveal-delay: 80ms;
+}
+
+.storyItem:nth-child(2) {
+  --section-reveal-delay: 160ms;
+}
+
+.storyItem:nth-child(3) {
+  --section-reveal-delay: 240ms;
+}
+
+.storySection [data-scroll-reveal][data-reveal-state='ready'],
+.scheduleSection [data-scroll-reveal][data-reveal-state='ready'] {
+  opacity: 0;
+  filter: blur(0.3rem);
+  transform: translate3d(0, 1.6rem, 0) scale(0.985);
+}
+
+.storySection [data-scroll-reveal][data-reveal-state='visible'],
+.scheduleSection [data-scroll-reveal][data-reveal-state='visible'] {
+  animation: sectionAppear 850ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--section-reveal-delay);
+}
+
+.storyItem h3 {
+  margin: 0 0 0.65rem;
+  font-family: 'Pinky Vanilla', sans-serif;
+  font-size: clamp(2rem, 7vw, 2.6rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.storyItem p {
+  margin: 0;
+  color: rgb(14 15 18 / 0.72);
+  font-size: 0.88rem;
+  line-height: 1.75;
+}

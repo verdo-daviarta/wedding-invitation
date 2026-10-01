@@ -29,7 +29,11 @@
     "build/**",
     "dist/**",
     "coverage/**",
-    "next-env.d.ts"
+    "next-env.d.ts",
+    ".tmp/**",
+    ".local-archive/**",
+    ".wrangler/**",
+    ".video-tools/**"
   ],
   "rules": {
     "no-array-constructor": "error",

@@ -1,0 +1,101 @@
+.coupleSection {
+  gap: 2.25rem;
+  justify-content: flex-start;
+}
+
+.sectionKicker {
+  max-width: 26rem;
+  margin: 0 auto 0.75rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.personCard {
+  width: min(100%, 26rem);
+  text-align: left;
+}
+
+.personCard .scriptTitle {
+  margin-bottom: 0.75rem;
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.photoPlaceholder {
+  display: flex;
+  min-height: 9rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--accent);
+  color: var(--ink);
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.portrait {
+  min-height: 22rem;
+  border: 0.65rem solid #fff;
+}
+
+.personDetails {
+  padding: 1.5rem;
+  background: #fff;
+  text-align: center;
+}
+
+.personDetails h3 {
+  margin: 0;
+  font-family: 'Pinky Vanilla', sans-serif;
+  font-size: 2.75rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.personDetails p {
+  margin: 0.65rem 0 1rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.personDetails .fullName {
+  margin: 0.65rem 0 0.25rem;
+  font-family: var(--font-cookie), cursive;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+.personDivider {
+  font-family: 'Pinky Vanilla', sans-serif;
+  font-size: 4rem;
+}
+
+.button {
+  display: inline-flex;
+  min-height: 2.55rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 0.7rem 1.2rem;
+  background: transparent;
+  color: inherit;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  opacity: 1;
+}
+
+.button:disabled {
+  cursor: default;
+}
+
+.iconButton {
+  color: var(--ink);
+}

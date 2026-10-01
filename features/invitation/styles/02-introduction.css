@@ -1,0 +1,13 @@
+.introduction {
+  gap: 2rem;
+  min-height: 66svh;
+  color: var(--paper);
+}
+
+.quote {
+  margin: 0;
+  font-family: 'Pinky Vanilla', sans-serif;
+  font-size: clamp(2rem, 6vw, 2.8rem);
+  line-height: 0.95;
+  transform: rotate(-5deg);
+}

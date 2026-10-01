@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Cabin, Cookie, Inter } from 'next/font/google';
+import { invitation } from '@/features/invitation/data/wedding';
 import './globals.css';
 
 const cabin = Cabin({
@@ -21,8 +22,8 @@ const cookie = Cookie({
 });
 
 export const metadata: Metadata = {
-  title: 'The Wedding of Verdo & Intan',
-  description: 'Undangan pernikahan Verdo dan Intan.',
+  title: `The Wedding of ${invitation.groom} & ${invitation.bride}`,
+  description: `Undangan pernikahan ${invitation.groom} dan ${invitation.bride}, ${invitation.dateLong}.`,
 };
 
 export default function RootLayout({
@@ -30,7 +31,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="id">
-      <body className={`${cabin.variable} ${inter.variable} ${cookie.variable}`}>
+      <body
+        className={`${cabin.variable} ${inter.variable} ${cookie.variable}`}
+      >
         {children}
       </body>
     </html>

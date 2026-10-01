@@ -1,0 +1,235 @@
+.scheduleSection {
+  min-height: 0;
+  justify-content: flex-start;
+  padding-block: 5rem;
+  padding-inline: 2.5rem;
+  background: var(--charcoal-deep);
+}
+
+.saveDateContent[data-scroll-reveal] {
+  --section-reveal-delay: 0ms;
+}
+
+.eventDetails:nth-child(1) {
+  --section-reveal-delay: 80ms;
+}
+
+.eventDetails:nth-child(2) {
+  --section-reveal-delay: 160ms;
+}
+
+.dresscodeBlock[data-scroll-reveal] {
+  --section-reveal-delay: 120ms;
+}
+
+.saveDateContent {
+  display: flex;
+  width: min(100%, 24rem);
+  flex-direction: column;
+  align-items: center;
+}
+
+.saveDateImage {
+  display: block;
+  width: min(12.5rem, 52vw);
+  height: auto;
+  aspect-ratio: 1;
+  margin: 0 0 1rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.saveDateTitle {
+  margin: 0 0 1rem;
+  font-family: 'Pinky Vanilla', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.saveDateDate {
+  margin: 0 0 1rem;
+  font-family: var(--font-cabin), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.3125rem;
+  letter-spacing: 0.25rem;
+  text-transform: uppercase;
+}
+
+.countdown {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 0 0 1rem;
+}
+
+.countdown div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-inline: 0.625rem;
+}
+
+.countdown strong {
+  font-family: var(--font-cabin), sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 2.25rem;
+}
+
+.countdown span {
+  font-family: var(--font-cabin), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.3125rem;
+}
+
+.scheduleSection .saveDateButton {
+  min-height: 2.75rem;
+  border: 1px solid #fff;
+  border-radius: 1.25rem;
+  padding: 0.625rem;
+  color: inherit;
+  cursor: pointer;
+  font-family: var(--font-cabin), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 0.75rem;
+  text-decoration: none;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .scheduleSection .saveDateButton:hover {
+    background: #fff;
+    color: var(--charcoal-deep);
+  }
+}
+
+.eventList {
+  display: flex;
+  width: min(100%, 29rem);
+  flex-direction: column;
+  gap: 3rem;
+  margin-top: 6rem;
+}
+
+.eventDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  font-family: var(--font-cabin), sans-serif;
+}
+
+.eventTitle {
+  margin: 0 0 0.625rem;
+  font-family: 'Pinky Vanilla', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 3.75rem;
+}
+
+.eventDateTime,
+.eventLocation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.eventDateTime p,
+.eventLocation p {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.3125rem;
+}
+
+.eventDateTime p:first-child,
+.eventLocation strong {
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.3125rem;
+}
+
+.eventLocation {
+  margin-top: 1.25rem;
+}
+
+.eventLocation p {
+  max-width: 27.125rem;
+}
+
+.scheduleSection .mapButton {
+  width: 5.8125rem;
+  height: 2.75rem;
+  min-height: 0;
+  margin-top: 1.5rem;
+  border-radius: 1.25rem;
+  padding: 0;
+  color: inherit;
+  cursor: pointer;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.75rem;
+  line-height: 0.75rem;
+  text-decoration: none;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .scheduleSection a.mapButton:hover {
+    background: #fff;
+    color: var(--charcoal-deep);
+  }
+}
+
+.dresscodeBlock {
+  display: flex;
+  width: min(100%, 28.5625rem);
+  flex-direction: column;
+  align-items: center;
+  margin-top: 6rem;
+}
+
+.dresscodeText {
+  margin: 0;
+  font-family: var(--font-cabin), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 300;
+  line-height: 1.125rem;
+}
+
+.showcaseTitle {
+  margin: 0;
+  font-family: 'Pinky Vanilla', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 2.5rem;
+}
+
+.swatches {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 2.25rem;
+}
+
+.swatches span {
+  width: 4rem;
+  height: 4rem;
+  border: 2px solid #fff;
+  border-radius: 999px;
+}
+
+.swatchBlack {
+  background: #1e1e1e;
+}
+.swatchGreen {
+  background: #345e37;
+}
+.swatchLightGreen {
+  background: #8fbc8f;
+}

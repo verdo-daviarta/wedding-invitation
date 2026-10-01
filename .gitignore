@@ -40,3 +40,8 @@ next-env.d.ts
 # local video inspection helpers
 /.video-tools/
 /video-frame.jpg
+
+# local migration helpers and old deployment archives
+/.tmp/
+/.local-archive/
+*.tsbuildinfo
