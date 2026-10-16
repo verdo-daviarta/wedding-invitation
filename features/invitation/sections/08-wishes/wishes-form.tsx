@@ -115,10 +115,10 @@ export function WishesForm() {
         </output>
       ) : (
         <form className={styles.wishForm} onSubmit={handleSubmit} noValidate>
-          <p className={styles.formNotice}>
+          {/* <p className={styles.formNotice}>
             Pratinjau: ucapan hanya tersimpan di browser ini. Daftar awal berisi
             contoh ucapan.
-          </p>
+          </p> */}
           <label className={styles.wishField}>
             <span>
               Nama <b>*</b>

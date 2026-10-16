@@ -49,7 +49,7 @@
 
 .saveDateDate {
   margin: 0 0 1rem;
-  font-family: var(--font-cabin), sans-serif;
+  font-family: var(--font-montserrat), sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.3125rem;
@@ -72,14 +72,14 @@
 }
 
 .countdown strong {
-  font-family: var(--font-cabin), sans-serif;
+  font-family: var(--font-montserrat), sans-serif;
   font-size: 1.5rem;
   font-weight: 400;
   line-height: 2.25rem;
 }
 
 .countdown span {
-  font-family: var(--font-cabin), sans-serif;
+  font-family: var(--font-montserrat), sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.3125rem;
@@ -92,7 +92,7 @@
   padding: 0.625rem;
   color: inherit;
   cursor: pointer;
-  font-family: var(--font-cabin), sans-serif;
+  font-family: var(--font-montserrat), sans-serif;
   font-size: 0.75rem;
   font-weight: 500;
   line-height: 0.75rem;
@@ -122,7 +122,7 @@
   flex-direction: column;
   align-items: center;
   color: #fff;
-  font-family: var(--font-cabin), sans-serif;
+  font-family: var(--font-montserrat), sans-serif;
 }
 
 .eventTitle {
@@ -197,7 +197,7 @@
 
 .dresscodeText {
   margin: 0;
-  font-family: var(--font-cabin), sans-serif;
+  font-family: var(--font-montserrat), sans-serif;
   font-size: 0.875rem;
   font-weight: 300;
   line-height: 1.125rem;

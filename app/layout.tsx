@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import { Cabin, Cookie, Inter } from 'next/font/google';
+import { Montserrat, Cookie, Inter } from 'next/font/google';
 import { invitation } from '@/features/invitation/data/wedding';
 import './globals.css';
 
-const cabin = Cabin({
+const montserrat = Montserrat({
   subsets: ['latin'],
-  variable: '--font-cabin',
+  variable: '--font-montserrat',
   display: 'swap',
 });
 const inter = Inter({
@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="id">
       <body
-        className={`${cabin.variable} ${inter.variable} ${cookie.variable}`}
+        className={`${montserrat.variable} ${inter.variable} ${cookie.variable}`}
       >
         {children}
       </body>

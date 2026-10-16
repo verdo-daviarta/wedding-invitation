@@ -168,10 +168,10 @@ export function RsvpForm() {
         </p>
       )}
 
-      <p className={styles.formNotice}>
+      {/* <p className={styles.formNotice}>
         Pratinjau: jawaban belum dikirim ke mempelai dan akan hilang jika
         halaman dimuat ulang.
-      </p>
+      </p> */}
 
       <button className={styles.submitButton} type="submit">
         Kirim Konfirmasi

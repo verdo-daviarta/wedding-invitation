@@ -25,7 +25,7 @@
 .thanksMessage {
   width: min(100%, 32rem);
   margin: 0;
-  font-family: var(--font-cabin), sans-serif;
+  font-family: var(--font-montserrat), sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
