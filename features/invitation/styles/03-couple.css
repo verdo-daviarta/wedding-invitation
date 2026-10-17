@@ -64,10 +64,16 @@
 .personDetails .fullName {
   margin: 0.65rem 0 0.25rem;
   font-family: var(--font-cookie), cursive;
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 400;
   letter-spacing: 0.04em;
   text-transform: none;
+}
+
+.personDetails .familyDetails {
+  white-space: pre-line;
+  text-transform: none;
+  font-size: 0.7rem;
 }
 
 .personDivider {

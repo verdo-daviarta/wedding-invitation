@@ -33,14 +33,16 @@ export const couple = [
     title: 'The Bride',
     name: invitation.bride,
     fullName: 'Carolina Haslita Intan Cahyaningrum, S.M',
-    family: 'Putri dari keluarga tercinta',
+    family:
+      'Putri pertama dari\nBpk. Mayjend TNI (Purn.) Hendrikus Joko R.\n&\nIbu Joelia Eri S. S.E',
     socialHandle: 'intan1210',
   },
   {
     title: 'The Groom',
     name: invitation.groom,
     fullName: 'Benidiktus Verdo Daviarta, S.E, M.Msi',
-    family: 'Putra dari keluarga tercinta',
+    family:
+      'Putra kedua dari\nBpk. Kolonel (purn) Drs. E.C. Lustyo W.\n&\nIbu Dra. Anna Maria E.',
     socialHandle: 'verdo_aseli',
   },
 ] as const;

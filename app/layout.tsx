@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Montserrat, Cookie, Inter } from 'next/font/google';
 import { invitation } from '@/features/invitation/data/wedding';
+import { MusicProvider } from '@/features/invitation/music/music-provider';
 import './globals.css';
 
 const montserrat = Montserrat({
@@ -34,7 +35,7 @@ export default function RootLayout({
       <body
         className={`${montserrat.variable} ${inter.variable} ${cookie.variable}`}
       >
-        {children}
+        <MusicProvider>{children}</MusicProvider>
       </body>
     </html>
   );

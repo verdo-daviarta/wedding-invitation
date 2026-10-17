@@ -33,7 +33,7 @@ export function CoupleSection() {
             <div className={styles.personDetails}>
               <h3>{person.name}</h3>
               <p className={styles.fullName}>({person.fullName})</p>
-              <p>{person.family}</p>
+              <p className={styles.familyDetails}>{person.family}</p>
               <InertButton className={styles.iconButton}>
                 <Heart aria-hidden="true" size={15} />
                 {person.socialHandle}

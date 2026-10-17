@@ -1,4 +1,6 @@
+import Link from 'next/link';
 import { invitation as wedding } from '../invitation/data/wedding';
+import { MusicButton } from '../invitation/music/music-button';
 import styles from './cover.module.css';
 import { ArrowRight } from 'lucide-react';
 
@@ -51,14 +53,13 @@ export function CoverPage() {
 
         <div className={styles['hero-footer']}>
           <GuestGreeting />
-          {/* Full document navigation also works without JavaScript on static hosting. */}
-          {/* oxlint-disable-next-line nextjs/no-html-link-for-pages */}
-          <a className={styles['open-invitation']} href="/undangan">
+          <Link className={styles['open-invitation']} href="/undangan">
             Buka Undangan
             <ArrowRight size={17} aria-hidden="true" />
-          </a>
+          </Link>
         </div>
       </section>
+      <MusicButton />
     </main>
   );
 }
