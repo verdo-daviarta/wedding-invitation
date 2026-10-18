@@ -1,6 +1,5 @@
 import styles from '../../styles/invitation.module.css';
-import { galleryColumns } from '../../data/wedding';
-import { PhotoPlaceholder } from '../../components/photo-placeholder';
+import { galleryColumns } from '../../data/gallery';
 
 export function MomentsSection() {
   return (
@@ -22,16 +21,19 @@ export function MomentsSection() {
       <div className={styles.gallery}>
         {galleryColumns.map((column, columnIndex) => (
           <div className={styles.galleryColumn} key={columnIndex}>
-            {column.map(([number, orientation]) => (
-              <PhotoPlaceholder
-                className={`${styles.galleryItem} ${
-                  orientation === 'portrait'
-                    ? styles.galleryPortrait
-                    : styles.galleryLandscape
-                }`}
-                label={`Momen ${number}`}
-                key={number}
-              />
+            {column.map((photo) => (
+              <figure className={styles.galleryItem} key={photo.file}>
+                <img
+                  src={`/images/prewed/${photo.file}-720.webp`}
+                  srcSet={`/images/prewed/${photo.file}-360.webp 360w, /images/prewed/${photo.file}-720.webp 720w`}
+                  sizes="(max-width: 30rem) calc(50vw - 1.3125rem), 14rem"
+                  width={photo.width}
+                  height={photo.height}
+                  alt={photo.alt}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
             ))}
           </div>
         ))}

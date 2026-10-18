@@ -101,20 +101,3 @@ export const story = [
     text: 'Kini, perjalanan itu membawa kami pada langkah baru yang lebih berarti: menjadi dua jiwa yang bersatu dalam satu janji suci.',
   },
 ];
-
-export const galleryColumns = [
-  [
-    [1, 'portrait'],
-    [5, 'landscape'],
-    [6, 'landscape'],
-    [7, 'portrait'],
-    [10, 'landscape'],
-  ],
-  [
-    [2, 'landscape'],
-    [3, 'landscape'],
-    [4, 'portrait'],
-    [8, 'landscape'],
-    [9, 'portrait'],
-  ],
-] as const;

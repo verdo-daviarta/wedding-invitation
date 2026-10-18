@@ -57,18 +57,19 @@ docs/audit.md                Audit dan pekerjaan sebelum go-live
 
 ## Lokasi perubahan
 
-| Kebutuhan                               | File/folder                                                   |
-| --------------------------------------- | ------------------------------------------------------------- |
-| Nama, tanggal, tempat, cerita, rekening | `features/invitation/data/wedding.ts`                         |
-| Urutan section                          | `features/invitation/invitation-page.tsx`                     |
-| Menu dan label                          | `features/invitation/navigation/invitation-menu.tsx`          |
-| Cover                                   | `features/cover/cover.module.css`                             |
-| Ukuran nama di kanan                    | `features/invitation/styles/01-opening.css` → `.coupleLockup` |
-| Foto/detail mempelai                    | `features/invitation/styles/03-couple.css`                    |
-| Kartu cerita                            | `features/invitation/styles/04-journey.css`                   |
-| RSVP dan ucapan                         | `features/invitation/sections/07-rsvp` dan `08-wishes`        |
-| Musik dan volume                        | `features/invitation/data/music.ts`                           |
-| Responsif/animasi bersama               | `features/invitation/styles/11-motion-responsive.css`         |
+| Kebutuhan                               | File/folder                                                      |
+| --------------------------------------- | ---------------------------------------------------------------- |
+| Nama, tanggal, tempat, cerita, rekening | `features/invitation/data/wedding.ts`                            |
+| Urutan section                          | `features/invitation/invitation-page.tsx`                        |
+| Menu dan label                          | `features/invitation/navigation/invitation-menu.tsx`             |
+| Cover                                   | `features/cover/cover.module.css`                                |
+| Ukuran nama di kanan                    | `features/invitation/styles/01-opening.css` → `.coupleLockup`    |
+| Foto/detail mempelai                    | `features/invitation/styles/03-couple.css`                       |
+| Kartu cerita                            | `features/invitation/styles/04-journey.css`                      |
+| Foto Our Moment                         | `features/invitation/data/gallery.ts` dan `public/images/prewed` |
+| RSVP dan ucapan                         | `features/invitation/sections/07-rsvp` dan `08-wishes`           |
+| Musik dan volume                        | `features/invitation/data/music.ts`                              |
+| Responsif/animasi bersama               | `features/invitation/styles/11-motion-responsive.css`            |
 
 CSS section diimpor melalui **satu** `invitation.module.css`. Vite menggabungkan `@import` sebelum CSS Modules memberi scope, sehingga selector lintas-section konsisten. Jangan mengimpor partial CSS langsung dari komponen. Warna undangan berada di `styles/00-base.css`; cover memakai `app/globals.css`.
 
@@ -84,6 +85,8 @@ CSS section diimpor melalui **satu** `invitation.module.css`. Vite menggabungkan
 ## Aset dan hosting
 
 `public/audio`, `public/fonts`, `public/images`, dan `public/placeholders` berisi aset aktif. Video, kelopak, dan `public/journey` adalah aset desain lama yang tetap disimpan, tidak dimuat halaman sekarang. `images/` lokal berisi desain sumber, bukan URL publik.
+
+Foto asli Our Moment berada di `images/Prewed`. Galeri memuat salinan WebP di `public/images/prewed` dengan dua ukuran (360 dan 720 piksel); browser memilih ukuran sesuai layar. Susunan dua kolom, teks alternatif, dan dimensi foto diatur di `data/gallery.ts`. Tinggi foto mengikuti rasio aslinya sehingga seluruh frame tetap terlihat.
 
 Arsip deployment lama disimpan di `.local-archive/deployments/`, di luar pelacakan Git. `.tmp`, `node_modules`, `.wrangler`, `.vinext`, `.next`, dan `dist` bukan source code. Jangan commit cache, hasil build, atau `.env`.
 
