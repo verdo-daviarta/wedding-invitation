@@ -11,7 +11,7 @@ npm.cmd ci
 npm.cmd run dev
 ```
 
-Buka URL **Local** yang tercetak di terminal. Port awal 3000, atau port berikutnya jika terpakai. Di macOS/Linux gunakan `npm` tanpa `.cmd`.
+Buka **http://127.0.0.1:3001** atau **http://localhost:3001**. Server memakai alamat IPv4 secara eksplisit agar kedua URL membuka aplikasi yang sama. Port 3001 dipilih karena port 3000 dipakai aplikasi lain di komputer pengembangan. Jika port 3001 terpakai, ikuti URL **Local** yang tercetak di terminal. Di macOS/Linux gunakan `npm` tanpa `.cmd`.
 
 ```powershell
 npm.cmd run check    # TypeScript, lint, unit test, format
@@ -86,9 +86,11 @@ CSS section diimpor melalui **satu** `invitation.module.css`. Vite menggabungkan
 
 `public/audio`, `public/fonts`, `public/images`, dan `public/placeholders` berisi aset aktif. Video, kelopak, dan `public/journey` adalah aset desain lama yang tetap disimpan, tidak dimuat halaman sekarang. `images/` lokal berisi desain sumber, bukan URL publik.
 
-Foto asli Our Moment berada di `images/Prewed`. Galeri memuat salinan WebP di `public/images/prewed` dengan dua ukuran (360 dan 720 piksel); browser memilih ukuran sesuai layar dan zoom. Susunan dua kolom, teks alternatif, dimensi, dan titik fokus foto diatur di `data/gallery.ts`. Ukuran bingkai mengikuti rasio asli, sedangkan isinya di-zoom agar subjek lebih jelas. Atur `focus.x` dan `focus.y` (0–100 persen) untuk jangkar zoom, serta `focus.zoom` (`1` untuk frame utuh, lebih besar untuk mendekatkan subjek). Nilai ini ditentukan per foto, bukan deteksi objek otomatis. CSS `overflow: hidden` membatasi crop di dalam bingkai; file gambar asli tidak diubah.
+Foto asli Our Moment berada di `images/Prewed`. Galeri memuat salinan WebP di `public/images/prewed` dengan thumbnail 360 dan 720 piksel; browser memilih ukuran sesuai layar dan zoom. Versi `-large.webp` untuk lightbox memiliki sisi terpanjang hingga 1920 piksel dan hanya dimuat saat foto dibuka. Urutan foto, teks alternatif, dimensi, dan titik fokus foto diatur di `data/gallery.ts`. Galeri menyusun dua foto per baris dengan tinggi sejajar dan lebar sesuai rasio masing-masing, dengan jarak horizontal dan vertikal yang sama (6-10 piksel mengikuti layar). Jarak ini diatur melalui `--gallery-gap` di `styles/06-moments.css`. Ukuran bingkai mengikuti rasio asli, sedangkan isinya di-zoom agar subjek lebih jelas. Atur `focus.x` dan `focus.y` (0–100 persen) untuk jangkar zoom, serta `focus.zoom` (`1` untuk frame utuh, lebih besar untuk mendekatkan subjek). Nilai ini ditentukan per foto, bukan deteksi objek otomatis. CSS `overflow: hidden` membatasi crop di dalam bingkai; file gambar asli tidak diubah.
 
-Klik foto Our Moment untuk memperbesar foto tersebut langsung di grid hingga selebar dua kolom, tanpa panel tambahan. Foto terpilih menampilkan frame utuh dengan `object-fit: contain` dan tinggi maksimum `min(60svh, 32rem)`. Klik ulang atau tekan `Escape` pada foto untuk mengembalikannya ke thumbnail; memilih foto lain memulihkan foto sebelumnya. Urutan kiri/kanan dari `galleryColumns` dipertahankan sebagai urutan baris di grid. Interaksi diatur di `sections/06-moments/moment-gallery.tsx`; ukuran foto di `styles/06-moments.css`.
+Klik foto Our Moment untuk membuka lightbox dengan foto utuh, overlay gelap 80%, dan blur tipis. Tombol panah, tombol keyboard kiri/kanan, serta geser horizontal pada ponsel berpindah foto dan berulang dari akhir ke awal. Tutup dengan tombol silang, Escape, atau klik area overlay. Dialog native menjaga fokus keyboard, mengunci scroll halaman selama terbuka, lalu mengembalikan fokus dan posisi halaman ketika ditutup. Transisi 200 ms mengikuti preferensi reduced motion. Foto besar yang gagal dimuat memakai thumbnail 720 piksel sebagai cadangan. Galeri di belakang tetap dalam susunan yang sama.
+
+Urutan `galleryPhotos` diacak satu kali saat foto disiapkan dan tetap stabil selama interaksi. Properti `source` mencatat foto asli; nama aset WebP memuat hash konten agar foto yang diperbarui tidak tertukar dengan cache lama. `large.width` dan `large.height` mencatat dimensi foto lightbox. Komponen dan gaya lightbox berada di `sections/06-moments/moment-lightbox.tsx` serta `moment-lightbox.module.css`; susunan thumbnail berada di `moment-gallery.tsx` dan `styles/06-moments.css`.
 
 Arsip deployment lama disimpan di `.local-archive/deployments/`, di luar pelacakan Git. `.tmp`, `node_modules`, `.wrangler`, `.vinext`, `.next`, dan `dist` bukan source code. Jangan commit cache, hasil build, atau `.env`.
 

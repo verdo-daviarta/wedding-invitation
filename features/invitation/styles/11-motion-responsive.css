@@ -106,10 +106,6 @@
   .section {
     padding-inline: 1rem;
   }
-
-  .gallery {
-    gap: 0.625rem;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

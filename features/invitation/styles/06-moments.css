@@ -27,46 +27,45 @@
 }
 
 .gallery {
-  display: grid;
+  --gallery-gap: clamp(0.375rem, 1.5vw, 0.625rem);
+  display: flex;
   width: min(100%, 27.6875rem);
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: start;
-  gap: 0.5rem;
+  flex-direction: column;
+  gap: var(--gallery-gap);
   margin-top: 1.5rem;
   margin-inline: auto;
+  overflow: hidden;
+  border-radius: 0.375rem;
+}
+
+.galleryRow {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+  gap: var(--gallery-gap);
 }
 
 .galleryItem {
-  width: 100%;
+  flex-basis: 0;
+  min-width: 0;
   min-height: 0;
   margin: 0;
   overflow: hidden;
   border-radius: 0.375rem;
   background: var(--charcoal-deep);
-  box-shadow:
-    0 0 0 1px rgb(255 255 255 / 0.08),
-    0 0.25rem 0.75rem rgb(0 0 0 / 0.1);
 }
 
 .galleryItem img {
   display: block;
   width: 100%;
-  height: auto;
-}
-
-.galleryItem[data-expanded='true'] {
-  grid-column: 1 / -1;
-  scroll-margin-block: 1rem;
-}
-
-.galleryItem[data-expanded='true'] img {
-  max-height: min(60svh, 32rem);
-  object-fit: contain;
+  height: 100%;
+  object-fit: cover;
 }
 
 .galleryPhotoButton {
   display: block;
   width: 100%;
+  height: 100%;
   overflow: hidden;
   border: 0;
   border-radius: inherit;
@@ -78,8 +77,4 @@
 .galleryPhotoButton:focus-visible {
   outline: 3px solid var(--accent);
   outline-offset: -3px;
-}
-
-.galleryPhotoButton[aria-pressed='true'] {
-  cursor: zoom-out;
 }

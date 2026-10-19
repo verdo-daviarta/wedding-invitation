@@ -1,75 +1,68 @@
-'use client';
+﻿'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import { galleryColumns } from '../../data/gallery';
+import { useState } from 'react';
+import { galleryPhotos } from '../../data/gallery';
 import styles from '../../styles/invitation.module.css';
+import { MomentLightbox } from './moment-lightbox';
 
-// Preserve the mixed left/right sequence when rendering the expandable grid.
-const galleryPhotos = Array.from(
-  { length: Math.max(...galleryColumns.map((column) => column.length)) },
-  (_, row) =>
-    galleryColumns.flatMap((column) => (column[row] ? [column[row]] : [])),
-).flat();
+// Pair photos into justified rows without changing their saved order.
+const galleryRows = Array.from(
+  { length: Math.ceil(galleryPhotos.length / 2) },
+  (_, index) => galleryPhotos.slice(index * 2, index * 2 + 2),
+);
 
 export function MomentGallery() {
-  const [selectedFile, setSelectedFile] = useState<string | null>(null);
-  const expandedButtonRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    if (selectedFile) {
-      expandedButtonRef.current?.scrollIntoView({ block: 'nearest' });
-    }
-  }, [selectedFile]);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   return (
-    <div className={styles.gallery}>
-      {galleryPhotos.map((photo) => {
-        const isExpanded = selectedFile === photo.file;
-        return (
-          <figure
-            className={styles.galleryItem}
-            data-expanded={isExpanded}
-            key={photo.file}
-          >
-            <button
-              className={styles.galleryPhotoButton}
-              type="button"
-              ref={isExpanded ? expandedButtonRef : undefined}
-              aria-label={`${isExpanded ? 'Kecilkan' : 'Perbesar'} foto: ${photo.alt}`}
-              aria-pressed={isExpanded}
-              onClick={() => {
-                setSelectedFile((current) =>
-                  current === photo.file ? null : photo.file,
-                );
-              }}
-              onKeyDown={(event) => {
-                if (event.key === 'Escape') setSelectedFile(null);
-              }}
-            >
-              {/* WebP variants are pre-generated; sizes accounts for crop zoom. */}
-              {/* oxlint-disable-next-line nextjs/no-img-element */}
-              <img
-                src={`/images/prewed/${photo.file}-720.webp`}
-                srcSet={`/images/prewed/${photo.file}-360.webp 360w, /images/prewed/${photo.file}-720.webp 720w`}
-                sizes={
-                  isExpanded
-                    ? '(max-width: 30rem) calc(100vw - 2rem), 28rem'
-                    : `(max-width: 30rem) calc(${50 * photo.focus.zoom}vw - ${1.3125 * photo.focus.zoom}rem), ${14 * photo.focus.zoom}rem`
-                }
-                width={photo.width}
-                height={photo.height}
-                alt={photo.alt}
+    <>
+      <div className={styles.gallery}>
+        {galleryRows.map((row, rowIndex) => (
+          <div className={styles.galleryRow} key={row[0].file}>
+            {row.map((photo, columnIndex) => (
+              <figure
+                className={styles.galleryItem}
+                key={photo.file}
                 style={{
-                  transform: isExpanded ? 'none' : `scale(${photo.focus.zoom})`,
-                  transformOrigin: `${photo.focus.x}% ${photo.focus.y}%`,
+                  flexGrow: row.length === 1 ? 1 : photo.width / photo.height,
+                  aspectRatio: `${photo.width} / ${photo.height}`,
                 }}
-                loading="lazy"
-                decoding="async"
-              />
-            </button>
-          </figure>
-        );
-      })}
-    </div>
+              >
+                <button
+                  className={styles.galleryPhotoButton}
+                  type="button"
+                  aria-label={`Perbesar foto: ${photo.alt}`}
+                  aria-haspopup="dialog"
+                  onClick={() => setSelectedIndex(rowIndex * 2 + columnIndex)}
+                >
+                  {/* WebP variants are pre-generated; sizes accounts for crop zoom. */}
+                  {/* oxlint-disable-next-line nextjs/no-img-element */}
+                  <img
+                    src={`/images/prewed/${photo.file}-720.webp`}
+                    srcSet={`/images/prewed/${photo.file}-360.webp 360w, /images/prewed/${photo.file}-720.webp 720w`}
+                    sizes={`(max-width: 30rem) calc(${100 * photo.focus.zoom}vw - ${2 * photo.focus.zoom}rem), ${28 * photo.focus.zoom}rem`}
+                    width={photo.width}
+                    height={photo.height}
+                    alt={photo.alt}
+                    style={{
+                      transform: `scale(${photo.focus.zoom})`,
+                      transformOrigin: `${photo.focus.x}% ${photo.focus.y}%`,
+                    }}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </button>
+              </figure>
+            ))}
+          </div>
+        ))}
+      </div>
+      {selectedIndex !== null && (
+        <MomentLightbox
+          initialIndex={selectedIndex}
+          onClose={() => setSelectedIndex(null)}
+        />
+      )}
+    </>
   );
 }
