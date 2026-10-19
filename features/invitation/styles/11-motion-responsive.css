@@ -107,8 +107,7 @@
     padding-inline: 1rem;
   }
 
-  .gallery,
-  .galleryColumn {
+  .gallery {
     gap: 0.625rem;
   }
 }

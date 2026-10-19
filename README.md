@@ -86,7 +86,9 @@ CSS section diimpor melalui **satu** `invitation.module.css`. Vite menggabungkan
 
 `public/audio`, `public/fonts`, `public/images`, dan `public/placeholders` berisi aset aktif. Video, kelopak, dan `public/journey` adalah aset desain lama yang tetap disimpan, tidak dimuat halaman sekarang. `images/` lokal berisi desain sumber, bukan URL publik.
 
-Foto asli Our Moment berada di `images/Prewed`. Galeri memuat salinan WebP di `public/images/prewed` dengan dua ukuran (360 dan 720 piksel); browser memilih ukuran sesuai layar. Susunan dua kolom, teks alternatif, dan dimensi foto diatur di `data/gallery.ts`. Tinggi foto mengikuti rasio aslinya sehingga seluruh frame tetap terlihat.
+Foto asli Our Moment berada di `images/Prewed`. Galeri memuat salinan WebP di `public/images/prewed` dengan dua ukuran (360 dan 720 piksel); browser memilih ukuran sesuai layar dan zoom. Susunan dua kolom, teks alternatif, dimensi, dan titik fokus foto diatur di `data/gallery.ts`. Ukuran bingkai mengikuti rasio asli, sedangkan isinya di-zoom agar subjek lebih jelas. Atur `focus.x` dan `focus.y` (0–100 persen) untuk jangkar zoom, serta `focus.zoom` (`1` untuk frame utuh, lebih besar untuk mendekatkan subjek). Nilai ini ditentukan per foto, bukan deteksi objek otomatis. CSS `overflow: hidden` membatasi crop di dalam bingkai; file gambar asli tidak diubah.
+
+Klik foto Our Moment untuk memperbesar foto tersebut langsung di grid hingga selebar dua kolom, tanpa panel tambahan. Foto terpilih menampilkan frame utuh dengan `object-fit: contain` dan tinggi maksimum `min(60svh, 32rem)`. Klik ulang atau tekan `Escape` pada foto untuk mengembalikannya ke thumbnail; memilih foto lain memulihkan foto sebelumnya. Urutan kiri/kanan dari `galleryColumns` dipertahankan sebagai urutan baris di grid. Interaksi diatur di `sections/06-moments/moment-gallery.tsx`; ukuran foto di `styles/06-moments.css`.
 
 Arsip deployment lama disimpan di `.local-archive/deployments/`, di luar pelacakan Git. `.tmp`, `node_modules`, `.wrangler`, `.vinext`, `.next`, dan `dist` bukan source code. Jangan commit cache, hasil build, atau `.env`.
 
