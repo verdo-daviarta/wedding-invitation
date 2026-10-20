@@ -141,6 +141,6 @@
 }
 
 .open-invitation:focus-visible {
-  outline: 2px solid #7da9c4;
+  outline: 2px solid var(--accent);
   outline-offset: 4px;
 }

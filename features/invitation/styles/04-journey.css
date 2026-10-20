@@ -5,7 +5,11 @@
   gap: clamp(2.5rem, 8vw, 4rem);
   padding-block: clamp(5rem, 12vw, 7rem);
   background:
-    radial-gradient(circle at 50% 0%, rgb(125 169 196 / 0.13), transparent 38%),
+    radial-gradient(
+      circle at 50% 0%,
+      rgb(var(--accent-rgb) / 0.13),
+      transparent 38%
+    ),
     #e7e1d9;
   color: var(--ink);
   text-align: left;

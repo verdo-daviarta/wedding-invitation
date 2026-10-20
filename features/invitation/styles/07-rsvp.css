@@ -4,7 +4,11 @@
   justify-content: flex-start;
   padding: clamp(4.5rem, 12vw, 6.5rem) clamp(1rem, 6vw, 2.5rem);
   background:
-    radial-gradient(circle at 50% 0%, rgb(125 169 196 / 0.22), transparent 38%),
+    radial-gradient(
+      circle at 50% 0%,
+      rgb(var(--accent-rgb) / 0.22),
+      transparent 38%
+    ),
     var(--charcoal);
   text-align: left;
 }
@@ -127,7 +131,7 @@
 .formField > textarea:focus {
   border-color: var(--accent);
   background: rgb(255 255 255 / 0.15);
-  box-shadow: 0 0 0 3px rgb(125 169 196 / 0.18);
+  box-shadow: 0 0 0 3px rgb(var(--accent-rgb) / 0.18);
 }
 
 .formField > textarea {
@@ -176,7 +180,7 @@
 .guestSelectButton:focus-visible {
   border-color: var(--accent);
   background: rgb(255 255 255 / 0.15);
-  box-shadow: 0 0 0 3px rgb(125 169 196 / 0.18);
+  box-shadow: 0 0 0 3px rgb(var(--accent-rgb) / 0.18);
 }
 
 .selectChevron {
@@ -246,7 +250,7 @@
 
 .guestSelectOption[data-selected='true'] {
   background: var(--accent);
-  color: var(--ink);
+  color: var(--on-accent);
   font-weight: 600;
 }
 
@@ -272,7 +276,7 @@
   flex: 0 0 1.1rem;
   place-items: center;
   margin-top: 0.05rem;
-  border: 1px solid rgb(125 169 196 / 0.62);
+  border: 1px solid rgb(var(--accent-rgb) / 0.62);
   border-radius: 50%;
   color: var(--accent);
   font-size: 0.65rem;
@@ -346,7 +350,7 @@
 .attendanceOption input:checked + span {
   border-color: var(--accent);
   background: var(--accent);
-  color: var(--ink);
+  color: var(--on-accent);
   box-shadow: 0 0.65rem 1.5rem rgb(0 0 0 / 0.14);
 }
 
@@ -376,7 +380,7 @@
   border-radius: 999px;
   padding: 0.75rem 1.25rem;
   background: var(--accent);
-  color: var(--ink);
+  color: var(--on-accent);
   cursor: pointer;
   font-family: var(--font-montserrat), sans-serif;
   font-size: 0.875rem;
@@ -407,7 +411,7 @@
   border: 1px solid rgb(255 255 255 / 0.4);
   border-radius: 50%;
   background: var(--accent);
-  color: var(--ink);
+  color: var(--on-accent);
   font-size: 1.5rem;
 }
 
@@ -456,7 +460,7 @@
 
 @media (hover: hover) and (pointer: fine) {
   .selectShell:hover .guestSelectButton {
-    border-color: rgb(125 169 196 / 0.7);
+    border-color: rgb(var(--accent-rgb) / 0.7);
     background: rgb(255 255 255 / 0.15);
   }
 
@@ -467,11 +471,11 @@
 
   .guestSelectOption[data-selected='true']:hover {
     background: var(--accent);
-    color: var(--ink);
+    color: var(--on-accent);
   }
 
   .attendanceOption:hover span {
-    border-color: rgb(125 169 196 / 0.7);
+    border-color: rgb(var(--accent-rgb) / 0.7);
     transform: translateY(-1px);
   }
 

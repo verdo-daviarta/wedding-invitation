@@ -9,6 +9,9 @@
 }
 
 :root {
+  --accent: #996633;
+  --accent-rgb: 153 102 51;
+  --on-accent: #fff;
   --color-background: #333537;
   --color-text: #fff;
 }

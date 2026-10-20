@@ -71,7 +71,7 @@ docs/audit.md                Audit dan pekerjaan sebelum go-live
 | Musik dan volume                        | `features/invitation/data/music.ts`                              |
 | Responsif/animasi bersama               | `features/invitation/styles/11-motion-responsive.css`            |
 
-CSS section diimpor melalui **satu** `invitation.module.css`. Vite menggabungkan `@import` sebelum CSS Modules memberi scope, sehingga selector lintas-section konsisten. Jangan mengimpor partial CSS langsung dari komponen. Warna undangan berada di `styles/00-base.css`; cover memakai `app/globals.css`.
+CSS section diimpor melalui **satu** `invitation.module.css`. Vite menggabungkan `@import` sebelum CSS Modules memberi scope, sehingga selector lintas-section konsisten. Jangan mengimpor partial CSS langsung dari komponen. Aksen tema diatur secara global di `app/globals.css`: `--accent: #996633`, `--accent-rgb: 153 102 51` untuk efek transparan, dan `--on-accent` untuk teks di atas latar aksen. Palet latar undangan berada di `styles/00-base.css`.
 
 ## Status fitur
 

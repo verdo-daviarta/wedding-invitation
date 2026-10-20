@@ -26,10 +26,30 @@ export function CoupleSection() {
           )}
           <article className={styles.personCard}>
             <ScriptTitle>{person.title}</ScriptTitle>
-            <PhotoPlaceholder
-              label={`Foto ${person.name}`}
-              className={styles.portrait}
-            />
+            {person.photo ? (
+              <div className={`${styles.portrait} ${styles.portraitPhoto}`}>
+                {/* Optimized locally; focal point and zoom frame the portrait. */}
+                {/* oxlint-disable-next-line nextjs/no-img-element */}
+                <img
+                  src={person.photo.src}
+                  width={person.photo.width}
+                  height={person.photo.height}
+                  alt={`Potret ${person.name}`}
+                  loading="lazy"
+                  decoding="async"
+                  style={{
+                    objectPosition: person.photo.position,
+                    transform: `scale(${person.photo.zoom})`,
+                    transformOrigin: person.photo.position,
+                  }}
+                />
+              </div>
+            ) : (
+              <PhotoPlaceholder
+                label={`Foto ${person.name}`}
+                className={styles.portrait}
+              />
+            )}
             <div className={styles.personDetails}>
               <h3>{person.name}</h3>
               <p className={styles.fullName}>({person.fullName})</p>

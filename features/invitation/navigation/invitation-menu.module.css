@@ -13,7 +13,7 @@
   width: 2.75rem;
   height: 2.75rem;
   padding: 0;
-  border: 1px solid rgb(125 169 196 / 0.45);
+  border: 1px solid rgb(var(--accent-rgb) / 0.45);
   border-radius: 50%;
   background: rgb(14 15 18 / 0.88);
   color: inherit;
@@ -37,7 +37,7 @@
   width: 1.125rem;
   height: 1.5px;
   border-radius: 2px;
-  background: #7da9c4;
+  background: var(--accent);
   transition:
     transform 250ms ease,
     width 250ms ease;
@@ -69,12 +69,16 @@
   overflow-y: auto;
   overscroll-behavior: contain;
   scrollbar-width: thin;
-  scrollbar-color: #7da9c4 transparent;
+  scrollbar-color: var(--accent) transparent;
   border: 1px solid rgb(216 214 212 / 0.22);
   border-radius: 1rem;
   padding: 0.5rem;
   background:
-    linear-gradient(145deg, rgb(125 169 196 / 0.16), rgb(14 15 18 / 0.12)),
+    linear-gradient(
+      145deg,
+      rgb(var(--accent-rgb) / 0.16),
+      rgb(14 15 18 / 0.12)
+    ),
     rgb(14 15 18 / 0.72);
   box-shadow:
     0 0.75rem 2rem rgb(0 0 0 / 0.2),
@@ -124,23 +128,23 @@
 }
 
 .links a[aria-current] {
-  color: #7da9c4;
-  background: rgb(125 169 196 / 0.12);
+  color: var(--accent);
+  background: rgb(var(--accent-rgb) / 0.12);
 }
 .trigger:focus-visible,
 .links a:focus-visible {
-  outline: 2px solid #7da9c4;
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .trigger:hover {
     background: #303234;
-    border-color: #7da9c4;
+    border-color: var(--accent);
   }
   .links a:hover {
-    background: rgb(125 169 196 / 0.12);
-    border-color: rgb(125 169 196 / 0.25);
+    background: rgb(var(--accent-rgb) / 0.12);
+    border-color: rgb(var(--accent-rgb) / 0.25);
   }
 }
 

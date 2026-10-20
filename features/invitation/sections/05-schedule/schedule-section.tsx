@@ -12,16 +12,16 @@ export function ScheduleSection() {
       className={`${styles.section} ${styles.scheduleSection}`}
     >
       <div className={styles.saveDateContent} data-scroll-reveal>
-        {/* Native static asset: reserve dimensions and defer off-screen decoding. */}
+        {/* Optimized static photo; CSS frames the couple inside the circle. */}
         {/* oxlint-disable-next-line nextjs/no-img-element */}
         <img
-          width={400}
-          height={400}
+          width={900}
+          height={678}
           loading="lazy"
           decoding="async"
           className={styles.saveDateImage}
-          src="/placeholders/save-the-date.png"
-          alt="Placeholder foto pasangan"
+          src="/images/save-the-date/couple.webp"
+          alt="Verdo dan Intan bergandengan tangan di bawah pepohonan"
         />
         <h2 className={styles.saveDateTitle} id="save-the-date-title">
           Save The Date

@@ -6,7 +6,7 @@
   background:
     radial-gradient(
       circle at 50% 100%,
-      rgb(125 169 196 / 0.14),
+      rgb(var(--accent-rgb) / 0.14),
       transparent 34%
     ),
     var(--charcoal);
@@ -95,7 +95,7 @@
 .wishField textarea:focus {
   border-color: var(--accent);
   background: rgb(255 255 255 / 0.13);
-  box-shadow: 0 0 0 3px rgb(125 169 196 / 0.16);
+  box-shadow: 0 0 0 3px rgb(var(--accent-rgb) / 0.16);
 }
 
 .wishField small {
@@ -156,7 +156,7 @@
   border-radius: 999px;
   padding: 0.75rem 1.25rem;
   background: var(--accent);
-  color: var(--ink);
+  color: var(--on-accent);
   cursor: pointer;
   font-family: var(--font-montserrat), sans-serif;
   font-size: 0.875rem;
@@ -227,9 +227,9 @@
   height: 1.85rem;
   flex: 0 0 1.85rem;
   place-items: center;
-  border: 1px solid rgb(125 169 196 / 0.64);
+  border: 1px solid rgb(var(--accent-rgb) / 0.64);
   border-radius: 50%;
-  background: rgb(125 169 196 / 0.15);
+  background: rgb(var(--accent-rgb) / 0.15);
   color: var(--accent);
   font-family: var(--font-montserrat), sans-serif;
   font-size: 0.72rem;
@@ -271,10 +271,10 @@
   height: 2.75rem;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgb(125 169 196 / 0.34);
+  border: 1px solid rgb(var(--accent-rgb) / 0.34);
   border-radius: 999px;
   padding: 0;
-  background: rgb(125 169 196 / 0.08);
+  background: rgb(var(--accent-rgb) / 0.08);
   color: var(--accent);
   cursor: pointer;
   transition:
@@ -287,7 +287,7 @@
 .wishLikeButton[data-liked='true'] {
   border-color: var(--accent);
   background: var(--accent);
-  color: var(--ink);
+  color: var(--on-accent);
 }
 
 .wishLikeButton[data-liked='true'] svg {

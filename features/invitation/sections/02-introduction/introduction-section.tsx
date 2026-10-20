@@ -8,11 +8,13 @@ export function IntroductionSection() {
       tabIndex={-1}
     >
       <p className={styles.quote}>
-        “Ini enaknya di isi pake
+        “Demikianlah mereka bukan lagi dua,        
         <br />
-        Quotes apa yang
+        melainkan satu.
         <br />
-        sekiranya bagus gitu..”
+        Karena itu, apa yang dipersatukan Allah, 
+        <br />
+        tidak boleh diceraikan manusia.”
       </p>
     </section>
   );

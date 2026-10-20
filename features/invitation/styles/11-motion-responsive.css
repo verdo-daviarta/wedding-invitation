@@ -29,12 +29,12 @@
   }
 
   .bankList .copyButton[data-copy-state='copied']:hover {
-    color: var(--ink);
+    color: var(--on-accent);
   }
 
   .wishLikeButton:hover {
     border-color: var(--accent);
-    background: rgb(125 169 196 / 0.18);
+    background: rgb(var(--accent-rgb) / 0.18);
     transform: scale(1.05);
   }
 
@@ -56,16 +56,16 @@
   }
 
   .wishList article:hover {
-    border-color: rgb(125 169 196 / 0.45);
+    border-color: rgb(var(--accent-rgb) / 0.45);
     background: rgb(255 255 255 / 0.1);
     transform: translateY(-1px);
   }
 
   .storyItem:hover {
-    border-color: rgb(125 169 196 / 0.52);
+    border-color: rgb(var(--accent-rgb) / 0.52);
     box-shadow:
       0 1.35rem 2.8rem rgb(54 44 36 / 0.12),
-      0 0 0 1px rgb(125 169 196 / 0.08),
+      0 0 0 1px rgb(var(--accent-rgb) / 0.08),
       inset 0 1px 0 rgb(255 255 255 / 0.88);
   }
 }
@@ -83,7 +83,19 @@
     height: 100svh;
     align-items: flex-end;
     padding: clamp(2rem, 4vw, 4rem);
-    background: var(--ink);
+    background-color: var(--ink);
+    background-image:
+      linear-gradient(
+        180deg,
+        rgb(14 15 18 / 0.08) 35%,
+        rgb(14 15 18 / 0.28) 60%,
+        rgb(14 15 18 / 0.88) 100%
+      ),
+      url('/images/backgrounds/identity-panel.webp');
+    /* Keep the couple in frame as the panel's proportions change. */
+    background-position: 56% center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   .identityCopy {

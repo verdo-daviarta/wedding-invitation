@@ -37,6 +37,8 @@
   margin: 0 0 1rem;
   border-radius: 50%;
   object-fit: cover;
+  /* Keep both faces inside the circular crop, away from the tree on the left. */
+  object-position: 100% center;
 }
 
 .saveDateTitle {

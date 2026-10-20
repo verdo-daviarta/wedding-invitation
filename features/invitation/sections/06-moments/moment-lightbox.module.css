@@ -39,7 +39,7 @@
 }
 .control,
 .counter {
-  border: 1px solid rgb(125 169 196 / 0.45);
+  border: 1px solid rgb(var(--accent-rgb) / 0.45);
   background: rgb(14 15 18 / 0.6);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -52,14 +52,14 @@
   place-items: center;
   padding: 0;
   border-radius: 50%;
-  color: #7da9c4;
+  color: var(--accent);
   cursor: pointer;
   transition:
     background-color 180ms ease,
     border-color 180ms ease;
 }
 .control:focus-visible {
-  outline: 2px solid #7da9c4;
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
 .counter {
@@ -115,7 +115,7 @@
   pointer-events: none;
 }
 .loading {
-  color: #7da9c4;
+  color: var(--accent);
 }
 .loading svg {
   animation: lightboxSpin 1s linear infinite;
@@ -158,8 +158,8 @@
 }
 @media (hover: hover) and (pointer: fine) {
   .control:hover {
-    border-color: #7da9c4;
-    background: rgb(125 169 196 / 0.16);
+    border-color: var(--accent);
+    background: rgb(var(--accent-rgb) / 0.16);
   }
 }
 @keyframes lightboxFade {

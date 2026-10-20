@@ -11,10 +11,10 @@
   width: 2.75rem;
   height: 2.75rem;
   padding: 0;
-  border: 1px solid rgb(125 169 196 / 0.45);
+  border: 1px solid rgb(var(--accent-rgb) / 0.45);
   border-radius: 50%;
   background: rgb(14 15 18 / 0.88);
-  color: #7da9c4;
+  color: var(--accent);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   cursor: pointer;
@@ -24,14 +24,17 @@
 }
 
 .musicButton[aria-pressed='true'] {
-  border-color: #7da9c4;
+  border-color: var(--accent);
   background:
-    linear-gradient(rgb(125 169 196 / 0.16), rgb(125 169 196 / 0.16)),
+    linear-gradient(
+      rgb(var(--accent-rgb) / 0.16),
+      rgb(var(--accent-rgb) / 0.16)
+    ),
     rgb(14 15 18 / 0.88);
 }
 
 .musicButton:focus-visible {
-  outline: 2px solid #7da9c4;
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
 .musicButton[aria-disabled='true'] {
@@ -47,7 +50,7 @@
   bottom: calc(100% + 0.75rem);
   width: min(15rem, calc(100vw - 2.5rem));
   padding: 0.75rem;
-  border: 1px solid rgb(125 169 196 / 0.3);
+  border: 1px solid rgb(var(--accent-rgb) / 0.3);
   border-radius: 0.75rem;
   background: #0e0f12;
   color: #d8d6d4;
@@ -58,7 +61,7 @@
 @media (hover: hover) and (pointer: fine) {
   .musicButton:hover {
     background-color: #303234;
-    border-color: #7da9c4;
+    border-color: var(--accent);
   }
 }
 

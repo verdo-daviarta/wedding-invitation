@@ -107,7 +107,7 @@
 .bankList .copyButton[data-copy-state='copied'] {
   border-color: var(--accent);
   background: var(--accent);
-  color: var(--ink);
+  color: var(--on-accent);
 }
 
 .bankList .copyButton[data-copy-state='error'] {
