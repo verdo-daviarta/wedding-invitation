@@ -3,10 +3,10 @@ import { toCalendarTimestamp } from '../lib/event-time';
 export const invitation = {
   date: '26/12',
   dateISO: '2026-12-26',
-  startsAt: '2026-12-26T08:00:00+07:00',
+  startsAt: '2026-12-26T07:00:00+07:00',
   calendarEndsAt: '2026-12-26T13:00:00+07:00',
   timeZone: 'Asia/Jakarta',
-  time: '08.00 WIB',
+  time: '07.00 WIB',
   dateLong: 'Sabtu, 26 Desember 2026',
   dateEnglish: '26 December 2026',
   year: '2026',
@@ -49,14 +49,14 @@ export const couple = [
     name: invitation.groom,
     fullName: 'Benidiktus Verdo Daviarta, S.E, M.Msi',
     photo: {
-      src: '/images/profiles/groom.webp',
+      src: '/images/profiles/groom-2.webp',
       width: 1445,
       height: 1088,
       position: '0% 35%',
       zoom: 1.25,
     },
     family:
-      'Putra kedua dari\nBpk. Kolonel (purn) Drs. E.C. Lustyo W.\n&\nIbu Dra. Anna Maria E.',
+      'Putra kedua dari\nBpk. Kolonel (purn) Drs. Eduardus C. Lustyo Widanarto.\n&\nIbu Dra. Anna Maria Elvirayati.',
     socialHandle: 'verdo_aseli',
   },
 ] as const;
@@ -82,8 +82,8 @@ export const bankAccounts = [
 
 export const events = [
   {
-    title: 'Pemberkatan',
-    time: '08.00 - 10.00 WIB',
+    title: 'Sakramen Perkawinan',
+    time: '07.00 - 09.00 WIB',
     venue: 'Paroki St. Maria Diangkat Ke Surga - Palur',
     addressLine1: 'Jl. Cemp. No.1, Randurejo, Ngringo,',
     addressLine2: 'Kabupaten Karanganyar, Jawa Tengah 57772',
@@ -92,7 +92,7 @@ export const events = [
   },
   {
     title: 'Resepsi',
-    time: '11.00 - 14.00 WIB',
+    time: '11.00 - 13.00 WIB',
     venue: invitation.venue,
     addressLine1: 'Jl. Slamet Riyadi St No.286, Sriwedari, Laweyan',
     addressLine2: 'Kota Surakarta, Jawa Tengah 57141',

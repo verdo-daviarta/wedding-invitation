@@ -4,7 +4,7 @@
 
 - Route kecil, section terpisah sesuai alur, data terpusat, CSS dipisah per bagian melalui satu CSS Module.
 - 63 file starter yang tidak dipakai dan 14 dependensi UI langsung dihapus. Aset lama dipertahankan; arsip deployment dipisahkan.
-- Tanggal cover tahun 2025 diperbaiki ke 26 Desember 2026 jam 08.00 WIB. Countdown dan kalender mengikuti data acara.
+- Tanggal cover tahun 2025 diperbaiki ke 26 Desember 2026 jam 07.00 WIB. Countdown dan kalender mengikuti data acara.
 - Catatan RSVP tetap ada saat mengedit; input dibatasi panjangnya; error diumumkan ke pembaca layar.
 - Pemilih tamu memakai disclosure/radio native dengan akses Tab, arrow keys, dan Escape.
 - Status RSVP/Wishes diperjelas sebagai prototipe lokal, belum pengiriman ke mempelai.
@@ -30,7 +30,7 @@ Referensi: [React Server Components](https://github.com/advisories/GHSA-wx67-qw8
 
 1. Backend RSVP/Wishes: database, validasi server, token undangan, rate limit, satu ucapan per undangan, akses admin, dan retensi data tamu. Integrasi ini sebelumnya ditunda pemilik.
 2. Finalisasi foto, kutipan, keluarga, contact person, sosial. Verifikasi nama, rekening, alamat, dan lisensi font/foto/musik.
-3. Konfirmasi jam selesai: kalender 13.00, resepsi tertulis 14.00.
+3. Konfirmasi jam selesai: kalender 13.00, resepsi tertulis 13.00.
 4. Uji Safari/iOS dan Chrome Android fisik, koneksi lambat, storage diblokir, izin clipboard. Emulasi bukan pengganti perangkat fisik.
 5. Build produksi dan preview hosting sebelum deployment. Audit ini mengikuti instruksi tidak menjalankan build/deploy otomatis.
 6. Domain/HTTPS, social preview, pemantauan error, serta backup setelah backend tersedia. Credential tidak boleh berada di `public/` atau source client.

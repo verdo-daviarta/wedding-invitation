@@ -80,7 +80,7 @@ CSS section diimpor melalui **satu** `invitation.module.css`. Vite menggabungkan
 - Batas satu ucapan berlaku per browser, bukan identitas undangan. Backend/token/rate limiting masih perlu dibuat sebelum go-live.
 - Sanitasi client bukan pengganti validasi server. Ucapan selalu dirender sebagai teks React, bukan HTML.
 - Tombol sosial sengaja nonaktif. Foto, kutipan pengantar, identitas keluarga, dan contact person perlu konten final.
-- Kalender mengikuti permintaan **08.00–13.00 WIB**, tetapi resepsi tertulis **11.00–14.00 WIB**. Perbedaan ini perlu konfirmasi sebelum go-live.
+- Kalender mengikuti permintaan **08.00–13.00 WIB**, tetapi resepsi tertulis **11.00–13.00 WIB**. Perbedaan ini perlu konfirmasi sebelum go-live.
 
 ## Aset dan hosting
 

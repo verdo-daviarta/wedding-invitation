@@ -8,13 +8,11 @@ export function IntroductionSection() {
       tabIndex={-1}
     >
       <p className={styles.quote}>
-        “Demikianlah mereka bukan lagi dua,        
+        “So they are no longer two, but one flesh.     
         <br />
-        melainkan satu.
+        therefore what God has joined together, let no one separate.”
         <br />
-        Karena itu, apa yang dipersatukan Allah, 
-        <br />
-        tidak boleh diceraikan manusia.”
+        Matthew 19:6
       </p>
     </section>
   );
