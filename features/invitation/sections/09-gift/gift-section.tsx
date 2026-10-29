@@ -47,7 +47,7 @@ export function GiftSection() {
           <div>
             <strong>Kirim Kado</strong>
             <span>
-              Perumnas Palur, Jalan Dahlia VI, RT.1/RW.15, Ngringo (No 110), KAB. KARANGANYAR, JATEN, JAWA TENGAH, ID, 57731
+              Jl. Dahlia VI, No 110, RT.1/RW.15, Perumnas Palur,  Ngringo, KAB. KARANGANYAR, JATEN, JAWA TENGAH, ID, 57731
             </span>
           </div>
           <CopyButton

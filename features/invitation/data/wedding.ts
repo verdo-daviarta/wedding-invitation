@@ -47,7 +47,7 @@ export const couple = [
   {
     title: 'The Groom',
     name: invitation.groom,
-    fullName: 'Benidiktus Verdo Daviarta, S.E, M.Msi',
+    fullName: 'Benidiktus Verdo Daviarta, S.E, M.M.S.I',
     photo: {
       src: '/images/profiles/groom-2.webp',
       width: 1445,
@@ -84,8 +84,8 @@ export const events = [
   {
     title: 'Sakramen Perkawinan',
     time: '07.00 - 09.00 WIB',
-    venue: 'Paroki St. Maria Diangkat Ke Surga - Palur',
-    addressLine1: 'Jl. Cemp. No.1, Randurejo, Ngringo,',
+    venue: 'Gereja Katolik St. Maria Diangkat Ke Surga - Paroki Palur',
+    addressLine1: 'Jl. Cempaka No.1, Randurejo, Ngringo,',
     addressLine2: 'Kabupaten Karanganyar, Jawa Tengah 57772',
     mapUrl:
       'https://www.google.com/maps/search/?api=1&query=Paroki%20St.%20Maria%20Diangkat%20Ke%20Surga%20-%20Palur%2C%20Jl.%20Cemp.%20No.1%2C%20Randurejo%2C%20Ngringo%2C%20Karanganyar%2C%20Kabupaten%20Karanganyar%2C%20Jawa%20Tengah%2057772',
@@ -94,7 +94,7 @@ export const events = [
     title: 'Resepsi',
     time: '11.00 - 13.00 WIB',
     venue: invitation.venue,
-    addressLine1: 'Jl. Slamet Riyadi St No.286, Sriwedari, Laweyan',
+    addressLine1: 'Jl. Slamet Riyadi No.286, Sriwedari, Laweyan',
     addressLine2: 'Kota Surakarta, Jawa Tengah 57141',
     mapUrl:
       'https://www.google.com/maps/search/?api=1&query=Hotel%20Dana%20Solo%2C%20Jl.%20Slamet%20Riyadi%20St%20No.286%2C%20Sriwedari%2C%20Laweyan%2C%20Surakarta%20City%2C%20Central%20Java%2057141',
