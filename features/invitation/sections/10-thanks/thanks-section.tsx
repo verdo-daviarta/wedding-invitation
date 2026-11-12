@@ -1,4 +1,3 @@
-import { music } from '../../data/music';
 import styles from '../../styles/invitation.module.css';
 import { invitation } from '../../data/wedding';
 
@@ -22,16 +21,6 @@ export function ThanksSection() {
       </p>
       <footer>
         <span>Daviarta copyright 2026</span>
-        <small className={styles.musicCredit}>
-          Musik:{' '}
-          <a href={music.sourceUrl} target="_blank" rel="noopener noreferrer">
-            There is Romance — Kevin MacLeod
-          </a>
-          {' · '}
-          <a href={music.licenseUrl} target="_blank" rel="noopener noreferrer">
-            {music.license}
-          </a>
-        </small>
       </footer>
     </section>
   );

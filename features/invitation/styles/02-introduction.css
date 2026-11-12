@@ -1,7 +1,7 @@
 .introduction {
   gap: 2rem;
   min-height: 66svh;
-  color: var(--paper);
+  color: #fff;
 }
 
 .quote {

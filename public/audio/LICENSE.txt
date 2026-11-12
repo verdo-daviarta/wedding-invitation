@@ -1,3 +1,8 @@
+Active website audio: prewed3-background.m4a
+Source: user-provided images/BackgroundForWeb/Prewed 3.mp4
+AAC audio extracted directly, without re-encoding. The website plays this audio on loop.
+
+Legacy asset retained but not played by the website: there-is-romance.mp3
 There is Romance
 Artist: Kevin MacLeod (incompetech.com)
 ISRC: USUAN1100044
@@ -7,4 +12,4 @@ License: Creative Commons Attribution 4.0 International
 https://creativecommons.org/licenses/by/4.0/
 Downloaded: 2026-10-01
 Original recording, unmodified. Played on loop at reduced playback volume.
-Visible attribution is provided in the invitation footer.
+This legacy recording is not used by the active invitation.

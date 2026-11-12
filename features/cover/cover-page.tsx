@@ -53,7 +53,11 @@ export function CoverPage() {
 
         <div className={styles['hero-footer']}>
           <GuestGreeting />
-          <Link className={styles['open-invitation']} href="/undangan">
+          <Link
+            className={styles['open-invitation']}
+            href="/undangan"
+            data-open-invitation
+          >
             Buka Undangan
             <ArrowRight size={17} aria-hidden="true" />
           </Link>

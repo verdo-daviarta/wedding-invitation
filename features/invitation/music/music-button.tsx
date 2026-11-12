@@ -1,17 +1,14 @@
 'use client';
 
-import { LoaderCircle, Music2, Pause } from 'lucide-react';
+import { LoaderCircle, Volume2, VolumeX } from 'lucide-react';
 import styles from './music-button.module.css';
 import { useMusic } from './music-provider';
 
 export function MusicButton() {
-  const { isPlaying, isLoading, error, toggleMusic } = useMusic();
+  const { isPlaying, isMuted, isLoading, error, toggleMute } = useMusic();
+  const soundEnabled = !isMuted && (isPlaying || isLoading);
 
-  const label = isLoading
-    ? 'Batalkan pemuatan musik'
-    : isPlaying
-      ? 'Jeda musik'
-      : 'Putar musik';
+  const label = soundEnabled ? 'Matikan suara' : 'Aktifkan suara';
 
   return (
     <div className={styles.player}>
@@ -20,21 +17,21 @@ export function MusicButton() {
         className={styles.musicButton}
         type="button"
         aria-label={label}
-        aria-pressed={isPlaying}
+        aria-pressed={soundEnabled}
         aria-busy={isLoading}
         title={label}
-        onClick={toggleMusic}
+        onClick={toggleMute}
       >
-        {isLoading ? (
+        {isLoading && !isMuted ? (
           <LoaderCircle
             className={styles.loading}
             size={18}
             aria-hidden="true"
           />
-        ) : isPlaying ? (
-          <Pause size={18} aria-hidden="true" />
+        ) : soundEnabled ? (
+          <Volume2 size={18} aria-hidden="true" />
         ) : (
-          <Music2 size={18} aria-hidden="true" />
+          <VolumeX size={18} aria-hidden="true" />
         )}
       </button>
       <output className={error ? styles.error : undefined}>{error}</output>

@@ -3,13 +3,6 @@
   align-items: stretch;
   justify-content: flex-start;
   padding: 0 clamp(1rem, 6vw, 2.5rem) clamp(4.5rem, 12vw, 6.5rem);
-  background:
-    radial-gradient(
-      circle at 50% 100%,
-      rgb(var(--accent-rgb) / 0.14),
-      transparent 34%
-    ),
-    var(--charcoal);
   text-align: left;
 }
 
@@ -30,8 +23,8 @@
   padding: clamp(1.1rem, 5vw, 1.5rem);
   background: linear-gradient(
     145deg,
-    rgb(255 255 255 / 0.14),
-    rgb(255 255 255 / 0.055)
+    rgb(14 15 18 / 0.58),
+    rgb(14 15 18 / 0.4)
   );
   box-shadow:
     0 1.25rem 3rem rgb(0 0 0 / 0.14),

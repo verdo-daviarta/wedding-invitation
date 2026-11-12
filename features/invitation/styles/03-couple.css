@@ -60,6 +60,7 @@
 .personDetails {
   padding: 1.5rem;
   background: #fff;
+  color: var(--ink);
   text-align: center;
 }
 

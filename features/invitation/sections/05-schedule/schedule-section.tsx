@@ -46,8 +46,8 @@ export function ScheduleSection() {
 
       <div className={styles.dresscodeBlock} data-scroll-reveal>
         <p className={styles.dresscodeText}>
-          Kami dengan hormat menganjurkan para tamu kami untuk mengenakan
-          warna-warna ini untuk hari istimewa kami.
+          Dengan rendah hati kami mengundang Anda untuk hadir dengan mengenakan busana
+          bernuansa warna berikut untuk hari istimewa kami.
         </p>
         <div className={styles.swatches}>
           <p className="sr-only">

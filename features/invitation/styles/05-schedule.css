@@ -3,7 +3,6 @@
   justify-content: flex-start;
   padding-block: 5rem;
   padding-inline: 2.5rem;
-  background: var(--charcoal-deep);
 }
 
 .saveDateContent[data-scroll-reveal] {

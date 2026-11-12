@@ -13,9 +13,11 @@ import { music } from '../data/music';
 
 type MusicControls = {
   isPlaying: boolean;
+  isMuted: boolean;
   isLoading: boolean;
   error: string;
-  toggleMusic: () => Promise<void>;
+  toggleMute: () => Promise<void>;
+  syncVideoToMusic: (video: HTMLVideoElement) => void;
 };
 
 const MusicContext = createContext<MusicControls | null>(null);
@@ -24,7 +26,9 @@ export function MusicProvider({ children }: { children: ReactNode }) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const playRequest = useRef(0);
   const shouldAutoStart = useRef(true);
+  const mutedRef = useRef(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -34,7 +38,10 @@ export function MusicProvider({ children }: { children: ReactNode }) {
     const request = ++playRequest.current;
     setError('');
     setIsLoading(true);
-    audio.muted = false;
+    if (audio.getAttribute('src') !== music.src) {
+      audio.src = music.src;
+    }
+    audio.muted = mutedRef.current;
     audio.volume = music.volume;
 
     try {
@@ -69,13 +76,27 @@ export function MusicProvider({ children }: { children: ReactNode }) {
       ) {
         return;
       }
+      const isInvitationPage =
+        window.location.pathname.replace(/\/$/, '') === '/undangan';
+      const isOpeningInvitation =
+        event.target instanceof Element &&
+        event.target.closest('[data-open-invitation]');
+      if (
+        !isInvitationPage &&
+        (!isOpeningInvitation ||
+          (event instanceof KeyboardEvent && event.key !== 'Enter'))
+      ) {
+        return;
+      }
       // Call play synchronously within the gesture, before route navigation.
       void playMusic();
     };
 
     document.addEventListener('pointerup', retryAutoplay);
     document.addEventListener('keydown', retryAutoplay);
-    void playMusic();
+    if (window.location.pathname.replace(/\/$/, '') === '/undangan') {
+      void playMusic();
+    }
 
     return () => {
       document.removeEventListener('pointerup', retryAutoplay);
@@ -85,29 +106,73 @@ export function MusicProvider({ children }: { children: ReactNode }) {
     };
   }, [playMusic]);
 
-  const toggleMusic = async () => {
+  const syncVideoToMusic = useCallback((video: HTMLVideoElement) => {
     const audio = audioRef.current;
-    if (!audio) return;
-    // An explicit pause must survive subsequent taps and route changes.
-    shouldAutoStart.current = false;
-    if (!audio.paused || isLoading) {
-      playRequest.current += 1;
-      audio.pause();
-      setIsLoading(false);
+    if (
+      !audio ||
+      audio.paused ||
+      audio.readyState < 2 ||
+      video.readyState < 2 ||
+      video.seeking ||
+      !Number.isFinite(video.duration) ||
+      video.duration <= 0
+    ) {
       return;
     }
-    await playMusic();
+
+    const targetTime = audio.currentTime % video.duration;
+    const difference = Math.abs(video.currentTime - targetTime);
+    // Compare circular positions so a normal loop boundary does not cause a seek.
+    const drift = Math.min(difference, video.duration - difference);
+    const seekable = video.seekable;
+    const canSeek = Array.from(
+      { length: seekable.length },
+      (_, index) =>
+        targetTime >= seekable.start(index) &&
+        targetTime <= seekable.end(index),
+    ).some(Boolean);
+    if (drift > 0.2 && canSeek) video.currentTime = targetTime;
+    if (video.playbackRate !== audio.playbackRate) {
+      video.playbackRate = audio.playbackRate;
+    }
+  }, []);
+
+  const toggleMute = async () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    shouldAutoStart.current = false;
+    // A first interaction can unlock audio when the browser blocked autoplay.
+    if (audio.paused && !isLoading) {
+      mutedRef.current = false;
+      audio.muted = false;
+      setIsMuted(false);
+      await playMusic();
+      return;
+    }
+
+    // Muting never pauses or seeks either track; their clocks keep advancing.
+    mutedRef.current = !mutedRef.current;
+    audio.muted = mutedRef.current;
+    setIsMuted(mutedRef.current);
   };
 
   return (
-    <MusicContext.Provider value={{ isPlaying, isLoading, error, toggleMusic }}>
+    <MusicContext.Provider
+      value={{
+        isPlaying,
+        isMuted,
+        isLoading,
+        error,
+        toggleMute,
+        syncVideoToMusic,
+      }}
+    >
       {children}
-      {/* Instrumental background music contains no speech requiring captions. */}
+      {/* Decorative background audio is controlled by the music button. */}
       {/* oxlint-disable-next-line jsx-a11y/media-has-caption */}
       <audio
         ref={audioRef}
-        src={music.src}
-        preload="auto"
+        preload="none"
         loop
         onPlaying={() => {
           shouldAutoStart.current = false;

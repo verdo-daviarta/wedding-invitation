@@ -175,7 +175,6 @@ export function WishesForm() {
 
           <button className={styles.wishSubmitButton} type="submit">
             Kirim Ucapan
-            <Send aria-hidden="true" size={16} />
           </button>
         </form>
       )}

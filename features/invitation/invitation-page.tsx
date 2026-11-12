@@ -1,5 +1,6 @@
 import styles from './styles/invitation.module.css';
 import { IdentityPanel } from './components/identity-panel';
+import { InvitationBackground } from './components/invitation-background';
 import { InvitationMenu } from './navigation/invitation-menu';
 import { MusicButton } from './music/music-button';
 import { OpeningSection } from './sections/01-opening/opening-section';
@@ -18,6 +19,7 @@ export function InvitationPage() {
     <main className={styles.page}>
       <IdentityPanel />
       <div className={styles.content}>
+        <InvitationBackground />
         <InvitationMenu />
         <OpeningSection />
         <IntroductionSection />

@@ -3,13 +3,6 @@
   align-items: stretch;
   justify-content: flex-start;
   padding: clamp(4.5rem, 12vw, 6.5rem) clamp(1rem, 6vw, 2.5rem);
-  background:
-    radial-gradient(
-      circle at 50% 0%,
-      rgb(var(--accent-rgb) / 0.22),
-      transparent 38%
-    ),
-    var(--charcoal);
   text-align: left;
 }
 
@@ -58,7 +51,7 @@
 
 .rsvpDescription {
   max-width: 26rem;
-  color: rgb(255 255 255 / 0.72);
+  color: #fff;
   line-height: 1.55;
 }
 
@@ -74,8 +67,8 @@
   padding: clamp(1.25rem, 5vw, 1.75rem);
   background: linear-gradient(
     145deg,
-    rgb(255 255 255 / 0.16),
-    rgb(255 255 255 / 0.06)
+    rgb(14 15 18 / 0.58),
+    rgb(14 15 18 / 0.4)
   );
   box-shadow:
     0 1.5rem 3.5rem rgb(0 0 0 / 0.16),

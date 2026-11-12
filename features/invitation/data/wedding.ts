@@ -41,7 +41,7 @@ export const couple = [
       zoom: 1.65,
     },
     family:
-      'Putri pertama dari\nBpk. Mayjen TNI (Purn.) Hendrikus Joko R.\n&\nIbu Joelia Eri S. S.E',
+      'Putri pertama dari\nBpk. Mayjen TNI (purn) Hendrikus Joko R.\n&\nIbu Joelia Eri S. S.E',
     socialHandle: 'intan1210',
   },
   {

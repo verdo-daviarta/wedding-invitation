@@ -1,0 +1,22 @@
+- main [ref=f10e2]:
+  - region "Verdo & Intan" [ref=f10e3]:
+    - generic [ref=f10e4]:
+      - generic "Tanggal 26/12/2026" [ref=f10e5]:
+        - time [ref=f10e6]: 26/12
+        - generic [ref=f10e7]: "2026"
+      - paragraph [ref=f10e8]: 07.00 WIB
+      - paragraph [ref=f10e9]: The Wedding of
+      - heading "Verdo & Intan" [level=1] [ref=f10e10]:
+        - generic [ref=f10e11]: Verdo
+        - generic [aria-hidden] [ref=f10e12]: "&"
+        - generic [ref=f10e13]: Intan
+    - generic [ref=f10e14]:
+      - generic [ref=f10e15]:
+        - paragraph [ref=f10e16]: Yth. Bapak/Ibu/Saudara/i
+        - paragraph [ref=f10e17]: Tamu Undangan
+        - paragraph [ref=f10e18]: Tanpa mengurangi rasa hormat,kami mengundang anda untuk menghadiri acara pernikahan kami.
+      - link "Buka Undangan" [ref=f10e19] [cursor=pointer]:
+        - /url: /undangan
+  - generic [ref=f10e22]:
+    - button "Aktifkan suara" [ref=f10e23] [cursor=pointer]
+    - status

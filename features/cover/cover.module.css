@@ -1,7 +1,10 @@
 .invitation {
   min-height: 100svh;
   overflow: hidden;
-  background: var(--color-background);
+  background:
+    linear-gradient(180deg, rgb(14 15 18 / 0.48), rgb(14 15 18 / 0.64)),
+    url('/images/backgrounds/identity-panel.webp') 56% center / cover no-repeat;
+  text-shadow: 0 2px 12px rgb(14 15 18 / 0.55);
   padding: 2rem 1.5rem 2.25rem;
 }
 .hero {

@@ -3,6 +3,7 @@
   --paper: #d8d6d4;
   --charcoal: #303234;
   --charcoal-deep: #252729;
+  --invitation-width: 100%;
   min-height: 100svh;
   background: var(--charcoal-deep);
   color: #fff;
@@ -14,6 +15,7 @@
 
 .content {
   position: relative;
+  isolation: isolate;
   width: 100%;
   overflow: clip;
 }
@@ -26,43 +28,12 @@
   align-items: center;
   justify-content: center;
   padding: 5rem clamp(1.25rem, 5vw, 3.75rem);
+  background: transparent;
   text-align: center;
 }
 
-.opening,
-.storySection,
-.gallerySection,
-.wishesSection,
-.thanksSection {
-  background: var(--charcoal);
-}
-
-.introduction {
-  background: var(--charcoal);
-}
-
-.scheduleSection,
-.rsvpSection,
-.giftSection {
-  background: var(--charcoal-deep);
-}
-
-.coupleSection {
-  background: var(--paper);
-  color: var(--ink);
-}
-
-.musicCredit {
-  display: block;
-  margin-top: 0.65rem;
-  color: var(--paper);
-  font-size: 0.65rem;
-  line-height: 1.6;
-}
-
-.musicCredit a {
-  color: inherit;
-  text-underline-offset: 0.2em;
+.content > .opening {
+  text-shadow: 0 2px 12px rgb(14 15 18 / 0.65);
 }
 
 .eyebrow {

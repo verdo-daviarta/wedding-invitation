@@ -1,0 +1,42 @@
+.background {
+  --video-overlay: 0.55;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  width: var(--invitation-width);
+  /* Cover the largest mobile viewport so browser chrome cannot expose a gap. */
+  height: 100vh;
+  height: 100lvh;
+  overflow: hidden;
+  background: #0e0f12 url('/images/backgrounds/invitation-prewed3-poster.webp')
+    center / cover no-repeat;
+  pointer-events: none;
+}
+
+.background::after {
+  position: absolute;
+  inset: 0;
+  background: rgb(14 15 18 / var(--video-overlay));
+  content: '';
+}
+
+.video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+
+.video[data-playing='true'] {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .video {
+    transition: none;
+  }
+}

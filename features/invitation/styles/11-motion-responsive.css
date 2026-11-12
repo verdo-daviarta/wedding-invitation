@@ -72,8 +72,9 @@
 
 @media (min-width: 62rem) {
   .page {
+    --invitation-width: max(25rem, calc(100% / 2.85));
     display: grid;
-    grid-template-columns: minmax(0, 1.85fr) minmax(25rem, 1fr);
+    grid-template-columns: minmax(0, 1fr) var(--invitation-width);
   }
 
   .identityPanel {
