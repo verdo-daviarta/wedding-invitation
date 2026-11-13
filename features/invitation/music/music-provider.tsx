@@ -16,6 +16,7 @@ type MusicControls = {
   isMuted: boolean;
   isLoading: boolean;
   error: string;
+  startMusic: () => Promise<void>;
   toggleMute: () => Promise<void>;
   syncVideoToMusic: (video: HTMLVideoElement) => void;
 };
@@ -72,34 +73,25 @@ export function MusicProvider({ children }: { children: ReactNode }) {
       if (
         !shouldAutoStart.current ||
         (event.target instanceof Element &&
-          event.target.closest('[data-music-control]'))
+          event.target.closest('[data-music-control], [data-open-invitation]'))
       ) {
         return;
       }
       const isInvitationPage =
         window.location.pathname.replace(/\/$/, '') === '/undangan';
-      const isOpeningInvitation =
-        event.target instanceof Element &&
-        event.target.closest('[data-open-invitation]');
-      if (
-        !isInvitationPage &&
-        (!isOpeningInvitation ||
-          (event instanceof KeyboardEvent && event.key !== 'Enter'))
-      ) {
-        return;
-      }
-      // Call play synchronously within the gesture, before route navigation.
+      if (!isInvitationPage) return;
+      // Direct visits can retry after an autoplay denial using any click input.
       void playMusic();
     };
 
-    document.addEventListener('pointerup', retryAutoplay);
+    document.addEventListener('click', retryAutoplay);
     document.addEventListener('keydown', retryAutoplay);
     if (window.location.pathname.replace(/\/$/, '') === '/undangan') {
       void playMusic();
     }
 
     return () => {
-      document.removeEventListener('pointerup', retryAutoplay);
+      document.removeEventListener('click', retryAutoplay);
       document.removeEventListener('keydown', retryAutoplay);
       playRequest.current += 1;
       audio?.pause();
@@ -163,6 +155,7 @@ export function MusicProvider({ children }: { children: ReactNode }) {
         isMuted,
         isLoading,
         error,
+        startMusic: playMusic,
         toggleMute,
         syncVideoToMusic,
       }}

@@ -1,8 +1,7 @@
-import Link from 'next/link';
 import { invitation as wedding } from '../invitation/data/wedding';
 import { MusicButton } from '../invitation/music/music-button';
 import styles from './cover.module.css';
-import { ArrowRight } from 'lucide-react';
+import { OpenInvitationLink } from './open-invitation-link';
 
 function CoupleNames() {
   return (
@@ -53,14 +52,7 @@ export function CoverPage() {
 
         <div className={styles['hero-footer']}>
           <GuestGreeting />
-          <Link
-            className={styles['open-invitation']}
-            href="/undangan"
-            data-open-invitation
-          >
-            Buka Undangan
-            <ArrowRight size={17} aria-hidden="true" />
-          </Link>
+          <OpenInvitationLink className={styles['open-invitation']} />
         </div>
       </section>
       <MusicButton />
