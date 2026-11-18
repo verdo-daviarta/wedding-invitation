@@ -4,14 +4,14 @@ import { LoaderCircle, Volume2, VolumeX } from 'lucide-react';
 import styles from './music-button.module.css';
 import { useMusic } from './music-provider';
 
-export function MusicButton() {
+export function MusicButton({ className = '' }: { className?: string }) {
   const { isPlaying, isMuted, isLoading, error, toggleMute } = useMusic();
   const soundEnabled = !isMuted && (isPlaying || isLoading);
 
   const label = soundEnabled ? 'Matikan suara' : 'Aktifkan suara';
 
   return (
-    <div className={styles.player}>
+    <div className={`${styles.player} ${className}`}>
       <button
         data-music-control
         className={styles.musicButton}

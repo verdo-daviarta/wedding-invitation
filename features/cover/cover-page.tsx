@@ -35,27 +35,29 @@ function GuestGreeting() {
 
 export function CoverPage() {
   return (
-    <main className={styles['invitation']}>
-      <section className={styles['hero']} aria-labelledby="hero-title">
-        <div className={styles['hero-heading']}>
-          <div
-            className={styles['date-row']}
-            aria-label={`Tanggal ${wedding.date}/${wedding.year}`}
-          >
-            <time dateTime={wedding.dateISO}>{wedding.date}</time>
-            <span>{wedding.year}</span>
+    <div className={styles.cover}>
+      <main className={styles['invitation']}>
+        <section className={styles['hero']} aria-labelledby="hero-title">
+          <div className={styles['hero-heading']}>
+            <div
+              className={styles['date-row']}
+              aria-label={`Tanggal ${wedding.date}/${wedding.year}`}
+            >
+              <time dateTime={wedding.dateISO}>{wedding.date}</time>
+              <span>{wedding.year}</span>
+            </div>
+            <p className={styles['event-time']}>{wedding.time}</p>
+            <p className={styles['eyebrow']}>The Wedding of</p>
+            <CoupleNames />
           </div>
-          <p className={styles['event-time']}>{wedding.time}</p>
-          <p className={styles['eyebrow']}>The Wedding of</p>
-          <CoupleNames />
-        </div>
 
-        <div className={styles['hero-footer']}>
-          <GuestGreeting />
-          <OpenInvitationLink className={styles['open-invitation']} />
-        </div>
-      </section>
-      <MusicButton />
-    </main>
+          <div className={styles['hero-footer']}>
+            <GuestGreeting />
+            <OpenInvitationLink className={styles['open-invitation']} />
+          </div>
+        </section>
+        <MusicButton className={styles['cover-music']} />
+      </main>
+    </div>
   );
 }
