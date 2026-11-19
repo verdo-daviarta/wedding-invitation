@@ -21,6 +21,8 @@ npm.cmd test         # Pengujian fungsi waktu dan validasi data
 
 `npm run build` membuat bundle produksi. `npm start` memerlukan hasil build dan menjalankan preview Wrangler, bukan dev server. Build/deploy tidak dijalankan otomatis untuk perubahan lokal.
 
+Untuk uji coba nama tamu di cover, simpan `INVITATION_GUESTS` sebagai objek JSON di `.env.local` dengan kode acak 32 karakter heksadesimal sebagai key dan nama tamu sebagai value. Jalankan ulang dev server dan buka `/i/<kode>` dengan 22 karakter Base64URL dari 16 byte yang sama. Link lama `/?i=<kode-heksadesimal>` tetap berlaku. Kode kosong, tidak dikenal, atau berulang menampilkan `Tamu Undangan`. Simpan pemetaan di konfigurasi server dan jangan masukkan daftar tamu ke Git.
+
 ## Struktur sesuai alur halaman
 
 ```text

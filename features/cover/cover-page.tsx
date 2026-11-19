@@ -19,11 +19,11 @@ function CoupleNames() {
   );
 }
 
-function GuestGreeting() {
+function GuestGreeting({ guestName }: { guestName?: string }) {
   return (
     <div className={styles['guest-greeting']}>
       <p className={styles['salutation']}>Yth. Bapak/Ibu/Saudara/i</p>
-      <p className={styles['guest-name']}>Tamu Undangan</p>
+      <p className={styles['guest-name']}>{guestName ?? 'Tamu Undangan'}</p>
       <p className={styles['invitation-message']}>
         Tanpa mengurangi rasa hormat,
         <br />
@@ -33,7 +33,7 @@ function GuestGreeting() {
   );
 }
 
-export function CoverPage() {
+export function CoverPage({ guestName }: { guestName?: string }) {
   return (
     <div className={styles.cover}>
       <main className={styles['invitation']}>
@@ -52,7 +52,7 @@ export function CoverPage() {
           </div>
 
           <div className={styles['hero-footer']}>
-            <GuestGreeting />
+            <GuestGreeting guestName={guestName} />
             <OpenInvitationLink className={styles['open-invitation']} />
           </div>
         </section>
