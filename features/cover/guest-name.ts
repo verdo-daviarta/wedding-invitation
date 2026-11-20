@@ -8,10 +8,10 @@ function toGuestKey(code: string): string | undefined {
   if (bytes.toString('base64url') === code) return bytes.toString('hex');
 }
 
-export function resolveGuestName(
+export function resolveGuest(
   code: string | string[] | undefined,
   config: string | undefined,
-): string | undefined {
+): { name: string; rsvpMetadataId?: number } | undefined {
   if (typeof code !== 'string' || !config) return;
 
   const key = toGuestKey(code);
@@ -23,9 +23,33 @@ export function resolveGuestName(
       return;
     }
 
-    const name = (guests as Record<string, unknown>)[key];
-    return typeof name === 'string' ? name.trim() || undefined : undefined;
+    const entry = (guests as Record<string, unknown>)[key];
+    if (typeof entry === 'string') {
+      const name = entry.trim();
+      return name ? { name } : undefined;
+    }
+    if (!entry || typeof entry !== 'object') return;
+
+    const { name, rsvpMetadataId } = entry as Record<string, unknown>;
+    if (typeof name !== 'string' || !name.trim()) return;
+    return {
+      name: name.trim(),
+      rsvpMetadataId:
+        typeof rsvpMetadataId === 'number' &&
+        Number.isInteger(rsvpMetadataId) &&
+        rsvpMetadataId > 0 &&
+        rsvpMetadataId <= 2147483647
+          ? rsvpMetadataId
+          : undefined,
+    };
   } catch {
     return;
   }
+}
+
+export function resolveGuestName(
+  code: string | string[] | undefined,
+  config: string | undefined,
+) {
+  return resolveGuest(code, config)?.name;
 }

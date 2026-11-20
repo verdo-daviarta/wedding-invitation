@@ -11,5 +11,10 @@ export default async function Page({
   const { i } = await searchParams;
   const guestName = resolveGuestName(i, process.env.INVITATION_GUESTS);
 
-  return <CoverPage guestName={guestName} />;
+  return (
+    <CoverPage
+      guestName={guestName}
+      invitationCode={guestName && typeof i === 'string' ? i : undefined}
+    />
+  );
 }

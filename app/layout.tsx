@@ -23,6 +23,7 @@ const cookie = Cookie({
 });
 
 export const metadata: Metadata = {
+  referrer: 'no-referrer',
   title: `The Wedding of ${invitation.groom} & ${invitation.bride}`,
   description: `Undangan pernikahan ${invitation.groom} dan ${invitation.bride}, ${invitation.dateLong}.`,
 };

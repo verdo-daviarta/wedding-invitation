@@ -5,13 +5,19 @@ import { ArrowRight } from 'lucide-react';
 import { useMusic } from '../invitation/music/music-provider';
 import { startInvitationMusic } from '../invitation/lib/start-invitation-music';
 
-export function OpenInvitationLink({ className }: { className: string }) {
+export function OpenInvitationLink({
+  className,
+  href,
+}: {
+  className: string;
+  href: string;
+}) {
   const { startMusic } = useMusic();
 
   return (
     <Link
       className={className}
-      href="/undangan"
+      href={href}
       data-open-invitation
       onClick={(event) => startInvitationMusic(event, startMusic)}
     >

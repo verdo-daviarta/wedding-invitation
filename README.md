@@ -77,7 +77,9 @@ CSS section diimpor melalui **satu** `invitation.module.css`. Vite menggabungkan
 
 ## Status fitur
 
-- RSVP masih di memori halaman. Reload menghapus jawaban; belum dikirim ke server.
+- RSVP memakai nama dari link undangan. Entri lama yang hanya berisi nama tetap dapat membuka undangan. Untuk mengaktifkan RSVP, gunakan objek `{"name":"Tamu Contoh","rsvpMetadataId":1001}` sebagai nilai pada `INVITATION_GUESTS`.
+- Siapkan satu baris per undangan di spreadsheet RSVP dengan kolom Nama, Status kehadiran, Jumlah tamu, Catatan, dan Terakhir diperbarui (UTC). Tambahkan developer metadata pada masing-masing baris dan masukkan ID metadata numeriknya sebagai `rsvpMetadataId`. Gunakan ID yang berbeda untuk setiap undangan. Jawaban baru mengganti isi baris yang sama.
+- Aplikasi membaca `RSVP_SPREADSHEET_ID`, `RSVP_GOOGLE_CLIENT_EMAIL`, dan `RSVP_GOOGLE_PRIVATE_KEY` dari konfigurasi server. Aktifkan Google Sheets API dan berikan akses Editor pada spreadsheet RSVP kepada akun layanan. Simpan kredensial di `.env.local` untuk pengembangan dan di konfigurasi rahasia hosting untuk deployment.
 - Wishes memakai `localStorage`, key `verdo-intan:wish-submission:v1`, hanya terlihat pada browser/origin yang sama.
 - Batas satu ucapan berlaku per browser, bukan identitas undangan. Backend/token/rate limiting masih perlu dibuat sebelum go-live.
 - Sanitasi client bukan pengganti validasi server. Ucapan selalu dirender sebagai teks React, bukan HTML.

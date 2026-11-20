@@ -9,12 +9,12 @@ import { CoupleSection } from './sections/03-couple/couple-section';
 import { JourneySection } from './sections/04-journey/journey-section';
 import { ScheduleSection } from './sections/05-schedule/schedule-section';
 import { MomentsSection } from './sections/06-moments/moments-section';
-import { RsvpSection } from './sections/07-rsvp/rsvp-section';
+import { RsvpSection, type RsvpGuest } from './sections/07-rsvp/rsvp-section';
 import { WishesSection } from './sections/08-wishes/wishes-section';
 import { GiftSection } from './sections/09-gift/gift-section';
 import { ThanksSection } from './sections/10-thanks/thanks-section';
 
-export function InvitationPage() {
+export function InvitationPage({ rsvp }: { rsvp?: RsvpGuest }) {
   return (
     <main className={styles.page}>
       <IdentityPanel />
@@ -27,7 +27,7 @@ export function InvitationPage() {
         <JourneySection />
         <ScheduleSection />
         <MomentsSection />
-        <RsvpSection />
+        <RsvpSection guest={rsvp} />
         <WishesSection />
         <GiftSection />
         <ThanksSection />

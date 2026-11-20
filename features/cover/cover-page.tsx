@@ -33,7 +33,13 @@ function GuestGreeting({ guestName }: { guestName?: string }) {
   );
 }
 
-export function CoverPage({ guestName }: { guestName?: string }) {
+export function CoverPage({
+  guestName,
+  invitationCode,
+}: {
+  guestName?: string;
+  invitationCode?: string;
+}) {
   return (
     <div className={styles.cover}>
       <main className={styles['invitation']}>
@@ -53,7 +59,14 @@ export function CoverPage({ guestName }: { guestName?: string }) {
 
           <div className={styles['hero-footer']}>
             <GuestGreeting guestName={guestName} />
-            <OpenInvitationLink className={styles['open-invitation']} />
+            <OpenInvitationLink
+              className={styles['open-invitation']}
+              href={
+                invitationCode
+                  ? `/undangan?i=${encodeURIComponent(invitationCode)}`
+                  : '/undangan'
+              }
+            />
           </div>
         </section>
         <MusicButton className={styles['cover-music']} />

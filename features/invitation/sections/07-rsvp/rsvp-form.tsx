@@ -1,35 +1,65 @@
 'use client';
 
-import { useRef, useState, type SyntheticEvent } from 'react';
+import { useEffect, useRef, useState, type SyntheticEvent } from 'react';
 import { GuestCountSelect } from './guest-count-select';
 import styles from '../../styles/invitation.module.css';
+import type { RsvpGuest } from './rsvp-section';
+import {
+  attendanceOptions,
+  type Attendance,
+  type RsvpResponse,
+} from './rsvp-response';
 
-const attendanceOptions = ['Hadir', 'Tidak Hadir', 'Belum Pasti'] as const;
-type Attendance = (typeof attendanceOptions)[number];
-type Confirmation = {
-  name: string;
-  attendance: Attendance;
-  guestCount: number;
-  note: string;
-};
-
-export function RsvpForm() {
-  const [name, setName] = useState('');
+export function RsvpForm({ guest }: { guest: RsvpGuest }) {
   const [attendance, setAttendance] = useState<Attendance | ''>('');
   const [guestCount, setGuestCount] = useState('1');
   const [note, setNote] = useState('');
-  const [confirmation, setConfirmation] = useState<Confirmation | null>(null);
+  const [confirmation, setConfirmation] = useState<RsvpResponse>();
+  const [isLoading, setIsLoading] = useState(guest.available);
+  const [loadFailed, setLoadFailed] = useState(false);
   const [error, setError] = useState('');
+  const [isSaving, setIsSaving] = useState(false);
   const nameInputRef = useRef<HTMLInputElement>(null);
-  const handleSubmit = (event: SyntheticEvent<HTMLFormElement>) => {
-    event.preventDefault();
 
-    const trimmedName = name.trim();
-    if (!trimmedName) {
-      setError('Silakan isi nama lengkap Anda.');
-      nameInputRef.current?.focus();
-      return;
+  useEffect(() => {
+    if (!guest.available) return;
+    const request = new AbortController();
+
+    async function loadResponse() {
+      try {
+        const result = await fetch(
+          `/api/rsvp?i=${encodeURIComponent(guest.code)}`,
+          {
+            cache: 'no-store',
+            signal: AbortSignal.any([
+              request.signal,
+              AbortSignal.timeout(12_000),
+            ]),
+          },
+        );
+        if (!result.ok) throw new Error('RSVP lookup failed');
+        const { response } = (await result.json()) as {
+          response: RsvpResponse | null;
+        };
+        if (request.signal.aborted || !response) return;
+        setAttendance(response.attendance);
+        setGuestCount(response.guestCount === 2 ? '2' : '1');
+        setNote(response.note);
+        setConfirmation(response);
+      } catch {
+        if (!request.signal.aborted) setLoadFailed(true);
+      } finally {
+        if (!request.signal.aborted) setIsLoading(false);
+      }
     }
+
+    void loadResponse();
+    return () => request.abort();
+  }, [guest.available, guest.code]);
+
+  const handleSubmit = async (event: SyntheticEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (isLoading || isSaving || !guest.available) return;
 
     if (!attendance) {
       setError('Silakan pilih status kehadiran Anda.');
@@ -40,13 +70,38 @@ export function RsvpForm() {
     }
 
     setError('');
-    setConfirmation({
-      name: trimmedName,
-      attendance,
-      guestCount: attendance === 'Hadir' ? Number(guestCount) : 0,
-      note: note.trim(),
-    });
+    setIsSaving(true);
+    try {
+      const response = await fetch('/api/rsvp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          code: guest.code,
+          attendance,
+          guestCount: Number(guestCount),
+          note,
+        }),
+      });
+      if (!response.ok) {
+        const result = (await response.json()) as { error: string };
+        setError(result.error);
+        return;
+      }
+      setConfirmation((await response.json()) as RsvpResponse);
+    } catch {
+      setError('Jawaban belum berhasil disimpan. Silakan coba lagi.');
+    } finally {
+      setIsSaving(false);
+    }
   };
+
+  if (isLoading) {
+    return (
+      <output className={styles.formCard}>
+        Memuat jawaban RSVP {guest.name}…
+      </output>
+    );
+  }
 
   if (confirmation) {
     return (
@@ -57,18 +112,17 @@ export function RsvpForm() {
         <span className={styles.successMark} aria-hidden="true">
           ✓
         </span>
-        <p className={styles.successEyebrow}>Jawaban sementara</p>
+        <p className={styles.successEyebrow}>Jawaban tersimpan</p>
         <h3
           tabIndex={-1}
           ref={(element) => {
             element?.focus({ preventScroll: true });
           }}
         >
-          Terima kasih, {confirmation.name}
+          Terima kasih, {guest.name}
         </h3>
         <p>
-          Jawaban <strong>{confirmation.attendance}</strong> tersimpan sementara
-          pada halaman ini. Jawaban belum dikirim ke mempelai.
+          Status kehadiran: <strong>{confirmation.attendance}</strong>
         </p>
         {confirmation.guestCount > 0 && (
           <p>Jumlah tamu: {confirmation.guestCount} orang</p>
@@ -77,7 +131,7 @@ export function RsvpForm() {
         <button
           className={styles.editResponseButton}
           onClick={() => {
-            setConfirmation(null);
+            setConfirmation(undefined);
             window.requestAnimationFrame(() =>
               nameInputRef.current?.focus({ preventScroll: true }),
             );
@@ -98,16 +152,10 @@ export function RsvpForm() {
         </span>
         <input
           ref={nameInputRef}
-          aria-invalid={Boolean(error && !name.trim())}
-          maxLength={80}
-          aria-describedby={error ? 'rsvp-error' : undefined}
-          autoComplete="name"
           name="name"
-          onChange={(event) => setName(event.target.value)}
-          placeholder="Tuliskan nama Anda"
-          required
+          readOnly
           type="text"
-          value={name}
+          value={guest.name}
         />
       </label>
 
@@ -168,13 +216,21 @@ export function RsvpForm() {
         </p>
       )}
 
-      {/* <p className={styles.formNotice}>
-        Pratinjau: jawaban belum dikirim ke mempelai dan akan hilang jika
-        halaman dimuat ulang.
-      </p> */}
+      {!guest.available && (
+        <p className={styles.formNotice}>Penyimpanan RSVP belum tersedia.</p>
+      )}
+      {loadFailed && (
+        <p className={styles.formNotice}>
+          Jawaban sebelumnya belum bisa dimuat.
+        </p>
+      )}
 
-      <button className={styles.submitButton} type="submit">
-        Kirim Konfirmasi
+      <button
+        className={styles.submitButton}
+        type="submit"
+        disabled={isSaving || !guest.available}
+      >
+        {isSaving ? 'Menyimpan…' : 'Kirim Konfirmasi'}
       </button>
     </form>
   );
