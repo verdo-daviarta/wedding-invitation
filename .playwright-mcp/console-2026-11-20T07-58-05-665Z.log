@@ -1,0 +1,2 @@
+[  210384ms] TypeError: window.__videoEvents[name].push is not a function
+    at HTMLDocument.<anonymous> (<anonymous>:7:134)
